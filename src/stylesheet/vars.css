@@ -1,0 +1,10 @@
+:root {
+  --color-primary: #000000;
+  --color-secondary: #ffffff;
+  --color-dimmed: #bdbdbd;
+  --color-action-ok: #24cca7;
+  --color-action-bad: #ff6596;
+  --color-brand: #4a56e2;
+  --background-primary: #ffffff66;
+  --background-dropdown: #ffffffb2;
+}

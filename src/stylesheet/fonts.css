@@ -1,0 +1,31 @@
+/* How to use font-face? */
+/* You can just type the name of the font in the 'font-family' field from all listed below */
+/* [Circe, Circe Bold, Poppins Regular, Poppins Bold] */
+
+@font-face {
+  font-family: 'Circe';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Circe'), url('../assets/fonts/CRC55.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Circe Bold';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Circe Bold'), url('../assets/fonts/CRC65.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Poppins Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Poppins Regular'), url('../assets/fonts/Poppins-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Poppins Bold';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Poppins Bold'), url('../assets/fonts/Poppins-Bold.woff') format('woff');
+}
