@@ -1,16 +1,5 @@
+import css from './App.module.css';
+
 export const App = () => {
-  return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101',
-      }}
-    >
-      Projekt Wallet :D
-    </div>
-  );
+  return <div className={css.box}>Projekt Wallet :D</div>;
 };
