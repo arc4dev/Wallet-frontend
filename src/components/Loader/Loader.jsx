@@ -1,4 +1,5 @@
 import { TailSpin } from 'react-loader-spinner';
+import css from './Loader.module.css';
 
 const Loader = () => {
   return (
@@ -10,6 +11,7 @@ const Loader = () => {
       radius="1"
       visible={true}
     />
+
   );
 };
 
