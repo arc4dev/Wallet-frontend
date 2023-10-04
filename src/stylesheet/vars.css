@@ -7,4 +7,5 @@
   --color-brand: #4a56e2;
   --background-primary: #ffffff66;
   --background-dropdown: #ffffffb2;
+  --background-behind-modal: rgba(0, 0, 0, 0.25);
 }
