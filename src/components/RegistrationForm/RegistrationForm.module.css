@@ -6,7 +6,7 @@
   margin: auto;
 }
 
-.form {
+.formWrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -43,6 +43,12 @@
   color: var(--form);
 }
 
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
 .button {
   width: 280px;
   height: 50px;
@@ -51,6 +57,7 @@
   font-size: 18px;
   font-weight: 400;
   letter-spacing: 1.8px;
+  margin: auto;
 
   &.filled {
     background-color: var(--color-action-ok);
@@ -64,10 +71,7 @@
 .btnWrapper {
   display: flex;
   flex-direction: column;
-}
-
-.btnWrapper > .button:first-of-type {
-  margin-bottom: 20px;
+  align-items: center;
 }
 
 @media screen and (min-width: 768px) {
