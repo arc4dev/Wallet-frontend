@@ -1,6 +1,81 @@
-.registrationForm {
-  width: 100px;
+@import '../../stylesheet/vars.css';
+@import '../../stylesheet/fonts.css';
+
+.wrapper {
+  background-color: white;
+  /* max-width: 410px; */
+  margin: auto;
+  /* display: flex; */
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo {
+  padding-bottom: 60px;
+}
+
+.textFieldWrapper {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 40px;
+  gap: 40px;
+}
+
+.textField {
+  width: 280px;
+  /* margin-bottom: 40px; */
+
+  & ::placeholder {
+    color: #bdbdbd;
+    font-size: 18px;
+    font-family: 'Circe';
+    font-weight: 400;
+  }
+}
+
+.icon {
+  color: var(--form);
+}
+
+.button {
+  width: 280px;
   height: 50px;
   border-radius: 20px;
-  background-color: blue;
+  font-family: 'Circe';
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 1.8px;
+
+  &.filled {
+    background-color: var(--color-action-ok);
+  }
+}
+
+.btnWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.btnWrapper > .button:first-of-type {
+  margin-bottom: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    max-width: 530px;
+    border-radius: 20px;
+    padding: 40px 58px 66px 65px;
+  }
+
+  .textField {
+    width: 410px;
+  }
+
+  .button {
+    width: 300px;
+  }
 }

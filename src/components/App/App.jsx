@@ -1,3 +1,5 @@
+import RegistrationPage from 'pages/RegistrationPage/RegistrationPage';
+
 export const App = () => {
   return (
     <div
@@ -10,7 +12,7 @@ export const App = () => {
         color: '#010101',
       }}
     >
-      Projekt Wallet :D
+      <RegistrationPage />
     </div>
   );
 };

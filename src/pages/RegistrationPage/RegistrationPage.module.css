@@ -1,5 +1,57 @@
-.registrationPage {
-  width: 200px;
-  height: 200px;
-  background-color: blue;
+@import '../../stylesheet/vars.css';
+
+.background {
+  display: none;
+}
+
+.header {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    background-color: var(--background-register);
+  }
+
+  .background {
+    display: block;
+
+    &.right {
+      width: 368px;
+      height: 383px;
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: -1;
+    }
+
+    &.left {
+      width: 496px;
+      height: 323px;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+    }
+  }
+
+  .wrapper {
+    padding-top: 360px;
+    padding-bottom: 80px;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    /* padding-top: 60px; */
+    padding-bottom: 50px;
+  }
+
+  .headerTitle {
+    font-family: 'Poppins Regular';
+    font-size: 30px;
+    margin-left: 40px;
+    font-weight: 400;
+    line-height: normal;
+  }
 }
