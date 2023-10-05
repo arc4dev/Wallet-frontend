@@ -1,3 +1,4 @@
+import LoginPage from 'pages/LoginPage/LoginPage';
 import RegistrationPage from 'pages/RegistrationPage/RegistrationPage';
 
 export const App = () => {
@@ -12,6 +13,7 @@ export const App = () => {
         color: '#010101',
       }}
     >
+      {/* <LoginPage /> */}
       <RegistrationPage />
     </div>
   );
