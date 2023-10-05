@@ -12,7 +12,7 @@ const slice = createSlice({
   reducers: {
     toggleStateOf: (state, action) => {
       state[action.payload] = !state[action.payload];
-    }, // How to use? => dispatch(toggleState('isLoading'))
+    }, // How to use? => dispatch(toggleStateOf('isLoading'))
   },
 });
 

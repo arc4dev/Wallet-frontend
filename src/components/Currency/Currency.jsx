@@ -3,18 +3,17 @@ import css from './Currency.module.css';
 // import axios from 'axios'; <- to uncomment
 
 const Currency = () => {
-  // const API_KEY = ``; <- to uncomment
-
   const [exchangeRates] = useState([]); // <-- do dodania setExchangeRates (musialem usunac bo eslint sie pruje)
   const useCurrencies = ['USD', 'PLN'];
   const spread = 0.0299;
 
-  // !!! gotowe tylko trzeba jeszce dodać API_KEY przez zmienne środowiskowe
+  // !!! gotowe tylko trzeba jeszce dodać REACT_APP_EXCHANGE_API_KEY przez zmienne środowiskowe
+  //
 
   // useEffect(() => {
   //   const fetchCurrencyRates = async () => {
   //     try {
-  //       const response = await axios.get(`http://data.fixer.io/api//latest?access_key=${API_KEY}`);
+  //       const response = await axios.get(`http://data.fixer.io/api//latest?access_key=${process.env.REACT_APP_EXCHANGE_API_KEY}`);
   //       const data = response.data;
   //       const rates = data.rates;
   //       setExchangeRates(rates);
