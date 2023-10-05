@@ -13,7 +13,7 @@ const RegistrationForm = () => {
       <div className={css.wrapper}>
         <div className={css.form}>
           <div className={css.logo}>
-            <svg width="120" height="30">
+            <svg className={css.logoDimensions}>
               <use xlinkHref={`${svg}#icon-logo`}></use>
             </svg>
           </div>
@@ -79,7 +79,7 @@ const RegistrationForm = () => {
             <Button variant="contained" className={`${css.button} ${css.filled}`}>
               Register
             </Button>
-            <Button variant="outlined" className={css.button}>
+            <Button variant="outlined" className={`${css.button} ${css.outlined}`}>
               Log in
             </Button>
           </div>

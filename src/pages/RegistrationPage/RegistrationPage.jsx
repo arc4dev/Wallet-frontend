@@ -8,13 +8,17 @@ const RegistrationPage = () => {
     <StyledEngineProvider injectFirst>
       <div className={css.wrapper}>
         <div className={css.header}>
-          <svg width="250" height="250">
+          <svg className={css.logo}>
             <use xlinkHref={`${svg}#icon-Group`}></use>
           </svg>
           <h3 className={css.headerTitle}>Finance App</h3>
         </div>
 
-        <RegistrationForm />
+        <div className={css.formContainer}>
+          <div className={css.form}>
+            <RegistrationForm />
+          </div>
+        </div>
 
         <svg className={`${css.background} ${css.right}`}>
           <use xlinkHref={`${svg}#icon-Ellipse-2`}></use>
