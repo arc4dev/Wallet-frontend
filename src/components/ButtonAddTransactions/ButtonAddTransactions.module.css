@@ -1,5 +1,25 @@
-.ButtonAddTransactions{
-    width: 400px;
-    height: 100px;
-    background-color: black;
+.ButtonAddTransactions {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  background-color: var(--color-action-ok);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 400ms ease;
+}
+
+.ButtonAddTransactions:hover {
+  transform: scale(1.1);
+}
+
+.AddIcon {
+  width: 20px;
+  height: 20px;
+  fill: var(--color-secondary);
+  transition: all 400ms ease;
 }

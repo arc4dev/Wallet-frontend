@@ -10,10 +10,12 @@ const slice = createSlice({
   name: 'global',
   initialState,
   reducers: {
-    toggleState: (state, action) => {
+    toggleStateOf: (state, action) => {
       state[action.payload] = !state[action.payload];
     }, // How to use? => dispatch(toggleState('isLoading'))
   },
 });
+
+export const { toggleStateOf } = slice.actions;
 
 export const globalReducer = slice.reducer;

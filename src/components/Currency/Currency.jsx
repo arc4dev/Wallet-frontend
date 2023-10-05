@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import css from './Currency.module.css';
-import axios from 'axios';
+// import axios from 'axios'; <- to uncomment
 
 const Currency = () => {
-  const API_KEY = ``;
+  // const API_KEY = ``; <- to uncomment
 
-  const [exchangeRates, setExchangeRates] = useState([]);
+  const [exchangeRates] = useState([]); // <-- do dodania setExchangeRates (musialem usunac bo eslint sie pruje)
   const useCurrencies = ['USD', 'PLN'];
   const spread = 0.0299;
 
