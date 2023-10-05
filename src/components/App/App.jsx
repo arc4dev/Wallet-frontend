@@ -9,4 +9,4 @@ export const App = () => {
       <div className={css.box}>Projekt Wallet :D</div>
     </div>
   );
-};
+
