@@ -69,17 +69,17 @@ const Navigation = () => {
             }}
           >
             <nav className={css.navigation}>
-              <div className={css.nav_link}>
-                <StyledLink to="/">
+              <div>
+                <NavLink className={css.nav_link} to="/">
                   <BiSolidHome />
-                </StyledLink>
-                <span className={css.nav_text}>Home</span>
+                  <span className={css.nav_text}>Home</span>
+                </NavLink>
               </div>
-              <div className={css.nav_link}>
-                <StyledLink to="/diagram">
+              <div>
+                <NavLink className={css.nav_link} to="/diagram">
                   <BiStats />
-                </StyledLink>
-                <span className={css.nav_text}>Statistics</span>
+                  <span className={css.nav_text}>Statistics</span>
+                </NavLink>
               </div>
             </nav>
           </IconContext.Provider>
