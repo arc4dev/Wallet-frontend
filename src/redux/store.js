@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { financeReducer } from './finance/slice';
-import { authReducer } from './Auth/slice';
+import { authReducer } from './auth/slice';
 import { globalReducer } from './global/slice';
 
 const store = configureStore({
