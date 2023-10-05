@@ -1,9 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-import appReducer from '../redux/Auth/slice';
+import { financeReducer } from './finance/slice';
+import { authReducer } from './auth/slice';
+import { globalReducer } from './global/slice';
 
 const store = configureStore({
   reducer: {
-    app: appReducer,
+    global: globalReducer,
+    auth: authReducer,
+    finance: financeReducer,
   },
 });
 

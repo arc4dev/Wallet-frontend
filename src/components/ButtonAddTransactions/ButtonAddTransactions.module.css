@@ -2,7 +2,7 @@
   position: fixed;
   bottom: 40px;
   right: 40px;
-  background-color: #24cca7;
+  background-color: var(--color-action-ok);
   width: 44px;
   height: 44px;
   border-radius: 50%;
@@ -12,6 +12,7 @@
   cursor: pointer;
   transition: all 400ms ease;
 }
+
 .ButtonAddTransactions:hover {
   transform: scale(1.1);
 }
@@ -19,6 +20,6 @@
 .AddIcon {
   width: 20px;
   height: 20px;
-  fill: #ffffff;
+  fill: var(--color-secondary);
   transition: all 400ms ease;
 }
