@@ -1,5 +1,3 @@
-@import '../../stylesheet/vars.css';
-
 .background {
   display: none;
 }
@@ -80,7 +78,7 @@
     content: ' ';
     position: absolute;
     top: 0px;
-    background-color: #ffffff66;
+    background-color: var(--background-primary);
     width: 60vw;
     height: 100vh;
     backdrop-filter: blur(25px);

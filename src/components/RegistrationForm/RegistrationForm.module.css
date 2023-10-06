@@ -32,7 +32,7 @@
   width: 280px;
 
   & ::placeholder {
-    color: #bdbdbd;
+    color: var(--color-dimmed);
     font-size: 18px;
     font-family: 'Circe';
     font-weight: 400;
@@ -40,7 +40,7 @@
 }
 
 .icon {
-  color: var(--form);
+  color: var(--color-form);
 }
 
 .form {

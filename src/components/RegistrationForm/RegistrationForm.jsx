@@ -33,7 +33,7 @@ const RegistrationForm = () => {
     },
     validationSchema: validationSchema,
     onSubmit: values => {
-      console.log(values);
+      console.log(values); // <- here POST to /signup endpoint
     },
   });
 
