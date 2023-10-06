@@ -15,4 +15,9 @@
   --breakpointMobile: 320px;
   --breakpointTablet: 768px;
   --breakpointDesktop: 1280px;
+  --progressBar-background: #eee;
+  --progressBar-weak: #ff0400;
+  --progressBar-fair: #ffcc00;
+  --progressBar-good: #00b3ff;
+  --progressBar-strong: #00ff59;
 }
