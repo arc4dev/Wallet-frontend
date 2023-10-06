@@ -1,13 +1,10 @@
 import css from './Navigation.module.css';
-import { Routes, Route, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { IconContext } from 'react-icons';
 import { BiStats, BiSolidHome } from 'react-icons/bi';
 import { FaDollarSign } from 'react-icons/fa';
 import Media from 'react-media';
 import styled from 'styled-components';
-import HomeTab from 'components/HomeTab/HomeTab';
-import DiagramTab from 'components/DiagramTab/DiagramTab';
-import Currency from 'components/Currency/Currency';
 
 const StyledLink = styled(NavLink)`
   &.active {
@@ -36,16 +33,16 @@ const Navigation = () => {
           render={() => (
             <nav className={css.navigation}>
               <div className={css.nav_link}>
-                <StyledLink to="/">
+                <StyledLink to="/dashboard/home">
                   <BiSolidHome />
                 </StyledLink>
               </div>
               <div className={css.nav_link}>
-                <StyledLink to="/diagram">
+                <StyledLink to="/dashboard/statistics">
                   <BiStats />
                 </StyledLink>
               </div>
-              <StyledLink to="/currency">
+              <StyledLink to="/dashboard/currency">
                 <FaDollarSign />
               </StyledLink>
             </nav>
@@ -70,13 +67,13 @@ const Navigation = () => {
           >
             <nav className={css.navigation}>
               <div>
-                <NavLink className={css.nav_link} to="/">
+                <NavLink className={css.nav_link} to="/dashboard/home">
                   <BiSolidHome />
                   <span className={css.nav_text}>Home</span>
                 </NavLink>
               </div>
               <div>
-                <NavLink className={css.nav_link} to="/diagram">
+                <NavLink className={css.nav_link} to="/dashboard/statistics">
                   <BiStats />
                   <span className={css.nav_text}>Statistics</span>
                 </NavLink>
@@ -85,13 +82,6 @@ const Navigation = () => {
           </IconContext.Provider>
         )}
       />
-
-      <Routes>
-        <Route path="/" element={<HomeTab />} />
-        <Route path="/diagram" element={<DiagramTab />} />
-        <Route path="/currency" element={<Currency />} />
-        <Route path="*" element={<HomeTab />} />
-      </Routes>
     </div>
   );
 };

@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
 import ReactMedia from 'react-media';
-import Balance from '../../components/Balance/Balance';
-// import Chart from '../../components/Chart/Chart';
-import Currency from '../../components/Currency/Currency';
-// import DiagramTab from '../../components/DiagramTab/DiagramTab';
 import Header from '../../components/Header/Header';
-import ModalAddTransaction from '../../components/ModalAddTransaction/ModalAddTransaction';
 import Navigation from '../../components/Navigation/Navigation';
-import Table from '../../components/Table/Table';
+
+import { Outlet } from 'react-router-dom';
 
 class DashboardPage extends Component {
   componentDidMount() {
@@ -57,7 +53,6 @@ class DashboardPage extends Component {
   render() {
     return (
       <div>
-        <h1>Dashboard</h1>
         <ReactMedia
           queries={{
             small: '(max-width: 767px)',
@@ -66,41 +61,32 @@ class DashboardPage extends Component {
           }}
         >
           {matches => (
-            <div>
+            <>
               {matches.small && (
                 <div>
-                  <h2>Mobile View</h2>
+                  {/* <h2>Mobile View</h2> */}
                   <Header />
                   <Navigation />
-                  <Balance />
-                  <Table />
-                  <Currency />
-                  <ModalAddTransaction />
+                  <Outlet />
                 </div>
               )}
               {matches.medium && (
                 <div>
-                  <h2>Tablet View</h2>
+                  {/* <h2>Tablet View</h2> */}
                   <Header />
                   <Navigation />
-                  <Balance />
-                  <Table />
-                  <Currency />
-                  <ModalAddTransaction />
+                  <Outlet />
                 </div>
               )}
               {matches.large && (
                 <div>
-                  <h2>Desktop View</h2>
+                  {/* <h2>Desktop View</h2> */}
                   <Header />
                   <Navigation />
-                  <Balance />
-                  <Table />
-                  <Currency />
-                  <ModalAddTransaction />
+                  <Outlet />
                 </div>
               )}
-            </div>
+            </>
           )}
         </ReactMedia>
       </div>
