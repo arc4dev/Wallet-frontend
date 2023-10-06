@@ -1,11 +1,13 @@
 import React from 'react';
 import css from './ButtonAddTransactions.module.css';
-import AddIcon from '../../assets/svg/+.svg';
+import svg from '../../assets/icons/icons.svg';
 
 const ButtonAddTransactions = ({ onClick }) => {
   return (
     <div className={css.ButtonAddTransactions} onClick={onClick}>
-      <img src={AddIcon} alt="add icon" className={css.AddIcon} />
+      <svg className={css.AddIcon}>
+        <use xlinkHref={`${svg}#icon-plus`}></use>
+      </svg>
     </div>
   );
 };
