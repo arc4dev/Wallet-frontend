@@ -8,6 +8,7 @@ import LockIcon from '@mui/icons-material/Lock';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import svg from '../../assets/icons/icons.svg';
 import { useFormik } from 'formik';
+import PasswordStrengthMeter from 'components/PasswordStrengthMeter/PasswordStrengthMeter';
 
 const validationSchema = yup.object({
   email: yup.string('Enter your email').email('Enter a valid email').required('Email is required'),
@@ -15,7 +16,8 @@ const validationSchema = yup.object({
     .string('Enter your password')
     .min(6, 'Password should be of minimum 6 characters length')
     .max(12, 'Password should be of maximum 12 characters length')
-    .required('Password is required'),
+    .required('Password is required')
+    .test('no-spaces', 'Password cannot contain spaces', value => !/\s/.test(value)),
   checkPassword: yup
     .string('Enter your password')
     .oneOf([yup.ref('password'), null], 'Passwords must match')
@@ -109,6 +111,7 @@ const RegistrationForm = () => {
                 error={formik.touched.checkPassword && Boolean(formik.errors.checkPassword)}
                 helperText={formik.touched.checkPassword && formik.errors.checkPassword}
               />
+              <PasswordStrengthMeter password={formik.values.password} />
               <TextField
                 id="name"
                 name="name"
@@ -122,7 +125,7 @@ const RegistrationForm = () => {
                   ),
                 }}
                 className={css.textField}
-                value={formik.values.name}
+                value={formik.values.name.trim()}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 error={formik.touched.name && Boolean(formik.errors.name)}
