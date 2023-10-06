@@ -60,9 +60,9 @@ class DashboardPage extends Component {
         <h1>Dashboard</h1>
         <ReactMedia
           queries={{
-            small: '(max-width: 599px)',
-            medium: '(min-width: 600px) and (max-width: 1199px)',
-            large: '(min-width: 1200px)',
+            small: '(max-width: 767px)',
+            medium: '(min-width: 768px) and (max-width: 1279px)',
+            large: '(min-width: 1280px)',
           }}
         >
           {matches => (
