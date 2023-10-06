@@ -1,10 +1,15 @@
-import css from './Loader.module.css';
+import { TailSpin } from 'react-loader-spinner';
 
 const Loader = () => {
   return (
-    <>
-      <div className={css.loader}>Loader!!</div>
-    </>
+    <TailSpin
+      height="80"
+      width="80"
+      ariaLabel="tail-spin-loading"
+      color="var(--color-brand)"
+      radius="1"
+      visible={true}
+    />
   );
 };
 

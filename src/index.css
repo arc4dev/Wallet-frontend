@@ -1,12 +1,51 @@
 @import 'modern-normalize/modern-normalize.css';
 @import url('./stylesheet/fonts.css');
+@import url('./stylesheet/vars.css');
+
+html {
+  scroll-behavior: smooth;
+  font-size: 18px;
+}
 
 body {
-  margin: 0;
   font-family: 'Circe', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
     'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Poppins Regular';
+  /* If header needs to be bold just change ONLY font-family to Poppins Bold  */
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
 }
 
 code {

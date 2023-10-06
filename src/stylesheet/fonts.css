@@ -6,26 +6,27 @@
   font-family: 'Circe';
   font-style: normal;
   font-weight: normal;
-  src: local('Circe'), url('../assets/fonts/CRC55.woff') format('woff');
+  src: local('Circe'), url('../../public/assets/fonts/CRC55.woff') format('woff');
 }
 
 @font-face {
   font-family: 'Circe Bold';
   font-style: normal;
   font-weight: normal;
-  src: local('Circe Bold'), url('../assets/fonts/CRC65.woff') format('woff');
+  src: local('Circe Bold'), url('../../public/assets/fonts/CRC65.woff') format('woff');
 }
 
 @font-face {
   font-family: 'Poppins Regular';
   font-style: normal;
   font-weight: normal;
-  src: local('Poppins Regular'), url('../assets/fonts/Poppins-Regular.woff') format('woff');
+  src: local('Poppins Regular'),
+    url('../../public/assets/fonts/Poppins-Regular.woff') format('woff');
 }
 
 @font-face {
   font-family: 'Poppins Bold';
   font-style: normal;
   font-weight: normal;
-  src: local('Poppins Bold'), url('../assets/fonts/Poppins-Bold.woff') format('woff');
+  src: local('Poppins Bold'), url('../../public/assets/fonts/Poppins-Bold.woff') format('woff');
 }
