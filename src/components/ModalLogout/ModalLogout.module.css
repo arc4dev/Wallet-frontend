@@ -1,6 +1,61 @@
 .modalLogout {
-  width: 100px;
-  height: 50px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 16rem;
+  height: 8rem;
   border-radius: 20px;
-  background-color: blue;
+  background-color: var(--color-brand);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.header-3 {
+  text-align: center;
+  color: var(--color-secondary);
+  font-size: 1.2rem;
+}
+.header-4 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+}
+.btn-wrapper {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.button {
+  width: 100px;
+  border: none;
+  background-color: var(--background-btn);
+  border: 1px solid var(--color-brand);
+  border-radius: 25px;
+  color: var(--color-secondary);
+  font-size: 20px;
+  transition: var(--transitionDefault);
+}
+.button:hover {
+  transition: var(--transitionDefault);
+  border: 1px solid var(--color-secondary);
+  background-color: var(--background-icon);
+}
+.btn-icon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: var(--color-secondary);
+  transition: var(--transitionDefault);
+}
+.btn-icon:is(:focus, :hover, ) {
+  transition: var(--transitionDefault);
+  border-radius: 50%;
+  background-color: var(--background-btn);
 }
