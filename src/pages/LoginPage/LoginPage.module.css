@@ -1,5 +1,101 @@
-.loginPage {
-  width: 200px;
-  height: 200px;
-  background-color: blue;
+.background {
+  display: none;
+}
+
+.header {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    background-color: var(--background-register);
+  }
+
+  .background {
+    display: block;
+    position: absolute;
+    z-index: -1;
+
+    &.right {
+      width: 368px;
+      height: 383px;
+      top: 0;
+      right: 0;
+    }
+
+    &.left {
+      width: 496px;
+      height: 323px;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  .wrapper {
+    padding-bottom: 80px;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    padding: 60px 0 50px 0;
+  }
+
+  .logo {
+    width: 250px;
+    height: 250px;
+  }
+
+  .headerTitle {
+    font-family: 'Poppins Regular';
+    font-size: 1.67rem;
+    margin-left: 40px;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .wrapper {
+    max-width: 1280px;
+    display: flex;
+    align-items: center;
+    padding: 0;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 40px 0 0;
+  }
+
+  .formContainer {
+    display: flex;
+    height: 100vh;
+  }
+
+  .formContainer::after {
+    content: ' ';
+    position: absolute;
+    top: 0px;
+    background-color: var(--background-primary);
+    width: 60vw;
+    height: 100vh;
+    backdrop-filter: blur(25px);
+  }
+
+  .form {
+    display: flex;
+    z-index: 1;
+    padding-left: 107px;
+  }
+
+  .logo {
+    width: 452px;
+    height: 412px;
+  }
+
+  .headerTitle {
+    margin: 32px 0 0 0;
+  }
 }

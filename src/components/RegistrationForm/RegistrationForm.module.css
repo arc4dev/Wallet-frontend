@@ -1,6 +1,93 @@
-.registrationForm {
-  width: 100px;
+.wrapper {
+  background-color: var(--color-secondary);
+  margin: auto;
+}
+
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo {
+  padding-bottom: 60px;
+}
+
+.logoDimensions {
+  width: 120px;
+  height: 30px;
+}
+
+.textFieldWrapper {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 40px;
+  gap: 40px;
+}
+
+.textField {
+  width: 280px;
+
+  & ::placeholder {
+    color: var(--color-dimmed);
+    font-size: 1rem;
+    font-family: 'Circe';
+    font-weight: 400;
+  }
+}
+
+.icon {
+  color: var(--color-form);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.button {
+  width: 280px;
   height: 50px;
   border-radius: 20px;
-  background-color: blue;
+  font-family: 'Circe';
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  margin: auto;
+
+  &.filled {
+    background-color: var(--color-action-ok);
+  }
+
+  &.outlined {
+    border: 1px solid var(--color-brand);
+  }
+}
+
+.btnWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    max-width: 530px;
+    border-radius: 20px;
+    padding: 40px 58px 66px 65px;
+  }
+
+  .textField {
+    width: 410px;
+  }
+
+  .button {
+    width: 300px;
+  }
+
+  .logoDimensions {
+    width: 181px;
+    height: 40px;
+  }
 }
