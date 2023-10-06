@@ -7,6 +7,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import HomeTab from 'components/HomeTab/HomeTab';
 import DiagramTab from 'components/DiagramTab/DiagramTab';
 import Currency from 'components/Currency/Currency';
+import Balance from 'components/Balance/Balance';
 
 export const App = () => {
   return (
@@ -23,6 +24,7 @@ export const App = () => {
         <Route path="/register" element={<RegistrationPage />} />
         <Route path="*" element={<DashboardPage />} />
       </Routes>
+      <Balance />
     </div>
   );
 };
