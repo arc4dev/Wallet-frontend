@@ -6,15 +6,26 @@
   display: none;
 }
 
+.loginPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper {
+  z-index: 100;
+}
+
 @media screen and (min-width: 768px) {
-  body {
+  .loginPage {
     background-color: var(--background-register);
+    align-items: start;
   }
 
   .background {
     display: block;
     position: absolute;
-    z-index: -1;
+    z-index: 0;
 
     &.right {
       width: 368px;
@@ -29,10 +40,6 @@
       bottom: 0;
       left: 0;
     }
-  }
-
-  .wrapper {
-    padding-bottom: 80px;
   }
 
   .header {
