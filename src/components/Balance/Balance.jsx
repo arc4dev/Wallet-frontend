@@ -1,12 +1,12 @@
 import css from './Balance.module.css';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectTotalBalance, selectTransactions } from 'redux/finance/selectors';
+// import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { selectTotalBalance } from 'redux/finance/selectors';
 
 const Balance = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const balance = useSelector(selectTotalBalance);
-  const transactions = useSelector(selectTransactions);
+  // const transactions = useSelector(selectTransactions);
 
   // useEffect(() => {}, [dispatch, transactions]);
 

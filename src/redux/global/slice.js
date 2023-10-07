@@ -13,6 +13,9 @@ const slice = createSlice({
     toggleStateOf: (state, action) => {
       state[action.payload] = !state[action.payload];
     }, // How to use? => dispatch(toggleStateOf('isLoading'))
+    // globalReset: () => {
+    //   return { ...initialState };
+    // },
   },
 });
 
