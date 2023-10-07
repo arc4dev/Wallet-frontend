@@ -11,11 +11,9 @@ const Balance = () => {
   // useEffect(() => {}, [dispatch, transactions]);
 
   return (
-    <div className={css.balance_box}>
-      <div className={css.balance}>
-        <span className={css.balance_text}>Your balance</span>
-        <span className={css.balance_amount}>&#8372; {balance}</span>
-      </div>
+    <div className={css.balance}>
+      <span className={css.balance_text}>Your balance</span>
+      <span className={css.balance_amount}>&#8372; {balance}</span>
     </div>
   );
 };
