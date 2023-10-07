@@ -5,11 +5,6 @@
   background-color: var(--color-brand);
   position: relative;
 }
-.currencyContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 .svg {
   position: absolute;
   bottom: 0;

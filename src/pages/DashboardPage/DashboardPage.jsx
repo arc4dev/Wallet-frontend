@@ -67,7 +67,10 @@ class DashboardPage extends Component {
                 <>
                   {/* <h2>Mobile View</h2> */}
                   <Header />
-                  <Navigation />
+                  <div className={css.mobileWrapper}>
+                    <Navigation />
+                  </div>
+
                   <Outlet />
                 </>
               )}
@@ -86,7 +89,7 @@ class DashboardPage extends Component {
                   <Header />
                   <div className={css.dasboardContainersWrapper}>
                     <div className={css.dashboardOverview}>
-                      <div>
+                      <div className={css.dashboardOverviewWrapper}>
                         <Navigation />
                         <Balance />
                       </div>
@@ -111,7 +114,7 @@ class DashboardPage extends Component {
                   <Header />
                   <div className={css.dasboardContainersWrapper}>
                     <div className={css.dashboardOverview}>
-                      <div>
+                      <div className={css.dashboardOverviewWrapper}>
                         <Navigation />
                         <Balance />
                       </div>

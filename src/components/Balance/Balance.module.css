@@ -5,7 +5,6 @@
   background-color: var(--color-secondary);
   display: flex;
   flex-direction: column;
-  margin-bottom: 32px;
 }
 
 .balance_text {
@@ -29,15 +28,11 @@
 @media screen and (min-width: 768px) {
   .balance {
     width: 336px;
-    margin-bottom: 20px;
-    margin-left: 32px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .balance {
     width: 395px;
-    margin-bottom: 28px;
-    margin-left: 32px;
   }
 }

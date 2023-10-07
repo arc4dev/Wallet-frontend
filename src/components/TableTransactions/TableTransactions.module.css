@@ -1,4 +1,6 @@
 .box {
   padding: 0.5em 1em;
-  background-color: var(--color-brand-ok);
+  background-color: var(--color-brand);
+  border-radius: 20px;
+  color: var(--color-secondary);
 }
