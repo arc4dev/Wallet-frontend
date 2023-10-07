@@ -68,13 +68,17 @@ const Navigation = () => {
             <nav className={css.navigation}>
               <div>
                 <NavLink className={css.nav_link} to="/dashboard/home">
-                  <BiSolidHome />
+                  <StyledLink to="/dashboard/home">
+                    <BiSolidHome />
+                  </StyledLink>
                   <span className={css.nav_text}>Home</span>
                 </NavLink>
               </div>
               <div>
                 <NavLink className={css.nav_link} to="/dashboard/statistics">
-                  <BiStats />
+                  <StyledLink to="/dashboard/statistics">
+                    <BiStats />
+                  </StyledLink>
                   <span className={css.nav_text}>Statistics</span>
                 </NavLink>
               </div>
