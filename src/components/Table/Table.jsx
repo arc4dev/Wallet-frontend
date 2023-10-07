@@ -1,6 +1,6 @@
 import React from 'react';
-import TransactionsList from 'components/DiagramTab/TransactionsList';
-import css from './Table.module.css';
+// import TransactionsList from 'components/DiagramTab/TransactionsList';
+// import css from './Table.module.css';
 
 // oblicz sumę wszystkich transakcji '+'
 const calculateTotalIncome = transactionsList => {

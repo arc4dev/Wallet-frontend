@@ -1,7 +1,8 @@
 // import css from './HomeTab.module.css';
 import Balance from 'components/Balance/Balance';
 import ButtonAddTransactions from 'components/ButtonAddTransactions/ButtonAddTransactions';
-import Table from 'components/Table/Table';
+
+import TableTransactions from 'components/TableTransactions/TableTransactions';
 import ReactMedia from 'react-media';
 
 const HomeTab = () => {
@@ -18,13 +19,12 @@ const HomeTab = () => {
             {matches.mobile && (
               <>
                 <Balance />
-                <Table />
+                <TableTransactions />
                 <ButtonAddTransactions />
               </>
             )}
             {matches.higher && (
               <>
-                <Table />
                 <ButtonAddTransactions />
               </>
             )}
