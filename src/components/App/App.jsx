@@ -8,6 +8,7 @@ import HomeTab from 'components/HomeTab/HomeTab';
 import DiagramTab from 'components/DiagramTab/DiagramTab';
 import Currency from 'components/Currency/Currency';
 import { StyledEngineProvider } from '@mui/material';
+import NotFoundPage from 'pages/NotFound/NotFoundPage';
 
 export const App = () => {
   return (
@@ -23,7 +24,7 @@ export const App = () => {
           </Route>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegistrationPage />} />
-          <Route path="*" element={<DashboardPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>
     </StyledEngineProvider>

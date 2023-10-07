@@ -15,7 +15,7 @@ const StyledLink = styled(NavLink)`
 
 const Navigation = () => {
   return (
-    <div>
+    <>
       <IconContext.Provider
         value={{
           color: '#FFFFFF',
@@ -82,7 +82,7 @@ const Navigation = () => {
           </IconContext.Provider>
         )}
       />
-    </div>
+    </>
   );
 };
 export default Navigation;

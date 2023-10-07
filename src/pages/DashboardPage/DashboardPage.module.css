@@ -1,5 +1,39 @@
-.dashboardPage {
-  width: 200px;
-  height: 200px;
-  background-color: blue;
+.dashboard {
+  background-color: var(--background-register);
+}
+
+.dashboardOverview {
+  display: flex;
+}
+
+@media screen and (min-width: 768px) {
+  .background {
+    display: block;
+    position: absolute;
+    z-index: 0;
+
+    &.right {
+      width: 368px;
+      height: 383px;
+      top: 0;
+      right: 0;
+    }
+
+    &.left {
+      width: 496px;
+      height: 323px;
+      bottom: 0;
+      left: 0;
+    }
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .dashboardOverview {
+    flex-direction: column;
+  }
+
+  .dasboardContainersWrapper {
+    display: flex;
+  }
 }

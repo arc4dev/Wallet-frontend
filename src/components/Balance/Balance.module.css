@@ -1,5 +1,43 @@
 .balance {
-  width: 200px;
-  height: 100px;
-  background-color: blue;
+  width: 280px;
+  height: 80px;
+  border-radius: 30px;
+  background-color: var(--color-secondary);
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 32px;
+}
+
+.balance_text {
+  text-transform: uppercase;
+  color: #a6a6a6;
+  font-family: Circe;
+  font-size: 0.75rem;
+  line-height: 18px;
+  padding-left: 32px;
+  padding-top: 8px;
+}
+
+.balance_amount {
+  font-family: Popins Bold;
+  padding-left: 32px;
+  font-family: Poppins Bold;
+  font-size: 1.88rem;
+  line-height: 45px;
+}
+
+@media screen and (min-width: 768px) {
+  .balance {
+    width: 336px;
+    margin-bottom: 20px;
+    margin-left: 32px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .balance {
+    width: 395px;
+    margin-bottom: 28px;
+    margin-left: 32px;
+  }
 }
