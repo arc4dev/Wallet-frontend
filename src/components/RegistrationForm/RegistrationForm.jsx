@@ -9,6 +9,9 @@ import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import svg from '../../assets/icons/icons.svg';
 import { useFormik } from 'formik';
 import PasswordStrengthMeter from 'components/PasswordStrengthMeter/PasswordStrengthMeter';
+import { useDispatch } from 'react-redux';
+import { registerUser } from 'redux/Auth/operations';
+import { NavLink } from 'react-router-dom';
 
 const validationSchema = yup.object({
   email: yup.string('Enter your email').email('Enter a valid email').required('Email is required'),
@@ -26,6 +29,8 @@ const validationSchema = yup.object({
 });
 
 const RegistrationForm = () => {
+  const dispatch = useDispatch();
+
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -35,7 +40,12 @@ const RegistrationForm = () => {
     },
     validationSchema: validationSchema,
     onSubmit: values => {
-      console.log(values); // <- here POST to /signup endpoint
+      const registerElements = {
+        name: values.name,
+        email: values.email,
+        password: values.password,
+      };
+      dispatch(registerUser(registerElements));
     },
   });
 
@@ -136,7 +146,13 @@ const RegistrationForm = () => {
               Register
             </Button>
           </form>
-          <Button variant="outlined" className={`${css.button} ${css.outlined}`} type="submit">
+          <Button
+            variant="outlined"
+            className={`${css.button} ${css.outlined}`}
+            type="submit"
+            to="/login"
+            component={NavLink}
+          >
             Log in
           </Button>
         </div>

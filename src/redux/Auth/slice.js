@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { registerUser } from './operations';
+import { loginUser, registerUser } from './operations';
 
 const initialState = {
   user: {
@@ -16,16 +16,33 @@ const slice = createSlice({
   initialState,
   extraReducers: {
     [registerUser.fulfilled]: (state, action) => {
-      state.isRefreshing = false;
-      state.token = action.payload.token;
-      state.user = action.payload.user;
-      state.isLoggedIn = true;
+      // state.isRefreshing = false;
+      // state.token = action.payload.token;
+      // state.user = action.payload.user;
+      // state.isLoggedIn = true;
+
+      console.log(state);
+      console.log(action);
+    },
+    [loginUser.fulfilled]: (state, action) => {
+      console.log(state);
+      console.log(action);
     },
     [registerUser.pending]: state => {
-      state.isRefreshing = true;
+      // state.isRefreshing = true;
+
+      console.log(state);
+    },
+    [loginUser.pending]: state => {
+      console.log(state);
     },
     [registerUser.rejected]: state => {
-      state.isRefreshing = false;
+      // state.isRefreshing = false;
+
+      console.log(state);
+    },
+    [loginUser.rejected]: state => {
+      console.log(state);
     },
   },
 });

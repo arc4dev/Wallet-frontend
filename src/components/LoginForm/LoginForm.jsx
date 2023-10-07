@@ -7,6 +7,9 @@ import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
 import svg from '../../assets/icons/icons.svg';
 import { useFormik } from 'formik';
+import { useDispatch } from 'react-redux';
+import { loginUser } from 'redux/Auth/operations';
+import { NavLink } from 'react-router-dom';
 
 const validationSchema = yup.object({
   email: yup.string('Enter your email').email('Enter a valid email').required('Email is required'),
@@ -18,6 +21,8 @@ const validationSchema = yup.object({
 });
 
 const LoginForm = () => {
+  const dispatch = useDispatch();
+
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -25,7 +30,12 @@ const LoginForm = () => {
     },
     validationSchema: validationSchema,
     onSubmit: values => {
-      console.log(values);
+      const loginElements = {
+        email: values.email,
+        password: values.password,
+      };
+
+      dispatch(loginUser(loginElements));
     },
   });
 
@@ -86,7 +96,13 @@ const LoginForm = () => {
             </Button>
           </form>
 
-          <Button variant="outlined" className={`${css.button} ${css.outlined}`} type="submit">
+          <Button
+            variant="outlined"
+            className={`${css.button} ${css.outlined}`}
+            type="submit"
+            to="/register"
+            component={NavLink}
+          >
             Log in
           </Button>
         </div>
