@@ -9,6 +9,7 @@ import css from './DashboardPage.module.css';
 import svg from '../../assets/icons/icons.svg';
 import Currency from 'components/Currency/Currency';
 import Balance from 'components/Balance/Balance';
+import ModalAddTransaction from 'components/ModalAddTransaction/ModalAddTransaction';
 
 class DashboardPage extends Component {
   componentDidMount() {
@@ -66,9 +67,10 @@ class DashboardPage extends Component {
               {matches.small && (
                 <>
                   {/* <h2>Mobile View</h2> */}
-                  <Header />
+                  {/* <Header />
                   <Navigation />
-                  <Outlet />
+                  <Outlet /> */}
+                  <ModalAddTransaction />
                 </>
               )}
               {matches.medium && (
@@ -82,7 +84,7 @@ class DashboardPage extends Component {
                   <svg className={`${css.background} ${css.left}`}>
                     <use xlinkHref={`${svg}#icon-Ellipse-1`}></use>
                   </svg>
-
+                  {/* 
                   <Header />
                   <div className={css.dasboardContainersWrapper}>
                     <div className={css.dashboardOverview}>
@@ -93,7 +95,8 @@ class DashboardPage extends Component {
                       <Currency />
                     </div>
                     <Outlet />
-                  </div>
+                  </div> */}
+                  <ModalAddTransaction />
                 </>
               )}
               {matches.large && (
