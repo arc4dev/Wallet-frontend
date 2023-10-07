@@ -1,6 +1,186 @@
-.modalAddTransaction {
-  width: 100px;
-  height: 50px;
-  border-radius: 20px;
-  background-color: blue;
+.modalBackground {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.25);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modalContainer {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 3.75rem;
+  background: #fff;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+  padding: 25px;
+}
+.modalHeader {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  color: #000;
+  text-align: center;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.closeBtn {
+  background: #fff;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+}
+.switchContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 2.5rem;
+}
+
+.incomeText {
+  color: #24cca7;
+}
+
+.expenseText {
+  color: #ff6596;
+}
+
+.greyText {
+  color: #e0e0e0;
+}
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
+  margin: 0 1.25rem 2.5rem 1.25rem;
+  gap: 3rem;
+}
+.amountInput {
+  border: none;
+  color: #bdbdbd;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding: 0.5rem 1.25rem 0.5rem 1.25rem;
+  border-bottom: 1.5px solid #e0e0e0;
+}
+
+.amountInput:focus {
+  color: #000;
+}
+.dateInput {
+  color: #000;
+  border: none;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 0.5rem 1.25rem 0.5rem 1.25rem;
+  border-bottom: 1.5px solid #e0e0e0;
+}
+
+.commentInput {
+  border: none;
+  color: #bdbdbd;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 0.5rem 1.25rem 3rem 1.25rem;
+  border-bottom: 1.5px solid #e0e0e0;
+}
+.commentInput:focus {
+  color: #000;
+}
+.modalFooter {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.btnAdd {
+  width: 18.75rem;
+  height: 3.125rem;
+  border-radius: 1.25rem;
+  background: #24cca7;
+  border: none;
+  color: #fff;
+  text-align: center;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.1125rem;
+  text-transform: uppercase;
+}
+.btnCancel {
+  width: 18.75rem;
+  height: 3.125rem;
+  border-radius: 1.25rem;
+  border: 1px solid #4a56e2;
+  background: #fff;
+  color: #4a56e2;
+  text-align: center;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.1125rem;
+  text-transform: uppercase;
+}
+@media (min-width: 768px) {
+  .modalContainer {
+    width: 33.75rem;
+    height: 31.75rem;
+    border-radius: 1.25rem;
+    background: #fff;
+  }
+  .formContainer {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-left: 4.56rem;
+    margin-right: 4.56rem;
+    gap: 0;
+  }
+  .amountInput {
+    width: 9rem;
+    height: 1.5rem;
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+  .dateInput {
+    width: 9rem;
+    margin-bottom: 2.5rem;
+  }
+  .commentInput {
+    width: 100%;
+    height: 1.5rem;
+    padding-bottom: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .closeBtn {
+    display: none;
+  }
 }
