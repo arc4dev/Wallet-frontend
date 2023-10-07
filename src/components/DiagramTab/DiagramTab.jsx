@@ -4,12 +4,12 @@ import TransactionsList from './TransactionsList';
 import Table from 'components/Table/Table';
 import ChartComponent from 'components/Chart/Chart';
 
-const DiagramTab = () => {
+const DiagramTab = ({ categories, transactionsList }) => {
   return (
     <div className={css.diagramTab}>
       Statistics
-      <Table transactionsList={TransactionsList} />
-      {/* <ChartComponent transactionsList={TransactionsList} /> */}
+      <Table transactionsList={TransactionsList} categories={categories} />
+      <ChartComponent categories={categories} transactionsList={transactionsList} />
     </div>
   );
 };

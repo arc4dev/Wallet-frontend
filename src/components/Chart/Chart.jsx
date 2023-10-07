@@ -180,7 +180,7 @@ const ChartComponent = ({ transactionsList, groupedTransactions }) => {
         data: chartData,
       });
     }
-  }, [groupedTransactions]);
+  }, [groupedTransactions, transactionsList]);
 
   return (
     <div>

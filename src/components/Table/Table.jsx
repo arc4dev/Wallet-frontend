@@ -15,22 +15,43 @@ const calculateTotalExpenses = transactionsList => {
     .reduce((total, transaction) => total - transaction.sum, 0);
 };
 
-const Table = ({ transactionsList }) => {
-  const groupedTransactions = transactionsList.reduce((grouped, transaction) => {
-    const { category, type, sum } = transaction;
+// const Table = ({ transactionsList }) => {
+//   const groupedTransactions = transactionsList.reduce((grouped, transaction) => {
+//     const { category, type, sum } = transaction;
 
-    if (category && category.toLowerCase() !== 'income') {
-      const categoryKey = category.toLowerCase();
+//     if (category && category.toLowerCase() !== 'income') {
+//       const categoryKey = category.toLowerCase();
 
-      if (!grouped[categoryKey]) {
-        grouped[categoryKey] = 0;
-      }
+//       if (!grouped[categoryKey]) {
+//         grouped[categoryKey] = 0;
+//       }
 
-      grouped[categoryKey] += type === '-' ? sum : 0;
-    }
+//       grouped[categoryKey] += type === '-' ? sum : 0;
+//     }
 
+//     return grouped;
+//   }, {});
+
+//   const rows = Object.entries(groupedTransactions).map(([category, sum]) => (
+//     <tr key={category}>
+//       <td>{category}</td>
+//       <td>{sum}</td>
+//     </tr>
+//   ));
+
+const Table = ({ transactionsList, categories }) => {
+  const groupedTransactions = categories.reduce((grouped, category) => {
+    grouped[category.toLowerCase()] = 0;
     return grouped;
   }, {});
+
+  transactionsList.forEach(transaction => {
+    const { category, type, sum } = transaction;
+
+    if (category && category.toLowerCase() !== 'income' && categories.includes(category)) {
+      groupedTransactions[category.toLowerCase()] += type === '-' ? sum : 0;
+    }
+  });
 
   const rows = Object.entries(groupedTransactions).map(([category, sum]) => (
     <tr key={category}>
