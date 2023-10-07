@@ -25,6 +25,7 @@ const HomeTab = () => {
             )}
             {matches.higher && (
               <>
+                <TableTransactions />
                 <ButtonAddTransactions />
               </>
             )}
