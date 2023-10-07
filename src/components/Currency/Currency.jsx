@@ -31,7 +31,7 @@ const Currency = () => {
   };
 
   return (
-    <>
+    <div className={css.currencyContainer}>
       <div className={css.currency}>
         <svg
           className={css.svg}
@@ -81,7 +81,7 @@ const Currency = () => {
           </tbody>
         </table>
       </div>
-    </>
+    </div>
   );
 };
 export default Currency;

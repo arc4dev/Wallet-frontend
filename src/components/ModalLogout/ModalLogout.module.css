@@ -1,7 +1,9 @@
 .modalLogout {
   position: absolute;
   top: 20px;
-  right: 20px;
+  right: 50%;
+  left: 50%;
+  transform: translateX(-50%);
   width: 17rem;
   height: 9rem;
   border-radius: 20px;

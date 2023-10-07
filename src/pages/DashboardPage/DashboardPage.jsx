@@ -7,6 +7,8 @@ import { Outlet } from 'react-router-dom';
 
 import css from './DashboardPage.module.css';
 import svg from '../../assets/icons/icons.svg';
+import Currency from 'components/Currency/Currency';
+import Balance from 'components/Balance/Balance';
 
 class DashboardPage extends Component {
   componentDidMount() {
@@ -62,15 +64,15 @@ class DashboardPage extends Component {
           {matches => (
             <>
               {matches.small && (
-                <div>
+                <>
                   {/* <h2>Mobile View</h2> */}
                   <Header />
                   <Navigation />
                   <Outlet />
-                </div>
+                </>
               )}
               {matches.medium && (
-                <div>
+                <>
                   {/* <h2>Tablet View</h2> */}
                   {/* Elementy SVG z odpowiednimi klasami */}
                   <svg className={`${css.background} ${css.right}`}>
@@ -80,13 +82,22 @@ class DashboardPage extends Component {
                   <svg className={`${css.background} ${css.left}`}>
                     <use xlinkHref={`${svg}#icon-Ellipse-1`}></use>
                   </svg>
+
                   <Header />
-                  <Navigation />
-                  <Outlet />
-                </div>
+                  <div className={css.dasboardContainersWrapper}>
+                    <div className={css.dashboardOverview}>
+                      <div>
+                        <Navigation />
+                        <Balance />
+                      </div>
+                      <Currency />
+                    </div>
+                    <Outlet />
+                  </div>
+                </>
               )}
               {matches.large && (
-                <div>
+                <>
                   {/* <h2>Desktop View</h2> */}
                   {/* Elementy SVG z odpowiednimi klasami */}
                   <svg className={`${css.background} ${css.right}`}>
@@ -98,9 +109,17 @@ class DashboardPage extends Component {
                   </svg>
 
                   <Header />
-                  <Navigation />
-                  <Outlet />
-                </div>
+                  <div className={css.dasboardContainersWrapper}>
+                    <div className={css.dashboardOverview}>
+                      <div>
+                        <Navigation />
+                        <Balance />
+                      </div>
+                      <Currency />
+                    </div>
+                    <Outlet />
+                  </div>
+                </>
               )}
             </>
           )}
