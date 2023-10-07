@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as yup from 'yup';
 import TextField from '@mui/material/TextField';
 import css from './RegistrationForm.module.css';
-import { Button, InputAdornment, StyledEngineProvider } from '@mui/material';
+import { Button, InputAdornment } from '@mui/material';
 import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';

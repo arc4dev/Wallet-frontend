@@ -9,7 +9,7 @@ import css from './Buttons.module.css';
 // variant="outlined"
 // className="emptyBtn"
 
-const Buttons = ({ variant, className, text }) => {
+const Buttons = ({ variant, className, text, type = 'submit' }) => {
   const filledBtn = `${css.button} ${css.filled}`;
   const emptyBtn = `${css.button} ${css.outlined}`;
 
@@ -17,7 +17,7 @@ const Buttons = ({ variant, className, text }) => {
   if (className === 'emptyBtn') className = emptyBtn;
 
   return (
-    <Button variant={variant} className={className} type="submit">
+    <Button variant={variant} className={className} type={type}>
       {text}
     </Button>
   );
