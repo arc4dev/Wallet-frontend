@@ -1,6 +1,24 @@
-.table {
-  width: 100px;
-  height: 50px;
-  border-radius: 20px;
-  background-color: blue;
+table {
+  min-width: 250px;
+  height: 100%;
+  background-color: transparent;
+}
+thead {
+  border-radius: 30px;
+  background-color: rgb(119, 168, 107);
+}
+th {
+  display: flex;
+  justify-content: space-between;
+  align-content: space-between;
+
+  font-family: 'Circe Bold';
+  font-size: 18px;
+}
+tr {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Circe';
+  font-size: 16px;
+  border-bottom: 1px solid #4d4343;
 }
