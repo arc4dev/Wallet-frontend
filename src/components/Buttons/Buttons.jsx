@@ -1,10 +1,25 @@
+import { Button } from '@mui/material';
 import css from './Buttons.module.css';
 
-const Buttons = () => {
+// props for green button
+// variant="contained"
+// className="filledBtn"
+
+// props for empty button
+// variant="outlined"
+// className="emptyBtn"
+
+const Buttons = ({ variant, className, text }) => {
+  const filledBtn = `${css.button} ${css.filled}`;
+  const emptyBtn = `${css.button} ${css.outlined}`;
+
+  if (className === 'filledBtn') className = filledBtn;
+  if (className === 'emptyBtn') className = emptyBtn;
+
   return (
-    <>
-      <button className={css.buttons}>test</button>
-    </>
+    <Button variant={variant} className={className} type="submit">
+      {text}
+    </Button>
   );
 };
 
