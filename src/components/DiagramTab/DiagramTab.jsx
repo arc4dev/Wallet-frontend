@@ -5,12 +5,11 @@ import Table from 'components/Table/Table';
 import ChartComponent from 'components/Chart/Chart';
 
 const DiagramTab = () => {
-  const transactionsList = TransactionsList;
   return (
     <div className={css.diagramTab}>
       Statistics
       <Table transactionsList={TransactionsList} />
-      {/* <ChartComponent transactionsList={transactionsList} /> */}
+      {/* <ChartComponent transactionsList={TransactionsList} /> */}
     </div>
   );
 };
