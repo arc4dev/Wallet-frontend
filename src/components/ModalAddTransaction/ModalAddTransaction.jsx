@@ -59,9 +59,10 @@ const ModalAddTransaction = ({ setOpenModal, isEditing }) => {
             <h5 className={css.title}>Edit Transaction</h5>
           ) : (
             <h5 className={css.title}>Add Transaction</h5>
-          )}{' '}
+          )}
           <button type="button" className={css.closeBtn} onClick={handleClose}>
             <svg
+              className={css.closeSvg}
               xmlns="http://www.w3.org/2000/svg"
               width="18"
               height="18"
@@ -129,6 +130,7 @@ const ModalAddTransaction = ({ setOpenModal, isEditing }) => {
             <textarea
               className={css.commentInput}
               rows="3"
+              maxLength="70"
               placeholder="Comment"
               value={comment}
               onChange={e => setComment(e.target.value)}
