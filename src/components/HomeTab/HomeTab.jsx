@@ -4,8 +4,19 @@ import ButtonAddTransactions from 'components/ButtonAddTransactions/ButtonAddTra
 import TableTransactions from 'components/TableTransactions/TableTransactions';
 import ReactMedia from 'react-media';
 import css from './HomeTab.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectIsModalAddTransactionOpen } from 'redux/global/selectors';
+import { toggleStateOf } from 'redux/global/slice';
+import ModalAddTransaction from 'components/ModalAddTransaction/ModalAddTransaction';
 
 const HomeTab = () => {
+  const dispatch = useDispatch();
+  const isModalAddTransactionOpen = useSelector(selectIsModalAddTransactionOpen);
+
+  const toggleModalAddTransaction = () => {
+    dispatch(toggleStateOf('isModalAddTransactionOpen'));
+  };
+
   return (
     <div className={css.homeTab}>
       <ReactMedia
@@ -20,13 +31,19 @@ const HomeTab = () => {
               <>
                 <Balance />
                 <TableTransactions />
-                <ButtonAddTransactions />
+                {isModalAddTransactionOpen && (
+                  <ModalAddTransaction handleClick={toggleModalAddTransaction} />
+                )}
+                <ButtonAddTransactions handleClick={toggleModalAddTransaction} />
               </>
             )}
             {matches.higher && (
               <>
                 <TableTransactions />
-                <ButtonAddTransactions />
+                {isModalAddTransactionOpen && (
+                  <ModalAddTransaction handleClick={toggleModalAddTransaction} />
+                )}
+                <ButtonAddTransactions handleClick={toggleModalAddTransaction} />
               </>
             )}
           </>

@@ -27,15 +27,12 @@ const validationSchema = yup.object({
   name: yup.string('Enter your name').required('Name is required'),
 });
 
-const ModalAddTransaction = ({ setOpenModal, isEditing }) => {
+const ModalAddTransaction = ({ handleClick, isEditing }) => {
   const [amount, setAmount] = useState('');
   const [date, setDate] = useState(new Date()); // Domyślna data
   const [comment, setComment] = useState('');
   const [transactionType, setTransactionType] = useState('expense');
 
-  const handleClose = () => {
-    setOpenModal(false);
-  };
   const handleAmount = () => {
     console.log(amount);
   };
@@ -52,6 +49,7 @@ const ModalAddTransaction = ({ setOpenModal, isEditing }) => {
     } else {
       console.log('Add expense transaction');
     }
+<<<<<<< HEAD
 
     const transaction = {
       transactionType,
@@ -66,6 +64,11 @@ const ModalAddTransaction = ({ setOpenModal, isEditing }) => {
     // handleDate();
     // handleComment();
     // handleClose();
+=======
+    handleAmount();
+    handleDate();
+    handleComment();
+>>>>>>> main
   };
 
   const handleSave = () => {
@@ -77,7 +80,6 @@ const ModalAddTransaction = ({ setOpenModal, isEditing }) => {
     handleAmount();
     handleDate();
     handleComment();
-    handleClose();
   };
 
   const handleTransactionTypeChange = newType => {
