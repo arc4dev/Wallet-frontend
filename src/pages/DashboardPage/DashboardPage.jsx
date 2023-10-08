@@ -9,7 +9,6 @@ import css from './DashboardPage.module.css';
 import svg from '../../assets/icons/icons.svg';
 import Currency from 'components/Currency/Currency';
 import Balance from 'components/Balance/Balance';
-import LoginForm from 'components/LoginForm/LoginForm';
 
 class DashboardPage extends Component {
   componentDidMount() {
@@ -96,9 +95,7 @@ class DashboardPage extends Component {
                       </div>
                       <Currency />
                     </div>
-                    <div className={css.dashboardDetails}>
-                      <LoginForm />
-                    </div>
+
                     <Outlet />
                   </div>
                 </>
@@ -122,9 +119,7 @@ class DashboardPage extends Component {
                         <Balance />
                         <Currency />
                       </div>
-                      <div className={css.dashboardDetails}>
-                        <LoginForm />
-                      </div>
+
                       <Outlet />
                     </div>
                   </div>
