@@ -1,22 +1,29 @@
 import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import css from './ButtonAddTransactions.module.css';
 import svg from '../../assets/icons/icons.svg';
 import ModalAddTransaction from '../../components/ModalAddTransaction/ModalAddTransaction';
 
 const ButtonAddTransactions = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const location = useLocation();
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };
 
+  // Warunkowe renderowanie przycisku na podstawie aktualnej ścieżki
+  const isButtonVisible = location.pathname !== '/dashboard/statistics';
+
   return (
     <div>
-      <div className={css.ButtonAddTransactions} onClick={handleOpenModal}>
-        <svg className={css.AddIcon}>
-          <use xlinkHref={`${svg}#icon-plus`}></use>
-        </svg>
-      </div>
+      {isButtonVisible && (
+        <div className={css.ButtonAddTransactions} onClick={handleOpenModal}>
+          <svg className={css.AddIcon}>
+            <use xlinkHref={`${svg}#icon-plus`}></use>
+          </svg>
+        </div>
+      )}
 
       {isModalOpen && <ModalAddTransaction setOpenModal={setIsModalOpen} />}
     </div>
