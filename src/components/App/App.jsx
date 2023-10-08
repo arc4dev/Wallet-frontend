@@ -7,8 +7,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import HomeTab from 'components/HomeTab/HomeTab';
 import DiagramTab from 'components/DiagramTab/DiagramTab';
 import Currency from 'components/Currency/Currency';
-import ChartComponent from 'components/Chart/Chart';
-// import NotFoundPage from 'pages/NotFound/NotFoundPage';
+import NotFoundPage from 'pages/NotFound/NotFoundPage';
 
 export const App = () => {
   return (
@@ -23,7 +22,7 @@ export const App = () => {
         </Route>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegistrationPage />} />
-        {/* <Route path="*" element={<NotFoundPage />} /> */}
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>
   );
