@@ -6,15 +6,12 @@ import svg from '../../assets/icons/icons.svg';
 import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
 
-const ModalAddTransaction = ({ setOpenModal, isEditing }) => {
+const ModalAddTransaction = ({ handleClick, isEditing }) => {
   const [amount, setAmount] = useState('');
   const [date, setDate] = useState(new Date()); // Domyślna data
   const [comment, setComment] = useState('');
   const [transactionType, setTransactionType] = useState('expense');
 
-  const handleClose = () => {
-    setOpenModal(false);
-  };
   const handleAmount = () => {
     console.log(amount);
   };
@@ -33,7 +30,6 @@ const ModalAddTransaction = ({ setOpenModal, isEditing }) => {
     handleAmount();
     handleDate();
     handleComment();
-    handleClose();
   };
   const handleSave = () => {
     if (transactionType === 'income') {
@@ -44,7 +40,6 @@ const ModalAddTransaction = ({ setOpenModal, isEditing }) => {
     handleAmount();
     handleDate();
     handleComment();
-    handleClose();
   };
 
   const handleTransactionTypeChange = newType => {
@@ -60,7 +55,7 @@ const ModalAddTransaction = ({ setOpenModal, isEditing }) => {
           ) : (
             <h5 className={css.title}>Add Transaction</h5>
           )}
-          <button type="button" className={css.closeBtn} onClick={handleClose}>
+          <button type="button" className={css.closeBtn} onClick={handleClick}>
             <svg
               className={css.closeSvg}
               xmlns="http://www.w3.org/2000/svg"
@@ -147,7 +142,7 @@ const ModalAddTransaction = ({ setOpenModal, isEditing }) => {
               Add
             </button>
           )}
-          <button type="button" className={css.btnCancel} onClick={handleClose}>
+          <button type="button" className={css.btnCancel} onClick={handleClick}>
             CANCEL
           </button>
         </div>
