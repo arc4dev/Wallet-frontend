@@ -13,6 +13,12 @@ const StyledLink = styled(NavLink)`
   }
 `;
 
+const StyledText = styled(NavLink)`
+  &.active {
+    font-weight: 700;
+  }
+`;
+
 const Navigation = () => {
   return (
     <>
@@ -68,13 +74,19 @@ const Navigation = () => {
             <nav className={css.navigation}>
               <div>
                 <NavLink className={css.nav_link} to="/dashboard/home">
-                  <BiSolidHome />
-                  <span className={css.nav_text}>Home</span>
+                  <StyledLink to="/dashboard/home">
+                    <BiSolidHome />
+                  </StyledLink>
+                  <StyledText to="/dashboard/home">
+                    <span className={css.nav_text}>Home</span>
+                  </StyledText>
                 </NavLink>
               </div>
               <div>
                 <NavLink className={css.nav_link} to="/dashboard/statistics">
-                  <BiStats />
+                  <StyledLink to="/dashboard/statistics">
+                    <BiStats />
+                  </StyledLink>
                   <span className={css.nav_text}>Statistics</span>
                 </NavLink>
               </div>
