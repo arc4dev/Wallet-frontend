@@ -98,6 +98,7 @@ class DashboardPage extends Component {
                     <Navigation />
                   </div>
                   <ButtonAddTransactions setOpenModal={this.handleAddTransaction} />
+
                   <Outlet />
                 </>
               )}

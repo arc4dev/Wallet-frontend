@@ -2,8 +2,25 @@
   background-color: var(--background-register);
 }
 
+.dasboardContainersWrapper {
+  margin-top: 32px;
+}
+
 .dashboardOverview {
   display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.dashboardOverviewWrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.mobileWrapper {
+  margin-top: 12px;
 }
 
 @media screen and (min-width: 768px) {
@@ -25,15 +42,22 @@
       bottom: 0;
       left: 0;
     }
+
+    .dashboardOverview {
+      flex-direction: column;
+    }
   }
 }
 
 @media screen and (min-width: 1280px) {
   .dashboardOverview {
     flex-direction: column;
+    align-items: flex-start;
   }
 
   .dasboardContainersWrapper {
     display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
   }
 }
