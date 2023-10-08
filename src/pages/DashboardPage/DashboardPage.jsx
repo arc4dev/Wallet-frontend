@@ -79,29 +79,27 @@ class DashboardPage extends Component {
                 <>
                   {/* <h2>Tablet View</h2> */}
                   {/* Elementy SVG z odpowiednimi klasami */}
-                  <div className={css.center}>
-                    <svg className={`${css.background} ${css.right}`}>
-                      <use xlinkHref={`${svg}#icon-Ellipse-2`}></use>
-                    </svg>
+                  <svg className={`${css.background} ${css.right}`}>
+                    <use xlinkHref={`${svg}#icon-Ellipse-2`}></use>
+                  </svg>
 
-                    <svg className={`${css.background} ${css.left}`}>
-                      <use xlinkHref={`${svg}#icon-Ellipse-1`}></use>
-                    </svg>
+                  <svg className={`${css.background} ${css.left}`}>
+                    <use xlinkHref={`${svg}#icon-Ellipse-1`}></use>
+                  </svg>
 
-                    <Header />
-                    <div className={css.dasboardContainersWrapper}>
-                      <div className={css.dashboardOverviewWrapper}>
-                        <div className={css.nav}>
-                          <Navigation />
-                          <Balance />
-                        </div>
-                        <Currency />
+                  <Header />
+                  <div className={css.dasboardContainersWrapper}>
+                    <div className={css.dashboardOverviewWrapper}>
+                      <div className={css.nav}>
+                        <Navigation />
+                        <Balance />
                       </div>
-                      <div className={css.dashboardDetails}>
-                        <LoginForm />
-                      </div>
-                      <Outlet />
+                      <Currency />
                     </div>
+                    <div className={css.dashboardDetails}>
+                      <LoginForm />
+                    </div>
+                    <Outlet />
                   </div>
                 </>
               )}
