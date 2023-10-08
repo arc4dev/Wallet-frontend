@@ -1,5 +1,4 @@
 import React from 'react';
-import TransactionsList from 'components/DiagramTab/TransactionsList';
 import css from './Table.module.css';
 import ChartComponent from 'components/Chart/Chart';
 

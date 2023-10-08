@@ -1,12 +1,13 @@
 // import css from './HomeTab.module.css';
 import Balance from 'components/Balance/Balance';
 import ButtonAddTransactions from 'components/ButtonAddTransactions/ButtonAddTransactions';
-import Table from 'components/Table/Table';
+import TableTransactions from 'components/TableTransactions/TableTransactions';
 import ReactMedia from 'react-media';
+import css from './HomeTab.module.css';
 
 const HomeTab = () => {
   return (
-    <div>
+    <div className={css.homeTab}>
       <ReactMedia
         queries={{
           mobile: '(max-width: 767px)',
@@ -18,13 +19,13 @@ const HomeTab = () => {
             {matches.mobile && (
               <>
                 <Balance />
-                <Table />
+                <TableTransactions />
                 <ButtonAddTransactions />
               </>
             )}
             {matches.higher && (
               <>
-                <Table />
+                <TableTransactions />
                 <ButtonAddTransactions />
               </>
             )}

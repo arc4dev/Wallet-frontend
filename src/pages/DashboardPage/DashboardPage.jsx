@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactMedia from 'react-media';
 import Header from '../../components/Header/Header';
 import Navigation from '../../components/Navigation/Navigation';
-
+import ButtonAddTransactions from 'components/ButtonAddTransactions/ButtonAddTransactions';
 import { Outlet } from 'react-router-dom';
 
 import css from './DashboardPage.module.css';
@@ -11,6 +11,33 @@ import Currency from 'components/Currency/Currency';
 import Balance from 'components/Balance/Balance';
 
 class DashboardPage extends Component {
+  state = {
+    isModalOpen: false,
+    isEditing: false,
+    transactionToEdit: null,
+  };
+
+  handleAddTransaction = () => {
+    this.setState({
+      isEditing: false,
+      isModalOpen: true,
+    });
+  };
+
+  handleEditTransaction = transactionData => {
+    this.setState({
+      isEditing: true,
+      transactionToEdit: transactionData,
+      isModalOpen: true,
+    });
+  };
+
+  handleCloseModal = () => {
+    this.setState({
+      isModalOpen: false,
+    });
+  };
+
   componentDidMount() {
     this.fetchBalance();
     this.fetchHeader();
@@ -67,7 +94,11 @@ class DashboardPage extends Component {
                 <>
                   {/* <h2>Mobile View</h2> */}
                   <Header />
-                  <Navigation />
+                  <div className={css.mobileWrapper}>
+                    <Navigation />
+                  </div>
+                  <ButtonAddTransactions setOpenModal={this.handleAddTransaction} />
+
                   <Outlet />
                 </>
               )}
@@ -86,12 +117,14 @@ class DashboardPage extends Component {
                   <Header />
                   <div className={css.dasboardContainersWrapper}>
                     <div className={css.dashboardOverview}>
-                      <div>
+                      <div className={css.dashboardOverviewWrapper}>
                         <Navigation />
                         <Balance />
                       </div>
                       <Currency />
                     </div>
+                    <ButtonAddTransactions setOpenModal={this.handleAddTransaction} />
+
                     <Outlet />
                   </div>
                 </>
@@ -111,12 +144,14 @@ class DashboardPage extends Component {
                   <Header />
                   <div className={css.dasboardContainersWrapper}>
                     <div className={css.dashboardOverview}>
-                      <div>
+                      <div className={css.dashboardOverviewWrapper}>
                         <Navigation />
                         <Balance />
                       </div>
                       <Currency />
                     </div>
+                    <ButtonAddTransactions setOpenModal={this.handleAddTransaction} />
+
                     <Outlet />
                   </div>
                 </>
