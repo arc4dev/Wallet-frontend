@@ -9,6 +9,7 @@ import css from './DashboardPage.module.css';
 import svg from '../../assets/icons/icons.svg';
 import Currency from 'components/Currency/Currency';
 import Balance from 'components/Balance/Balance';
+import LoginForm from 'components/LoginForm/LoginForm';
 
 class DashboardPage extends Component {
   componentDidMount() {
@@ -103,24 +104,28 @@ class DashboardPage extends Component {
                 <>
                   {/* <h2>Desktop View</h2> */}
                   {/* Elementy SVG z odpowiednimi klasami */}
-                  <svg className={`${css.background} ${css.right}`}>
-                    <use xlinkHref={`${svg}#icon-Ellipse-2`}></use>
-                  </svg>
+                  <div className={css.center}>
+                    <svg className={`${css.background} ${css.right}`}>
+                      <use xlinkHref={`${svg}#icon-Ellipse-2`}></use>
+                    </svg>
+                    <svg className={`${css.background} ${css.left}`}>
+                      <use xlinkHref={`${svg}#icon-Ellipse-1`}></use>
+                    </svg>
 
-                  <svg className={`${css.background} ${css.left}`}>
-                    <use xlinkHref={`${svg}#icon-Ellipse-1`}></use>
-                  </svg>
-
-                  <Header />
-                  <div className={css.dasboardContainersWrapper}>
-                    <div className={css.dashboardOverview}>
+                    <Header />
+                    <div className={css.dasboardContainersWrapper}>
+                      {/* <div className={css.dashboardOverview}> */}
                       <div className={css.dashboardOverviewWrapper}>
                         <Navigation />
                         <Balance />
+                        <Currency />
                       </div>
-                      <Currency />
+                      <div className={css.dashboardDetails}>
+                        <LoginForm />
+                      </div>
+                      {/* </div> */}
+                      <Outlet />
                     </div>
-                    <Outlet />
                   </div>
                 </>
               )}
