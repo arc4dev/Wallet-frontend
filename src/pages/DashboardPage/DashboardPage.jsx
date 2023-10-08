@@ -2,16 +2,42 @@ import React, { Component } from 'react';
 import ReactMedia from 'react-media';
 import Header from '../../components/Header/Header';
 import Navigation from '../../components/Navigation/Navigation';
-
+import ButtonAddTransactions from 'components/ButtonAddTransactions/ButtonAddTransactions';
 import { Outlet } from 'react-router-dom';
 
 import css from './DashboardPage.module.css';
 import svg from '../../assets/icons/icons.svg';
 import Currency from 'components/Currency/Currency';
 import Balance from 'components/Balance/Balance';
-import ModalAddTransaction from 'components/ModalAddTransaction/ModalAddTransaction';
 
 class DashboardPage extends Component {
+  state = {
+    isModalOpen: false,
+    isEditing: false,
+    transactionToEdit: null,
+  };
+
+  handleAddTransaction = () => {
+    this.setState({
+      isEditing: false,
+      isModalOpen: true,
+    });
+  };
+
+  handleEditTransaction = transactionData => {
+    this.setState({
+      isEditing: true,
+      transactionToEdit: transactionData,
+      isModalOpen: true,
+    });
+  };
+
+  handleCloseModal = () => {
+    this.setState({
+      isModalOpen: false,
+    });
+  };
+
   componentDidMount() {
     this.fetchBalance();
     this.fetchHeader();
@@ -67,10 +93,12 @@ class DashboardPage extends Component {
               {matches.small && (
                 <>
                   {/* <h2>Mobile View</h2> */}
-                  {/* <Header />
-                  <Navigation />
-                  <Outlet /> */}
-                  <ModalAddTransaction />
+                  <Header />
+                  <div className={css.mobileWrapper}>
+                    <Navigation />
+                  </div>
+                  <ButtonAddTransactions setOpenModal={this.handleAddTransaction} />
+                  <Outlet />
                 </>
               )}
               {matches.medium && (
@@ -84,19 +112,20 @@ class DashboardPage extends Component {
                   <svg className={`${css.background} ${css.left}`}>
                     <use xlinkHref={`${svg}#icon-Ellipse-1`}></use>
                   </svg>
-                  {/* 
+
                   <Header />
                   <div className={css.dasboardContainersWrapper}>
                     <div className={css.dashboardOverview}>
-                      <div>
+                      <div className={css.dashboardOverviewWrapper}>
                         <Navigation />
                         <Balance />
                       </div>
                       <Currency />
                     </div>
+                    <ButtonAddTransactions setOpenModal={this.handleAddTransaction} />
+
                     <Outlet />
-                  </div> */}
-                  <ModalAddTransaction />
+                  </div>
                 </>
               )}
               {matches.large && (
@@ -114,12 +143,14 @@ class DashboardPage extends Component {
                   <Header />
                   <div className={css.dasboardContainersWrapper}>
                     <div className={css.dashboardOverview}>
-                      <div>
+                      <div className={css.dashboardOverviewWrapper}>
                         <Navigation />
                         <Balance />
                       </div>
                       <Currency />
                     </div>
+                    <ButtonAddTransactions setOpenModal={this.handleAddTransaction} />
+
                     <Outlet />
                   </div>
                 </>
