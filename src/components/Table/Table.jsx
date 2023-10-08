@@ -44,7 +44,7 @@ const calculateTotalExpensesByCategory = (transactionsList, categories) => {
 const getCategoryColor = categoryKey => {
   // Mapa kolorów dla kategorii
   const categoryColors = {
-    income: '#36A2EB',
+    // income: '#36A2EB',
     products: '#FFD8D0',
     car: '#FD9498',
     selfcare: '#C5BAFF',
@@ -73,17 +73,30 @@ const Table = ({ transactionsList, categories = [] }) => {
   // Poprawiono funkcję calculateTotalExpensesByCategory, aby przyjmowała transactionsList i categories
   const totalExpensesByCategory = calculateTotalExpensesByCategory(transactionsList, categories);
 
+  // Określenie formatu liczby
+  const formatNumber = number => {
+    const formattedNumber = number
+      .toLocaleString('en-US', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      })
+      .replace(',', ' ');
+
+    return number < 0 ? formattedNumber.slice(1) : formattedNumber;
+  };
   // Tworzenie wierszy tabeli na podstawie danych o transakcjach
 
   const rows = totalExpensesByCategory.map(({ category, sum, cssClass, color }) => (
-    <tr key={category} className={`${css.category} ${cssClass}`}>
-      <td>
-        <div className={`${css['color-box']}`} style={{ backgroundColor: color }}>
-          {/* Pusty element */}
+    <tr key={category} className={`${css.table_rows} ${css.category} ${cssClass}`}>
+      <td className={css.table_items}>
+        <div className={`${css['category-container']}`}>
+          <div className={`${css['color-box']}`} style={{ backgroundColor: color }}></div>
+          <span className={css['category-name']}>
+            {category.charAt(0).toUpperCase() + category.slice(1)}
+          </span>
         </div>
       </td>
-      <td>{category}</td>
-      <td>{sum}</td>
+      <td className={css.sum}>{formatNumber(sum)}</td>
     </tr>
   ));
   // Obliczanie sumy ogólnej wydatków i przychodów
@@ -91,13 +104,13 @@ const Table = ({ transactionsList, categories = [] }) => {
 
   // Dodawanie wierszy z sumą wydatków i przychodów do tabeli
   rows.push(
-    <tr key="expenses-total">
+    <tr key="expenses-total" className={`${css.table_rows} ${css['total-row']}`}>
       <td>Expenses:</td>
-      <td>{totalExpenses}</td>
+      <td>{formatNumber(totalExpenses)}</td>
     </tr>,
-    <tr key="income-total">
+    <tr key="income-total" className={`${css.table_rows} ${css['total-row']}`}>
       <td>Income:</td>
-      <td>{totalIncome}</td>
+      <td>{formatNumber(totalIncome)}</td>
     </tr>
   );
   console.log('totalExpensesByCategory:', totalExpensesByCategory);
@@ -105,12 +118,11 @@ const Table = ({ transactionsList, categories = [] }) => {
   // Zwracanie JSX - renderowanie tabeli i komponentu ChartComponent
   return (
     <>
-      <table>
+      <table className={css.statisticsTable}>
         <thead>
-          <tr>
-            <th>Color</th>
-            <th>Category</th>
-            <th>Sum</th>
+          <tr className={`${css.table_rows} ${css.headerTable}`}>
+            <th className={css.headerHelper}>Category</th>
+            <th className={css.headerHelper}>Sum</th>
           </tr>
         </thead>
         <tbody>{rows}</tbody>

@@ -40,7 +40,7 @@ const TransactionsList = [
     type: '-',
     category: 'Car',
     comment: 'Daily shopping',
-    sum: 500,
+    sum: 5000,
   },
   {
     id: 9,

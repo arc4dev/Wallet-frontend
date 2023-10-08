@@ -7,7 +7,6 @@ Chart.register(ArcElement);
 const getCategoryColor = categoryKey => {
   // Mapa kolorów dla kategorii
   const categoryColors = {
-    income: '#36A2EB',
     products: '#FFD8D0',
     car: '#FD9498',
     selfcare: '#C5BAFF',
@@ -46,24 +45,28 @@ const ChartComponent = ({ totalIncome, totalExpensesByCategory }) => {
 
     // Tworzymy dane do wykresu na podstawie totalIncome i totalExpensesByCategory.
     const chartData = {
-      labels: ['Income', ...totalExpensesByCategory.map(({ category }) => category)],
+      labels: [
+        ...totalExpensesByCategory
+          .map(({ category }) => category)
+          .filter(category => category !== 'incomes'),
+      ],
       datasets: [
         {
-          data: [totalIncome, ...totalExpensesByCategory.map(({ sum }) => sum)],
+          data: [...totalExpensesByCategory.map(({ sum }) => sum)],
           backgroundColor: [
-            // Kolory dla różnych kategorii.
-            getCategoryColor('income'),
+            // Kolor dla różnych kategorii.
             ...totalExpensesByCategory.map(({ category }) => getCategoryColor(category)),
           ],
           // Kolory hover dla różnych kategorii.
           hoverBackgroundColor: [
-            getCategoryColor('income'),
             ...totalExpensesByCategory.map(({ category }) => getCategoryColor(category)),
           ],
           borderWidth: 0,
+          cutout: '70%',
         },
       ],
     };
+
     // Ustawiamy dane do wykresu w stanie komponentu.
     setChartData(chartData);
   }, [totalIncome, totalExpensesByCategory]);
@@ -71,7 +74,6 @@ const ChartComponent = ({ totalIncome, totalExpensesByCategory }) => {
   // zawierający tytuł 'Chart' i wykres (jeśli dane są dostępne).
   return (
     <div className={css['chart-container']}>
-      <h2>Chart</h2>
       {chartData && <Doughnut ref={chartRef} data={chartData} />}
     </div>
   );

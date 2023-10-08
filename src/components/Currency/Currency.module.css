@@ -8,6 +8,7 @@
 .svg {
   position: absolute;
   bottom: 0;
+  width: 100%;
 }
 .table {
   width: 100%;
@@ -44,4 +45,18 @@
 
 .table tr {
   border: none;
+}
+
+@media screen and (min-width: 768px) {
+  .currency {
+    width: 336px;
+    height: 182px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .currency {
+    width: 393px;
+    height: 331px;
+  }
 }

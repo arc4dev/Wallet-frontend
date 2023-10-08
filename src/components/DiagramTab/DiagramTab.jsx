@@ -8,8 +8,10 @@ import css from './DiagramTab.module.css';
 const DiagramTab = ({ categories, transactionsList }) => {
   return (
     <div className={css.diagramTab}>
-      Statistics
-      <Table transactionsList={TransactionsList} categories={categories} />
+      <h4 className={css.title}>Statistics</h4>
+      <div className={css.diagramWrapper}>
+        <Table transactionsList={TransactionsList} categories={categories} />
+      </div>
     </div>
   );
 };
