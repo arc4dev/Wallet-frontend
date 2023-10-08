@@ -1,16 +1,15 @@
 import React from 'react';
 
-import transactionsList from './TransactionsList';
+import TransactionsList from './TransactionsList';
 import Table from 'components/Table/Table';
 import css from './DiagramTab.module.css';
 // import ChartComponent from 'components/Chart/Chart';
 
-const DiagramTab = () => {
+const DiagramTab = ({ categories, transactionsList }) => {
   return (
     <div className={css.diagramTab}>
       Statistics
-      <Table transactionsList={transactionsList} />
-      {/* <ChartComponent transactionsList={transactionsList} /> */}
+      <Table transactionsList={TransactionsList} categories={categories} />
     </div>
   );
 };

@@ -1,5 +1,14 @@
-.chart {
-  width: 100px;
-  height: 100px;
-  background-color: blue;
+.chartCanvas {
+  width: 400px;
+  height: 400px;
+}
+.chart-container {
+  width: 288px;
+  height: 288px;
+  position: relative;
+  z-index: 2; /* Ustaw wyższą wartość z-index */
+}
+.chart-container canvas {
+  background-color: transparent;
+  border: none;
 }
