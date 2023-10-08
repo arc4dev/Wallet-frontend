@@ -1,19 +1,10 @@
-.modalBackground {
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.25);
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 .modalContainer {
-  width: 100vw;
-  height: 100vh;
   position: absolute;
   top: 3.75rem;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
   background: #fff;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
@@ -64,14 +55,13 @@
 .formContainer {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: stretch;
-  margin-left: 1.25rem;
-  margin-right: 1.25rem;
+  justify-content: center;
+  align-items: center;
   margin: 0 1.25rem 2.5rem 1.25rem;
   gap: 3rem;
 }
 .amountInput {
+  width: 17.5rem;
   border: none;
   color: #bdbdbd;
   font-size: 1.125rem;
@@ -86,6 +76,8 @@
   color: #000;
 }
 .dateInput {
+  width: 17.5rem;
+
   display: flex;
   justify-content: space-between;
   padding: 0.5rem 1.25rem 0.5rem 1.25rem;
@@ -108,6 +100,7 @@
 }
 
 .commentInput {
+  width: 17.5rem;
   border: none;
   height: 5.25rem;
   color: #bdbdbd;
@@ -160,7 +153,21 @@
   text-transform: uppercase;
 }
 @media (min-width: 768px) {
+  .modalBackground {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.25);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .modalContainer {
+    position: relative;
+    top: auto;
     width: 33.75rem;
     height: 31.75rem;
     border-radius: 1.25rem;
