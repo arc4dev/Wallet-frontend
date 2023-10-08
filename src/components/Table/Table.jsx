@@ -58,7 +58,7 @@ const getCategoryColor = categoryKey => {
     // Dodaj pozostałe kategorie
   };
   return categoryColors[categoryKey.toLowerCase()];
-  return categoryColors[categoryKey] || '#000000'; // Domyślny kolor, gdy kategoria nie istnieje w mapie
+  // return categoryColors[categoryKey] || '#000000'; // Domyślny kolor, gdy kategoria nie istnieje w mapie
 };
 
 const calculateTotalExpenses = transactionsList => {

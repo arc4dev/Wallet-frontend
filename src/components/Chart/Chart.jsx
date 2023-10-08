@@ -1,9 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
-import TransactionsList from 'components/DiagramTab/TransactionsList';
 import css from './Chart.module.css';
 import { Doughnut } from 'react-chartjs-2';
 import { Chart, ArcElement } from 'chart.js';
-import Table from 'components/Table/Table';
 Chart.register(ArcElement);
 
 const getCategoryColor = categoryKey => {
@@ -23,7 +21,7 @@ const getCategoryColor = categoryKey => {
     // Dodaj pozostałe kategorie
   };
   return categoryColors[categoryKey.toLowerCase()];
-  return categoryColors[categoryKey] || '#000000'; // Domyślny kolor, gdy kategoria nie istnieje w mapie
+  // return categoryColors[categoryKey] || '#000000'; // Domyślny kolor, gdy kategoria nie istnieje w mapie
 };
 
 // Komponent ChartComponent odpowiada za renderowanie wykresu pierścieniowego.
