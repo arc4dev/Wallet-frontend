@@ -49,7 +49,6 @@ const ModalAddTransaction = ({ handleClick, isEditing }) => {
     } else {
       console.log('Add expense transaction');
     }
-<<<<<<< HEAD
 
     const transaction = {
       transactionType,
@@ -64,11 +63,6 @@ const ModalAddTransaction = ({ handleClick, isEditing }) => {
     // handleDate();
     // handleComment();
     // handleClose();
-=======
-    handleAmount();
-    handleDate();
-    handleComment();
->>>>>>> main
   };
 
   const handleSave = () => {
@@ -96,7 +90,7 @@ const ModalAddTransaction = ({ handleClick, isEditing }) => {
             ) : (
               <h5 className={css.title}>Add Transaction</h5>
             )}
-            <button type="button" className={css.closeBtn} onClick={handleClose}>
+            <button type="button" className={css.closeBtn} onClick={handleClick}>
               <svg
                 className={css.closeSvg}
                 xmlns="http://www.w3.org/2000/svg"
@@ -225,7 +219,7 @@ const ModalAddTransaction = ({ handleClick, isEditing }) => {
             {/* <button type="button" className={css.btnCancel} onClick={handleClose}>
               CANCEL
             </button> */}
-            <div onClick={handleClose}>
+            <div onClick={handleClick}>
               <Buttons variant="outlined" className="emptyBtn" text="cancel" type="button" />
             </div>
           </div>
