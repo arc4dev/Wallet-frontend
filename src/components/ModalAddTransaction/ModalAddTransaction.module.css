@@ -1,6 +1,208 @@
-.modalAddTransaction {
-  width: 100px;
-  height: 50px;
-  border-radius: 20px;
-  background-color: blue;
+.modalBackground {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.25);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modalContainer {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  background: #fff;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.modalHeader {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  color: #000;
+  text-align: center;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-size: 1.33rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 20px;
+  margin-bottom: 42px;
+}
+
+.closeBtn {
+  background: #fff;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+}
+
+.switchContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.89rem;
+  margin-bottom: 40px;
+  font-family: 'Circe Bold';
+}
+
+.incomeText {
+  color: #24cca7;
+}
+
+.expenseText {
+  color: #ff6596;
+}
+
+.greyText {
+  color: #e0e0e0;
+}
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  margin: 0 20px 40px 20px;
+  gap: 40px;
+  font-size: 1rem;
+}
+.amountInput {
+  outline: none;
+  border: none;
+  color: #000;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding: 0 1.25rem 0.5rem 1.25rem;
+  border-bottom: 1.5px solid #e0e0e0;
+}
+.amountInput::placeholder {
+  color: var(--color-dimmed);
+}
+
+.dateInput {
+  display: flex;
+  color: #e0e0e0;
+  justify-content: space-between;
+  padding: 0 1.25rem 0.5rem 1.25rem;
+  border-bottom: 1.5px solid #e0e0e0;
+}
+.date {
+  outline: none;
+  border: none;
+  color: #000;
+  font-family: 'Circe';
+  font-style: normal;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: normal;
+}
+.icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: rgba(74, 86, 226, 1);
+  transition: all 400ms ease;
+}
+
+.commentInput {
+  outline: none;
+  resize: none;
+  border: none;
+  color: #000;
+  font-size: 1rem;
+  line-height: normal;
+  padding: 0 1.25rem 0rem 1.25rem;
+  border-bottom: 1.5px solid #e0e0e0;
+}
+
+.commentInput::placeholder {
+  color: var(--color-dimmed);
+}
+
+.modalFooter {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.btnAdd {
+  width: 18.75rem;
+  height: 3.125rem;
+  border-radius: 1.25rem;
+  background: #24cca7;
+  border: none;
+  color: #fff;
+  text-align: center;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.1125rem;
+  text-transform: uppercase;
+}
+.btnCancel {
+  width: 18.75rem;
+  height: 3.125rem;
+  border-radius: 1.25rem;
+  border: 1px solid #4a56e2;
+  background: #fff;
+  color: #4a56e2;
+  text-align: center;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.1125rem;
+  text-transform: uppercase;
+}
+@media screen and (min-width: 768px) {
+  .modalContainer {
+    top: 50%;
+    bottom: 50%;
+    transform: translateY(-50%);
+    width: 540px;
+    height: 550px;
+    border-radius: 1.25rem;
+    background: #fff;
+    padding: 40px 80px;
+  }
+  .title {
+    font-size: 1.67rem;
+    margin-top: 0;
+  }
+  .formContainer {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0;
+    margin-bottom: 40px;
+    gap: 0;
+  }
+  .amountInput {
+    width: 181px;
+    height: 2.5rem;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .dateInput {
+    width: 181px;
+    height: 2.5rem;
+    margin-bottom: 40px;
+  }
+  .date {
+    width: 6rem;
+  }
+  .commentInput {
+    width: 100%;
+    height: 32px;
+  }
 }
