@@ -24,16 +24,23 @@ const TransactionsList = [
     comment: 'bills',
     sum: 45,
   },
-  { id: 5, date: '2023-01-05', type: '-', category: 'Other expenses', comment: 'Others', sum: 5 },
+  {
+    id: 5,
+    date: '2023-01-05',
+    type: '-',
+    category: 'Other expenses',
+    comment: 'Others',
+    sum: 5,
+  },
   { id: 6, date: '2023-01-06', type: '-', category: 'Other expenses', comment: 'Others', sum: 5 },
   { id: 7, date: '2023-01-07', type: '-', category: 'Other expenses', comment: 'Others', sum: 5 },
   {
     id: 8,
     date: '2023-01-08',
     type: '-',
-    category: 'Products',
+    category: 'Car',
     comment: 'Daily shopping',
-    sum: 30,
+    sum: 500,
   },
   {
     id: 9,
@@ -41,7 +48,7 @@ const TransactionsList = [
     type: '-',
     category: 'Products',
     comment: 'Daily shopping',
-    sum: 50,
+    sum: 150,
   },
   {
     id: 10,
@@ -1057,6 +1064,14 @@ const TransactionsList = [
     category: 'Products',
     comment: 'Daily shopping',
     sum: 500,
+  },
+  {
+    id: 367,
+    date: '2022-12-31',
+    type: '-',
+    category: 'Entertainment',
+    comment: 'Cinema',
+    sum: 5000,
   },
 ];
 
