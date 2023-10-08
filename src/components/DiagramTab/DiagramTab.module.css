@@ -1,4 +1,4 @@
-.diagramTab {
+.diagramWrapper {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -7,21 +7,37 @@
   z-index: 100;
 }
 
+.diagramTab {
+  padding: 0 20px;
+}
+
+.title {
+  font-family: 'Poppins Regular';
+}
+
 @media screen and (min-width: 768px) {
   .diagramTab {
+    padding: 0 32px;
+    width: 100%;
+  }
+  .diagramWrapper {
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center; /* Dodane, aby elementy były wyśrodkowane względem osi Y */
     margin-top: 20px;
   }
 }
 
 @media screen and (min-width: 1280px) {
-  .diagramTab {
-    width: 50vw;
+  .diagramWrapper {
     margin-top: 0;
+    justify-content: space-around;
+  }
+  .diagramTab {
+    padding: 0;
   }
 }
+
 .title {
   margin-top: 20px;
   justify-content: center;
