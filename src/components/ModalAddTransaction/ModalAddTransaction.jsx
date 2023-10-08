@@ -125,37 +125,3 @@ const ModalAddTransaction = ({ setOpenModal, isEditing }) => {
 };
 
 export default ModalAddTransaction;
-
-// modal usage
-
-// const handleAddTransaction = () => {
-//   setIsEditing(false);
-//   setOpenModal(true);
-// };
-
-// const handleEditTransaction = (transactionData) => {
-//   setIsEditing(true);
-//   setTransactionToEdit(transactionData);
-//   setOpenModal(true);
-// };
-
-// <div >
-//       <button onClick={handleAddTransaction}>Add transaction</button>
-
-//       <button
-//         onClick={() => {
-//           const editedTransactionData = {};
-//           handleEditTransaction(editedTransactionData);
-//         }}
-//       >
-//         Edit transaction
-//       </button>
-
-//       {modalOpen && (
-//         <ModalAddTransaction
-//           setOpenModal={setOpenModal}
-//           isEditing={isEditing}
-//           transactionToEdit={transactionToEdit}
-//         />
-//       )}
-//     </div>
