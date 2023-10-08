@@ -79,24 +79,29 @@ class DashboardPage extends Component {
                 <>
                   {/* <h2>Tablet View</h2> */}
                   {/* Elementy SVG z odpowiednimi klasami */}
-                  <svg className={`${css.background} ${css.right}`}>
-                    <use xlinkHref={`${svg}#icon-Ellipse-2`}></use>
-                  </svg>
+                  <div className={css.center}>
+                    <svg className={`${css.background} ${css.right}`}>
+                      <use xlinkHref={`${svg}#icon-Ellipse-2`}></use>
+                    </svg>
 
-                  <svg className={`${css.background} ${css.left}`}>
-                    <use xlinkHref={`${svg}#icon-Ellipse-1`}></use>
-                  </svg>
+                    <svg className={`${css.background} ${css.left}`}>
+                      <use xlinkHref={`${svg}#icon-Ellipse-1`}></use>
+                    </svg>
 
-                  <Header />
-                  <div className={css.dasboardContainersWrapper}>
-                    <div className={css.dashboardOverview}>
+                    <Header />
+                    <div className={css.dasboardContainersWrapper2}>
                       <div className={css.dashboardOverviewWrapper}>
-                        <Navigation />
-                        <Balance />
+                        <div className={css.nav}>
+                          <Navigation />
+                          <Balance />
+                        </div>
+                        <Currency />
                       </div>
-                      <Currency />
+                      <div className={css.dashboardDetails}>
+                        <LoginForm />
+                      </div>
+                      <Outlet />
                     </div>
-                    <Outlet />
                   </div>
                 </>
               )}
@@ -114,7 +119,6 @@ class DashboardPage extends Component {
 
                     <Header />
                     <div className={css.dasboardContainersWrapper}>
-                      {/* <div className={css.dashboardOverview}> */}
                       <div className={css.dashboardOverviewWrapper}>
                         <Navigation />
                         <Balance />
@@ -123,7 +127,6 @@ class DashboardPage extends Component {
                       <div className={css.dashboardDetails}>
                         <LoginForm />
                       </div>
-                      {/* </div> */}
                       <Outlet />
                     </div>
                   </div>
