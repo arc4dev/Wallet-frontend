@@ -1,192 +1,82 @@
-import React, { useRef, useEffect } from 'react';
-import { Doughnut } from 'react-chartjs-2';
-import { Chart } from 'chart.js';
+import React, { useRef, useEffect, useState } from 'react';
 import TransactionsList from 'components/DiagramTab/TransactionsList';
 import css from './Chart.module.css';
+import { Doughnut } from 'react-chartjs-2';
+import { Chart, ArcElement } from 'chart.js';
+import Table from 'components/Table/Table';
+Chart.register(ArcElement);
 
-// const ChartComponent = ({ transactionsList }) => {
-//   const chartRef = useRef(null);
-//   let chartData = null;
-//   useEffect(() => {
-//     if (!transactionsList || !transactionsList.length) {
-//       console.log('No transactionsList data.');
-//       return;
-//     }
+const getCategoryColor = categoryKey => {
+  // Mapa kolorów dla kategorii
+  const categoryColors = {
+    income: '#36A2EB',
+    products: '#FFD8D0',
+    car: '#FD9498',
+    selfcare: '#C5BAFF',
+    childcare: '#6E78E8',
+    'household products': '#4A56E2',
+    education: '#81E1FF',
+    leisure: '#24CCA7',
+    'other expenses': '#00AD84',
+    'main expenses': '#FED057',
+    entertainment: '#9966FF',
+    // Dodaj pozostałe kategorie
+  };
+  return categoryColors[categoryKey.toLowerCase()];
+  return categoryColors[categoryKey] || '#000000'; // Domyślny kolor, gdy kategoria nie istnieje w mapie
+};
 
-//     console.log('TransactionsList:', transactionsList);
-
-//     const categories = [
-//       'Products',
-//       'Car',
-//       'Self care',
-//       'Child care',
-//       'Household products',
-//       'Education',
-//       'Leisure',
-//       'Other expenses',
-//       'Main expenses',
-//       'Entertainment',
-//     ];
-
-//     console.log('Categories:', categories);
-
-//     const totalIncome = transactionsList.reduce(
-//       (sum, transaction) => (transaction.type === '+' ? sum + transaction.sum : sum),
-//       0
-//     );
-
-//     console.log('Total Income:', totalIncome);
-
-//     const totalExpensesByCategory = [];
-
-//     for (const category of categories) {
-//       const categoryExpenses = transactionsList.reduce(
-//         (sum, transaction) =>
-//           transaction.category === category && transaction.type === '-'
-//             ? sum + transaction.sum
-//             : sum,
-//         0
-//       );
-
-//       totalExpensesByCategory.push(categoryExpenses);
-//     }
-
-//     console.log('Total Expenses by Category:', totalExpensesByCategory);
-
-//     const chartData = {
-//       labels: [...categories],
-//       datasets: [
-//         {
-//           data: [totalIncome, ...(totalExpensesByCategory || [])],
-//           backgroundColor: [
-//             '#36A2EB', // Income
-//             '#FFD8D0', // Products
-//             '#FD9498', // Car
-//             '#C5BAFF', // Self care
-//             '#6E78E8', // Child care
-//             '#4A56E2', // Household products
-//             '#81E1FF', // Education
-//             '#24CCA7', // Leisure
-//             '#00AD84', // Other expenses
-//             '#FED057', // Main expenses
-//             '#9966FF', // Entertainment
-//           ],
-//           hoverBackgroundColor: [
-//             '#36A2EB', // Income
-//             '#FFD8D0', // Products
-//             '#FD9498', // Car
-//             '#C5BAFF', // Self care
-//             '#6E78E8', // Child care
-//             '#4A56E2', // Household products
-//             '#81E1FF', // Education
-//             '#24CCA7', // Leisure
-//             '#00AD84', // Other expenses
-//             '#FED057', // Main expenses
-//             '#9966FF', // Entertainment
-//           ],
-//         },
-//       ],
-//     };
-//     console.log('Data for Chart:', chartData);
-
-//     if (chartRef.current) {
-//       const chartInstance = chartRef.current.chartInstance;
-//       chartInstance.destroy(); // Destroy the previous chart instance
-//       const newChartInstance = new Chart(chartRef.current, {
-//         type: 'doughnut',
-//         data: chartData,
-//       });
-//     }
-//   }, [transactionsList]);
-
-//   return (
-//     <div>
-//       <h2>Chart</h2>
-//       <Doughnut ref={chartRef} data={chartData || {}} />
-//     </div>
-//   );
-// };
-
-const ChartComponent = ({ transactionsList, groupedTransactions }) => {
+// Komponent ChartComponent odpowiada za renderowanie wykresu pierścieniowego.
+const ChartComponent = ({ totalIncome, totalExpensesByCategory }) => {
   const chartRef = useRef(null);
+  const [chartData, setChartData] = useState(null);
+  console.log('totalExpensesByCategory:', totalExpensesByCategory);
+  console.log('totalIncome:', totalIncome);
 
+  // useEffect reaguje na zmiany w totalIncome i totalExpensesByCategory.
   useEffect(() => {
-    if (!groupedTransactions) {
-      console.log('No groupedTransactions data.');
+    // Sprawdzamy, czy dane są dostępne i nie są puste.
+    if (!totalExpensesByCategory || totalExpensesByCategory.length === 0) {
+      console.log('Missing or empty data for chart.');
+      return;
+    }
+    // Sprawdzamy, czy totalIncome jest dostępne.
+    if (totalIncome === undefined) {
+      console.log('Missing totalIncome data for chart.');
       return;
     }
 
-    const categories = Object.keys(groupedTransactions);
-    const expenses = Object.values(groupedTransactions);
-
-    const totalIncome = transactionsList.reduce(
-      (sum, transaction) => (transaction.type === '+' ? sum + transaction.sum : sum),
-      0
-    );
-
-    console.log('Total Income:', totalIncome);
-
-    const totalExpensesByCategory = [];
-
-    for (const category of categories) {
-      const categoryExpenses = transactionsList.reduce(
-        (sum, transaction) =>
-          transaction.category === category && transaction.type === '-'
-            ? sum + transaction.sum
-            : sum,
-        0
-      );
-
-      totalExpensesByCategory.push(categoryExpenses);
-    }
-
+    // Tworzymy dane do wykresu na podstawie totalIncome i totalExpensesByCategory.
     const chartData = {
-      labels: [...categories],
+      labels: ['Income', ...totalExpensesByCategory.map(({ category }) => category)],
       datasets: [
         {
-          data: [totalIncome, ...(totalExpensesByCategory || [])],
+          data: [totalIncome, ...totalExpensesByCategory.map(({ sum }) => sum)],
           backgroundColor: [
-            '#36A2EB', // Income
-            '#FFD8D0', // Products
-            '#FD9498', // Car
-            '#C5BAFF', // Self care
-            '#6E78E8', // Child care
-            '#4A56E2', // Household products
-            '#81E1FF', // Education
-            '#24CCA7', // Leisure
-            '#00AD84', // Other expenses
-            '#FED057', // Main expenses
-            '#9966FF', // Entertainment
+            // Kolory dla różnych kategorii.
+            getCategoryColor('income'),
+            ...totalExpensesByCategory.map(({ category }) => getCategoryColor(category)),
           ],
+          // Kolory hover dla różnych kategorii.
           hoverBackgroundColor: [
-            '#36A2EB', // Income
-            '#FFD8D0', // Products
-            '#FD9498', // Car
-            '#C5BAFF', // Self care
-            '#6E78E8', // Child care
-            '#4A56E2', // Household products
-            '#81E1FF', // Education
-            '#24CCA7', // Leisure
-            '#00AD84', // Other expenses
-            '#FED057', // Main expenses
-            '#9966FF', // Entertainment
+            getCategoryColor('income'),
+            ...totalExpensesByCategory.map(({ category }) => getCategoryColor(category)),
           ],
+          borderWidth: 0,
         },
       ],
     };
-    if (chartRef.current) {
-      const chartInstance = new Chart(chartRef.current, {
-        type: 'doughnut',
-        data: chartData,
-      });
-    }
-  }, [groupedTransactions, transactionsList]);
-
+    // Ustawiamy dane do wykresu w stanie komponentu.
+    setChartData(chartData);
+  }, [totalIncome, totalExpensesByCategory]);
+  // Renderujemy div z klasą 'chart-container',
+  // zawierający tytuł 'Chart' i wykres (jeśli dane są dostępne).
   return (
-    <div>
+    <div className={css['chart-container']}>
       <h2>Chart</h2>
-      <Doughnut ref={chartRef} data={{}} />
+      {chartData && <Doughnut ref={chartRef} data={chartData} />}
     </div>
   );
 };
+
 export default ChartComponent;
