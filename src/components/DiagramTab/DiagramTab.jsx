@@ -9,7 +9,6 @@ const DiagramTab = ({ categories, transactionsList }) => {
     <div className={css.diagramTab}>
       Statistics
       <Table transactionsList={TransactionsList} categories={categories} />
-      <ChartComponent categories={categories} transactionsList={transactionsList} />
     </div>
   );
 };
