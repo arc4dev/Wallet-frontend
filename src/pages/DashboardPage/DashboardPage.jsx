@@ -89,7 +89,7 @@ class DashboardPage extends Component {
                     </svg>
 
                     <Header />
-                    <div className={css.dasboardContainersWrapper2}>
+                    <div className={css.dasboardContainersWrapper}>
                       <div className={css.dashboardOverviewWrapper}>
                         <div className={css.nav}>
                           <Navigation />

@@ -1,4 +1,4 @@
-.dashboard {
+body {
   background-color: var(--background-register);
 }
 
@@ -41,6 +41,7 @@
     height: 100vh;
     background-color: var(--background-primary);
     backdrop-filter: blur(25px);
+    z-index: -1;
   }
 
   .background {
@@ -52,6 +53,7 @@
       height: 383px;
       top: 0;
       right: 0;
+      z-index: -1;
     }
 
     &.left {
@@ -59,6 +61,7 @@
       height: 323px;
       bottom: 0;
       left: 0;
+      z-index: -1;
     }
 
     .dashboardOverviewWrapper {
