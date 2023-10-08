@@ -16,6 +16,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.5.1",
     "chart.js": "^4.4.0",
+    "dayjs": "^1.11.10",
     "dotenv-webpack": "^8.0.1",
     "formik": "^2.4.5",
     "modern-normalize": "^2.0.0",

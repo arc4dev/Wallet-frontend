@@ -118,8 +118,8 @@
   color: #000;
   font-size: 1rem;
   line-height: normal;
-  padding: 0 1.25rem 0rem 1.25rem;
-  border-bottom: 1.5px solid #e0e0e0;
+  /* padding: 0 1.25rem 0rem 1.25rem; */
+  /* border-bottom: 1.5px solid #e0e0e0; */
 }
 
 .commentInput::placeholder {
@@ -164,6 +164,31 @@
   letter-spacing: 0.1125rem;
   text-transform: uppercase;
 }
+
+.dateWrapper {
+  display: flex;
+  gap: 32px;
+  padding-bottom: 40px;
+}
+
+.numInput {
+  justify-content: flex-end;
+
+  & input {
+    text-align: center;
+  }
+
+  & ::placeholder {
+    text-align: center;
+  }
+}
+
+/* .date2 {
+  & input::placeholder {
+    padding: 200px;
+  }
+} */
+
 @media screen and (min-width: 768px) {
   .modalContainer {
     top: 50%;

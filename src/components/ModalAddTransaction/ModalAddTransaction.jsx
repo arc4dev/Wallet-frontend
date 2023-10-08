@@ -5,6 +5,11 @@ import svg from '../../assets/icons/icons.svg';
 
 import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
+import { InputAdornment, TextField } from '@mui/material';
+import DateRangeIcon from '@mui/icons-material/DateRange';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import dayjs, { Dayjs } from 'dayjs';
+import Buttons from 'components/Buttons/Buttons';
 
 const ModalAddTransaction = ({ setOpenModal, isEditing }) => {
   const [amount, setAmount] = useState('');
@@ -100,7 +105,38 @@ const ModalAddTransaction = ({ setOpenModal, isEditing }) => {
             </span>
           </div>
           <div className={css.formContainer}>
-            <input
+            <div className={css.dateWrapper}>
+              <TextField
+                className={css.numInput}
+                variant="standard"
+                type="number"
+                placeholder="0,00"
+                inputMode="none"
+                value={amount}
+                onChange={e => setAmount(e.target.value)}
+              />
+              <DatePicker
+                className={css.date2}
+                slotProps={{ textField: { variant: 'standard' } }}
+                format="DD-MM-YYYY"
+                defaultValue={dayjs(new Date())}
+                sx={{
+                  '& input': { backgroundColor: 'white', padding: '4px 0 5px 20px' },
+                  '& .MuiButtonBase-root': {
+                    padding: '0 21px 0 0',
+                  },
+                }}
+              />
+            </div>
+
+            <TextField
+              variant="standard"
+              className={css.commentInput}
+              placeholder="Comment"
+              onChange={e => setComment(e.target.value)}
+            />
+
+            {/* <input
               className={css.amountInput}
               type="number"
               placeholder="0,00"
@@ -108,6 +144,7 @@ const ModalAddTransaction = ({ setOpenModal, isEditing }) => {
               value={amount}
               onChange={e => setAmount(e.target.value)}
             />
+
             <div className={css.dateInput}>
               <Datetime
                 inputProps={{ className: css.date }}
@@ -117,16 +154,12 @@ const ModalAddTransaction = ({ setOpenModal, isEditing }) => {
                 timeFormat={false}
                 closeOnSelect
               />
+
               <svg className={css.icon}>
                 <use xlinkHref={`${svg}#calendar`}></use>
               </svg>
             </div>
-            {/* <input
-              className={css.dateInput}
-              type="date"
-              value={date}
-              onChange={e => setDate(e.target.value)}
-            /> */}
+
             <textarea
               className={css.commentInput}
               rows="3"
@@ -134,7 +167,14 @@ const ModalAddTransaction = ({ setOpenModal, isEditing }) => {
               placeholder="Comment"
               value={comment}
               onChange={e => setComment(e.target.value)}
-            />
+            /> */}
+
+            {/* <input
+                className={css.dateInput}
+                type="date"
+                value={date}
+                onChange={e => setDate(e.target.value)}
+              /> */}
           </div>
         </div>
         <div className={css.modalFooter}>
@@ -143,13 +183,19 @@ const ModalAddTransaction = ({ setOpenModal, isEditing }) => {
               Save
             </button>
           ) : (
-            <button type="button" className={css.btnAdd} onClick={handleAdd}>
-              Add
-            </button>
+            // <button type="button" className={css.btnAdd} onClick={handleAdd}>
+            //   Add
+            // </button>
+            <div onClick={handleAdd}>
+              <Buttons variant="contained" className="filledBtn" text="Add" type="button" />
+            </div>
           )}
-          <button type="button" className={css.btnCancel} onClick={handleClose}>
+          {/* <button type="button" className={css.btnCancel} onClick={handleClose}>
             CANCEL
-          </button>
+          </button> */}
+          <div onClick={handleClose}>
+            <Buttons variant="outlined" className="emptyBtn" text="cancel" type="button" />
+          </div>
         </div>
       </div>
     </div>
