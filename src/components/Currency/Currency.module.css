@@ -1,3 +1,8 @@
+.currency_wrapper {
+  display: flex;
+  justify-content: center;
+  padding-top: 1.75rem;
+}
 .currency {
   width: 280px;
   height: 174px;
@@ -48,15 +53,21 @@
 }
 
 @media screen and (min-width: 768px) {
+  .currency_wrapper {
+    padding-top: 0;
+  }
   .currency {
-    width: 336px;
-    height: 182px;
+    min-width: 336px;
+    min-height: 182px;
   }
 }
 
 @media screen and (min-width: 1280px) {
+  .currency_wrapper {
+    display: block;
+  }
   .currency {
-    width: 393px;
-    height: 331px;
+    min-width: 393px;
+    min-height: 331px;
   }
 }
