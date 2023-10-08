@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import css from './ModalAddTransaction.module.css';
 import IncExpBtn from './IncExpBtn';
+import svg from '../../assets/icons/icons.svg';
+
+import Datetime from 'react-datetime';
+import 'react-datetime/css/react-datetime.css';
 
 const ModalAddTransaction = ({ setOpenModal, isEditing }) => {
   const [amount, setAmount] = useState('');
-  const [date, setDate] = useState('');
+  const [date, setDate] = useState(new Date()); // Domyślna data
   const [comment, setComment] = useState('');
-  const [transactionType, setTransactionType] = useState('income');
+  const [transactionType, setTransactionType] = useState('expense');
 
   const handleClose = () => {
     setOpenModal(false);
@@ -24,7 +28,7 @@ const ModalAddTransaction = ({ setOpenModal, isEditing }) => {
     if (transactionType === 'income') {
       console.log('Add income transaction');
     } else {
-      console.log('');
+      console.log('Add expense transaction');
     }
     handleAmount();
     handleDate();
@@ -41,6 +45,10 @@ const ModalAddTransaction = ({ setOpenModal, isEditing }) => {
     handleDate();
     handleComment();
     handleClose();
+  };
+
+  const handleTransactionTypeChange = newType => {
+    setTransactionType(newType);
   };
 
   return (
@@ -67,16 +75,26 @@ const ModalAddTransaction = ({ setOpenModal, isEditing }) => {
         </div>
         <div className={css.modalBody}>
           <div className={css.switchContainer}>
-            <span className={transactionType === 'income' ? css.incomeText : css.greyText}>
+            <span
+              className={transactionType === 'income' ? css.incomeText : css.greyText}
+              onClick={() => handleTransactionTypeChange('income')}
+            >
               Income
             </span>
-            <IncExpBtn
-              checked={transactionType === 'expense'}
-              onChange={() =>
-                setTransactionType(transactionType === 'income' ? 'expense' : 'income')
-              }
-            />
-            <span className={transactionType === 'expense' ? css.expenseText : css.greyText}>
+            {isEditing ? (
+              ' / '
+            ) : (
+              <IncExpBtn
+                checked={transactionType === 'expense'}
+                onChange={() =>
+                  setTransactionType(transactionType === 'income' ? 'expense' : 'income')
+                }
+              />
+            )}
+            <span
+              className={transactionType === 'expense' ? css.expenseText : css.greyText}
+              onClick={() => handleTransactionTypeChange('expense')}
+            >
               Expense
             </span>
           </div>
@@ -89,13 +107,25 @@ const ModalAddTransaction = ({ setOpenModal, isEditing }) => {
               value={amount}
               onChange={e => setAmount(e.target.value)}
             />
-
-            <input
+            <div className={css.dateInput}>
+              <Datetime
+                inputProps={{ className: css.date }}
+                value={date}
+                onChange={newDate => setDate(newDate)}
+                dateFormat="DD.MM.YYYY"
+                timeFormat={false}
+                closeOnSelect
+              />
+              <svg className={css.icon}>
+                <use xlinkHref={`${svg}#calendar`}></use>
+              </svg>
+            </div>
+            {/* <input
               className={css.dateInput}
               type="date"
               value={date}
               onChange={e => setDate(e.target.value)}
-            />
+            /> */}
             <textarea
               className={css.commentInput}
               rows="3"
@@ -107,11 +137,11 @@ const ModalAddTransaction = ({ setOpenModal, isEditing }) => {
         </div>
         <div className={css.modalFooter}>
           {isEditing ? (
-            <button type="button" className={css.btnAdd} onClick={handleAdd}>
+            <button type="button" className={css.btnAdd} onClick={handleSave}>
               Save
             </button>
           ) : (
-            <button type="button" className={css.btnAdd} onClick={handleSave}>
+            <button type="button" className={css.btnAdd} onClick={handleAdd}>
               Add
             </button>
           )}
