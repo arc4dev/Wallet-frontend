@@ -6,6 +6,7 @@ import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { toast } from 'react-toastify';
 
 const ModalAddTransaction = ({ setOpenModal, isEditing }) => {
   const initialValues = {
@@ -16,9 +17,9 @@ const ModalAddTransaction = ({ setOpenModal, isEditing }) => {
   };
 
   const validationSchema = Yup.object().shape({
-    amount: Yup.number().required('Kwota jest wymagana').min(0, 'Kwota nie może być ujemna'),
-    date: Yup.date().required('Data jest wymagana'),
-    transactionType: Yup.string().required('Rodzaj transakcji jest wymagany'),
+    amount: Yup.number().required('Amount is required').min(0, 'The amount cannot be negative'),
+    date: Yup.date().required('Date is required'),
+    transactionType: Yup.string().required('Transaction type is required'),
     comment: Yup.string(),
   });
 
@@ -29,8 +30,10 @@ const ModalAddTransaction = ({ setOpenModal, isEditing }) => {
   const handleAdd = values => {
     if (values.transactionType === 'income') {
       console.log('Add income transaction');
+      toast.success('The income transaction has been added successfully');
     } else {
       console.log('Add expense transaction');
+      toast.success('The expense transaction has been added successfully');
     }
     console.log(values);
     handleClose();
