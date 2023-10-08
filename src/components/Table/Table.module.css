@@ -1,4 +1,4 @@
-table {
+/* table {
   min-width: 250px;
   height: 100%;
   background-color: transparent;
@@ -20,7 +20,7 @@ tr {
   font-family: 'Circe';
   font-size: 16px;
   border-bottom: 1px solid #4d4343;
-}
+} */
 .color-box {
   width: 24px;
   height: 24px;
