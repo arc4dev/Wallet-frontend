@@ -7,9 +7,12 @@ import css from './DiagramTab.module.css';
 
 const DiagramTab = ({ categories, transactionsList }) => {
   return (
-    <div className={css.diagramTab}>
+    <div className={css.title}>
+      {' '}
       Statistics
-      <Table transactionsList={TransactionsList} categories={categories} />
+      <div className={css.diagramTab}>
+        <Table transactionsList={TransactionsList} categories={categories} />
+      </div>
     </div>
   );
 };
