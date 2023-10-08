@@ -136,6 +136,10 @@
   line-height: normal;
   letter-spacing: 0.1125rem;
   text-transform: uppercase;
+  transition: all 400ms ease;
+}
+.btnAdd:hover {
+  transform: scale(1.1);
 }
 .btnCancel {
   width: 18.75rem;
@@ -151,6 +155,10 @@
   line-height: normal;
   letter-spacing: 0.1125rem;
   text-transform: uppercase;
+  transition: all 400ms ease;
+}
+.btnCancel:hover {
+  transform: scale(1.1);
 }
 @media (min-width: 768px) {
   .modalBackground {
