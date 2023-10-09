@@ -30,7 +30,9 @@ const HomeTab = () => {
             {matches.mobile && (
               <>
                 <Balance />
-                <TableTransactions />
+                <div className={css.tableWrapper}>
+                  <TableTransactions />
+                </div>
                 {isModalAddTransactionOpen && (
                   <ModalAddTransaction handleClick={toggleModalAddTransaction} />
                 )}
@@ -39,7 +41,9 @@ const HomeTab = () => {
             )}
             {matches.higher && (
               <>
-                <TableTransactions />
+                <div className={css.tableWrapper}>
+                  <TableTransactions />
+                </div>
                 {isModalAddTransactionOpen && (
                   <ModalAddTransaction handleClick={toggleModalAddTransaction} />
                 )}
