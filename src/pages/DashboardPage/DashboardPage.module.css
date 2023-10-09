@@ -17,7 +17,7 @@ body {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  gap: 28px;
+  gap: 32px;
   padding: 0 32px;
 }
 

@@ -8,9 +8,10 @@ import styled from 'styled-components';
 
 const StyledLink = styled(NavLink)`
   &.active {
-    box-shadow: 0px 3px 10px 0px #4A56E280;
+    box-shadow: 0px 3px 10px 0px #4a56e280;
     border-radius: 8px;
     filter: contrast(112%);
+  }
 `;
 
 const StyledText = styled(NavLink)`
