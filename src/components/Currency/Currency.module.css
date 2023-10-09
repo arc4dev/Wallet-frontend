@@ -1,3 +1,8 @@
+.currency_wrapper {
+  display: flex;
+  justify-content: center;
+  padding-top: 1.75rem;
+}
 .currency {
   width: 280px;
   height: 174px;
@@ -5,20 +10,15 @@
   background-color: var(--color-brand);
   position: relative;
 }
-.currencyContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 .svg {
   position: absolute;
   bottom: 0;
+  width: 100%;
 }
 .table {
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   text-align: center;
   color: var(--color-secondary);
@@ -46,4 +46,28 @@
   width: 100%;
   display: flex;
   justify-content: space-around;
+}
+
+.table tr {
+  border: none;
+}
+
+@media screen and (min-width: 768px) {
+  .currency_wrapper {
+    padding-top: 0;
+  }
+  .currency {
+    min-width: 336px;
+    min-height: 182px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .currency_wrapper {
+    display: block;
+  }
+  .currency {
+    min-width: 393px;
+    min-height: 331px;
+  }
 }

@@ -3,6 +3,10 @@ import svg from '../../assets/icons/icons.svg';
 import css from './NotFoundPage.module.css';
 
 const NotFoundPage = () => {
+  const redirectToHome = () => {
+    window.location.href = '/';
+  };
+
   return (
     <StyledEngineProvider injectFirst>
       <div className="container">
@@ -17,7 +21,11 @@ const NotFoundPage = () => {
               try again!
             </p>
 
-            <Button variant="contained" className={`${css.button} ${css.filled}`}>
+            <Button
+              onClick={redirectToHome}
+              variant="contained"
+              className={`${css.button} ${css.filled}`}
+            >
               Go back home
             </Button>
           </div>

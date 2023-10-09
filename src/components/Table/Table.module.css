@@ -1,6 +1,119 @@
-.table {
-  width: 100px;
-  height: 50px;
-  border-radius: 20px;
-  background-color: blue;
+.statisticsTable {
+  margin-top: 20px;
+  min-width: 280px;
+  max-width: 767px;
+  max-height: 604px;
+  background-color: transparent;
+  z-index: 1;
+}
+table {
+  min-width: 250px;
+  height: 100%;
+  background-color: transparent;
+}
+
+.headerTable {
+  background-color: var(--color-secondary);
+  border-radius: 30px;
+  padding: 0;
+}
+
+.headerHelper {
+  display: flex;
+  justify-content: space-between;
+  align-content: space-between;
+  font-family: 'Circe Bold';
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 3.5;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.table_rows {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Circe';
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 3.5;
+  border-bottom: 1px solid #4d4343;
+  border-bottom: 1px solid #dcdcdf;
+  box-shadow: 0px 1px 0px 0px #ffffff99;
+}
+
+.table_items {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  line-height: 3.5;
+  padding-left: 20px;
+  font-weight: 400;
+  padding-right: 20px;
+}
+
+.category-name {
+  min-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: 'Circe';
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+}
+
+@media screen and (min-width: 768px) {
+  .statisticsTable {
+    min-width: 336px;
+    max-height: 596px;
+    background-color: transparent;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .chart-container {
+    min-width: 395px;
+    min-height: 606px;
+  }
+}
+.category-container {
+  display: flex;
+  align-items: center;
+}
+
+.color-box {
+  width: 24px;
+  height: 24px;
+  border-radius: 2px;
+  margin-right: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.color-box::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.sum {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+tr.total-row td {
+  font-weight: bold;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+tr.total-row:nth-child(odd) td:last-child {
+  color: var(--color-action-bad);
+}
+
+tr.total-row:nth-child(even) td:last-child {
+  color: var(--color-action-ok);
 }

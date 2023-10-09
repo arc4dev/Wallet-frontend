@@ -1,5 +1,27 @@
-.chart {
-  width: 100px;
-  height: 100px;
-  background-color: blue;
+.chart-container {
+  margin-top: 8px;
+  width: 280px;
+  height: 280px;
+  position: relative;
+  z-index: 2; /* Ustaw wyższą wartość z-index */
+  order: -1;
+}
+.chart-container canvas {
+  background-color: transparent;
+  border: none;
+}
+@media screen and (min-width: 768px) {
+  .chart-container {
+    width: 336px;
+    height: 336px;
+    align-self: flex-start;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .chart-container {
+    width: 288px;
+    height: 288px;
+    margin-top: 20px;
+  }
 }

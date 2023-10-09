@@ -64,10 +64,20 @@ const ModalLogout = () => {
   return (
     <>
       <div>
-        <div onClick={openModal} className={css['btn-icon']}>
-          <svg width="20" height="20">
-            <use xlinkHref={`${svg}#icon-exit`}></use>
-          </svg>
+        <div>
+          <ul className={css.wrapper_modalLogo}>
+            <li>Name</li>
+            <li className={css.exit}>
+              <div onClick={openModal} className={css['btn-icon']}>
+                <svg width="20" height="20">
+                  <use xlinkHref={`${svg}#icon-exit`}></use>
+                </svg>
+              </div>
+              <spam className={css.spam} onClick={openModal}>
+                Exit
+              </spam>
+            </li>
+          </ul>
         </div>
         {modalIsOpen && (
           <ReactModal
@@ -76,6 +86,7 @@ const ModalLogout = () => {
             onRequestClose={closeModal}
             className={css.modalLogout}
             contentLabel="Example Modal"
+            appElement={document.getElementById('root')}
           >
             <h3 className={css['header-3']}>Are you really want to leave?</h3>
             <h4 className={css['header-4']}>Choose wisely</h4>

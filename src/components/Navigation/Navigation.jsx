@@ -8,8 +8,15 @@ import styled from 'styled-components';
 
 const StyledLink = styled(NavLink)`
   &.active {
-    box-shadow: 0px 3px 10px 2px #4a56e280;
+    box-shadow: 0px 3px 10px 0px #4a56e280;
     border-radius: 8px;
+    filter: contrast(112%);
+  }
+`;
+
+const StyledText = styled(NavLink)`
+  &.active {
+    font-weight: 700;
   }
 `;
 
@@ -18,13 +25,14 @@ const Navigation = () => {
     <>
       <IconContext.Provider
         value={{
-          color: '#FFFFFF',
+          color: 'var(--progressBar-background)',
           size: '2.38em',
           style: {
             padding: '8px',
-            background: '#4A56E2',
+            background: 'var(--color-brand)',
             display: 'flex',
             borderRadius: '8px',
+            opacity: '90%',
           },
         }}
       >
@@ -55,11 +63,11 @@ const Navigation = () => {
         render={() => (
           <IconContext.Provider
             value={{
-              color: '#FFFFFF',
+              color: 'var(--progressBar-background)',
               size: '1.13em',
               style: {
                 padding: '3px',
-                background: '#4A56E2',
+                background: 'var(--color-brand)',
                 display: 'flex',
                 borderRadius: '4px',
               },
@@ -68,14 +76,22 @@ const Navigation = () => {
             <nav className={css.navigation}>
               <div>
                 <NavLink className={css.nav_link} to="/dashboard/home">
-                  <BiSolidHome />
-                  <span className={css.nav_text}>Home</span>
+                  <StyledLink to="/dashboard/home">
+                    <BiSolidHome />
+                  </StyledLink>
+                  <StyledText to="/dashboard/home">
+                    <span className={css.nav_text}>Home</span>
+                  </StyledText>
                 </NavLink>
               </div>
               <div>
                 <NavLink className={css.nav_link} to="/dashboard/statistics">
-                  <BiStats />
-                  <span className={css.nav_text}>Statistics</span>
+                  <StyledLink to="/dashboard/statistics">
+                    <BiStats />
+                  </StyledLink>
+                  <StyledText to="/dashboard/statistics">
+                    <span className={css.nav_text}>Statistics</span>
+                  </StyledText>
                 </NavLink>
               </div>
             </nav>

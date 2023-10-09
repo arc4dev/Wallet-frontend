@@ -1,22 +1,62 @@
-.dashboard {
-  background-color: var(--background-register);
+.dasboardContainersWrapper {
+  padding-top: 32px;
+  /* z-index: 1; */
 }
 
 .dashboardOverview {
   display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.dashboardOverviewWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 36px;
+  padding: 0 32px;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.mobileWrapper {
+  margin-top: 12px;
 }
 
 @media screen and (min-width: 768px) {
+  .dasboardContainersWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .dashboard::after {
+    content: ' ';
+    position: absolute;
+    top: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--background-primary);
+    backdrop-filter: blur(25px);
+    z-index: -1;
+  }
+
   .background {
     display: block;
     position: absolute;
-    z-index: 0;
 
     &.right {
       width: 368px;
       height: 383px;
       top: 0;
       right: 0;
+      z-index: -1;
     }
 
     &.left {
@@ -24,16 +64,54 @@
       height: 323px;
       bottom: 0;
       left: 0;
+      z-index: -1;
+    }
+
+    .dashboardOverviewWrapper {
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .nav {
+      display: flex;
     }
   }
 }
 
 @media screen and (min-width: 1280px) {
-  .dashboardOverview {
+  .center {
+    display: flex;
     flex-direction: column;
+    align-items: center;
+  }
+
+  .dasboardContainersWrapper {
+    width: 100%;
+    flex-direction: row;
   }
 
   .dasboardContainersWrapper {
     display: flex;
+    justify-content: space-between;
+    position: relative;
+    align-items: flex-start;
+  }
+
+  .dashboardOverviewWrapper {
+    flex-direction: column;
+    width: 40vw;
+  }
+
+  .dashboardOverviewWrapper:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 100vh;
+    top: -82px;
+    left: 464px;
+    border: 1px solid #e7e5f2;
+    filter: drop-shadow(1px 0px 0px rgba(255, 255, 255, 0.6))
+      drop-shadow(-1px 0px 0px rgba(0, 0, 0, 0.05));
   }
 }
