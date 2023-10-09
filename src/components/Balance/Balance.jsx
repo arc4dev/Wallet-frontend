@@ -4,11 +4,7 @@ import { useSelector } from 'react-redux';
 import { selectTotalBalance } from 'redux/finance/selectors';
 
 const Balance = () => {
-  // const dispatch = useDispatch();
   const balance = useSelector(selectTotalBalance);
-  // const transactions = useSelector(selectTransactions);
-
-  // useEffect(() => {}, [dispatch, transactions]);
 
   return (
     <div className={css.balance}>
