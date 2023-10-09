@@ -76,6 +76,7 @@ const ModalLogout = () => {
             onRequestClose={closeModal}
             className={css.modalLogout}
             contentLabel="Example Modal"
+            appElement={document.getElementById('root')}
           >
             <h3 className={css['header-3']}>Are you really want to leave?</h3>
             <h4 className={css['header-4']}>Choose wisely</h4>
