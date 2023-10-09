@@ -1,3 +1,14 @@
+.modalBackground {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.25);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .modalContainer {
   width: 100%;
   height: 100%;
@@ -30,11 +41,6 @@
   position: absolute;
   top: 1.25rem;
   right: 1.25rem;
-  transition: transform 0.3s ease-in-out;
-}
-
-.closeBtn:hover {
-  transform: rotate(90deg);
 }
 
 .switchContainer {
@@ -67,30 +73,6 @@
   gap: 40px;
   font-size: 1rem;
 }
-.categorySelect {
-  border-bottom: 1.5px solid #e0e0e0;
-}
-
-.categorySelectInput {
-  width: 17.5rem;
-  border: none;
-  color: #000;
-  font-size: 1.125rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-}
-.categorySelectedOption {
-  color: #e0e0e0;
-  font-size: 1.125rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-}
-/* .categorySelectInput:hover option {
-  color: #ff6596;
-} */
-
 .amountInput {
   outline: none;
   border: none;
@@ -106,8 +88,6 @@
 }
 
 .dateInput {
-  width: 17.5rem;
-
   display: flex;
   color: #e0e0e0;
   justify-content: space-between;
@@ -168,10 +148,6 @@
   line-height: normal;
   letter-spacing: 0.1125rem;
   text-transform: uppercase;
-  transition: all 400ms ease;
-}
-.btnAdd:hover {
-  transform: scale(1.1);
 }
 .btnCancel {
   width: 18.75rem;
@@ -187,10 +163,6 @@
   line-height: normal;
   letter-spacing: 0.1125rem;
   text-transform: uppercase;
-  transition: all 400ms ease;
-}
-.btnCancel:hover {
-  transform: scale(1.1);
 }
 @media screen and (min-width: 768px) {
   .modalContainer {
@@ -214,13 +186,6 @@
     margin: 0;
     margin-bottom: 40px;
     gap: 0;
-  }
-  .categorySelect {
-    width: 100%;
-    margin-bottom: 2rem;
-  }
-  .categorySelectInput {
-    width: 100%;
   }
   .amountInput {
     width: 181px;
