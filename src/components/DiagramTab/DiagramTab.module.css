@@ -22,8 +22,8 @@
   }
   .diagramWrapper {
     flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: space-between;
+    align-items: center; /* Dodane, aby elementy były wyśrodkowane względem osi Y */
     margin-top: 20px;
   }
 }
