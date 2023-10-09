@@ -31,10 +31,9 @@
 @media screen and (min-width: 1280px) {
   .diagramWrapper {
     margin-top: 0;
-    justify-content: space-around;
   }
   .diagramTab {
-    padding: 0;
+    padding: 0 16px 0 69px;
   }
 }
 

@@ -3,7 +3,7 @@
   min-width: 280px;
   max-width: 767px;
   max-height: 604px;
-  background-color: var(--background-register);
+  background-color: transparent;
   z-index: 1;
 }
 table {

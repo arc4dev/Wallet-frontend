@@ -6,16 +6,24 @@
   margin-top: 12px;
   z-index: 100;
   gap: 32px;
+  padding: 0 20px;
+}
+
+.tableWrapper {
+  width: 100%;
 }
 
 @media screen and (min-width: 768px) {
   .homeTab {
+    width: 100%;
     margin-top: 20px;
+    padding: 0 32px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .homeTab {
     margin-top: 0;
+    padding: 0 16px 0 69px;
   }
 }

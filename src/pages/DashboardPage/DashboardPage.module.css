@@ -1,7 +1,3 @@
-body {
-  background-color: var(--background-register);
-}
-
 .dasboardContainersWrapper {
   margin-top: 32px;
   z-index: 1;
@@ -99,6 +95,7 @@ body {
     display: flex;
     justify-content: space-between;
     position: relative;
+    align-items: flex-start;
   }
 
   .dashboardOverviewWrapper {
