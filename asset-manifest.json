@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/Wallet-frontend/static/css/main.31130aaa.css",
-    "main.js": "/Wallet-frontend/static/js/main.82f221bb.js",
-    "static/media/icons.svg": "/Wallet-frontend/static/media/icons.c457ee849f2dc771dcc1fdcd1cf922a2.svg",
+    "main.css": "/Wallet-frontend/static/css/main.cdf7ef10.css",
+    "main.js": "/Wallet-frontend/static/js/main.ff374e5a.js",
+    "static/media/icons.svg": "/Wallet-frontend/static/media/icons.017d99cab903b087e7bfb26bb0bbe5fb.svg",
     "static/media/CRC65.woff": "/Wallet-frontend/static/media/CRC65.adb656a369472daa3b0d.woff",
     "static/media/CRC55.woff": "/Wallet-frontend/static/media/CRC55.8da5582a5f6c40d4b70d.woff",
     "static/media/Poppins-Regular.woff": "/Wallet-frontend/static/media/Poppins-Regular.aa27b6bdbf91d267ef8a.woff",
     "static/media/Poppins-Bold.woff": "/Wallet-frontend/static/media/Poppins-Bold.9a27401efe3a40b4605f.woff",
     "index.html": "/Wallet-frontend/index.html",
-    "main.31130aaa.css.map": "/Wallet-frontend/static/css/main.31130aaa.css.map",
-    "main.82f221bb.js.map": "/Wallet-frontend/static/js/main.82f221bb.js.map"
+    "main.cdf7ef10.css.map": "/Wallet-frontend/static/css/main.cdf7ef10.css.map",
+    "main.ff374e5a.js.map": "/Wallet-frontend/static/js/main.ff374e5a.js.map"
   },
   "entrypoints": [
-    "static/css/main.31130aaa.css",
-    "static/js/main.82f221bb.js"
+    "static/css/main.cdf7ef10.css",
+    "static/js/main.ff374e5a.js"
   ]
 }
