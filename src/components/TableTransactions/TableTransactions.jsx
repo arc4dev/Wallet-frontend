@@ -1,4 +1,5 @@
 import css from './TableTransactions.module.css';
+import svg from '../../assets/icons/icons.svg';
 
 const TableTransactions = () => {
   return (
@@ -21,8 +22,15 @@ const TableTransactions = () => {
           <td data-label="Comment">Gift for your wife</td>
           <td data-label="Sum">300</td>
           <td class={css.table__addons}>
-            <p>Edit</p>
-            <button>Delete</button>
+            <div className={css.editBtn}>
+              <svg className={css.editIcon}>
+                <use xlinkHref={`${svg}#icon-edit`}></use>
+              </svg>
+              <span className={css.editText}>Edit</span>
+            </div>
+            <button className={css.deleteBtn} type="button">
+              Delete
+            </button>
           </td>
         </tr>
 
@@ -33,8 +41,15 @@ const TableTransactions = () => {
           <td data-label="Comment">Gift for your wife</td>
           <td data-label="Sum">30000</td>
           <td class={css.table__addons}>
-            <p>Edit</p>
-            <button>Delete</button>
+            <div className={css.editBtn}>
+              <svg className={css.editIcon}>
+                <use xlinkHref={`${svg}#icon-edit`}></use>
+              </svg>
+              <span className={css.editText}>Edit</span>
+            </div>
+            <button className={css.deleteBtn} type="button">
+              Delete
+            </button>
           </td>
         </tr>
       </tbody>
