@@ -25,7 +25,6 @@ const IncExpBtn = styled(Switch)(({ theme }) => ({
     margin: 2,
     padding: 0,
     transform: 'translateX(0px)',
-    transition: 'transform 0.4s ease-in-out',
     '&.Mui-checked': {
       color: '#fff',
       transform: 'translateX(44px)',
