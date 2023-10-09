@@ -1,6 +1,6 @@
 .dasboardContainersWrapper {
-  margin-top: 32px;
-  z-index: 1;
+  padding-top: 32px;
+  /* z-index: 1; */
 }
 
 .dashboardOverview {
