@@ -16,12 +16,19 @@ const ModalAddTransaction = ({ setOpenModal, isEditing }) => {
     transactionType: 'expense',
   };
 
-  const validationSchema = Yup.object().shape({
-    amount: Yup.number().required('Amount is required').min(0, 'The amount cannot be negative'),
-    date: Yup.date().required('Date is required'),
-    transactionType: Yup.string().required('Transaction type is required'),
-    comment: Yup.string(),
-  });
+  const validationSchema = Yup.object()
+    .shape({
+      amount: Yup.number().required('Amount is required').min(0, 'The amount cannot be negative'),
+      date: Yup.date().required('Date is required'),
+      transactionType: Yup.string().required('Transaction type is required'),
+      comment: Yup.string(),
+    })
+    .when('transactionType', {
+      is: 'expense',
+      then: Yup.object({
+        category: Yup.string().required('Category is required'),
+      }),
+    });
 
   const handleClose = () => {
     setOpenModal(false);
@@ -105,6 +112,32 @@ const ModalAddTransaction = ({ setOpenModal, isEditing }) => {
                   </span>
                 </div>
                 <div className={css.formContainer}>
+                  {values.transactionType === 'expense' && (
+                    <div className={css.categorySelect}>
+                      <label htmlFor="category"></label>
+                      <Field as="select" name="category" className={css.categorySelectInput}>
+                        <option
+                          className={css.categorySelectedOption}
+                          value=""
+                          disabled
+                          selected
+                          hidden
+                        >
+                          Select a category
+                        </option>
+                        <option value="Main expenses">Main expenses</option>
+                        <option value="Products">Products</option>
+                        <option value="Car">Car</option>
+                        <option value="Self care">Self care</option>
+                        <option value="Child care">Child care</option>
+                        <option value="Household products">Household products</option>
+                        <option value="Education">Education</option>
+                        <option value="Leisure">Leisure</option>
+                        <option value="Other expenses">Other expenses</option>
+                        <option value="Entertainment">Entertainment</option>
+                      </Field>
+                    </div>
+                  )}
                   <Field name="amount">
                     {({ field }) => (
                       <div>
