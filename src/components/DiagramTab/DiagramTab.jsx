@@ -60,32 +60,48 @@ const DiagramTab = () => {
 
   return (
     <div className={css.diagramTab}>
-      <h4 className={css.title}>Statistics</h4>
-      <div>
-        <label>
-          Month:
-          <select value={selectedMonth} onChange={handleMonthChange}>
-            <option value="">Select Month</option>
-            {uniqueMonths.map(showMonth => (
-              <option value={showMonth}>{showMonth}</option>
-            ))}
-          </select>
-        </label>
-
-        <label>
-          Year:
-          <select value={selectedYear} onChange={handleYearChange}>
-            <option value="">Select Year</option>
-            {uniqueYears.map(showYear => (
-              <option id={showYear}>{showYear}</option>
-            ))}
-          </select>
-        </label>
+      <div className={css.container}>
+        <h4 className={css.title}>Statistics</h4>
       </div>
+
       <div className={css.diagramWrapper}>
-        <Table
-          transactionsList={!selectedMonth && !selectedYear ? list : filteredTransactionsList}
-        />
+        {/* Dodaj nowy kontener dla tabeli */}
+        <div className={css.statisticsContainer}>
+          <div className={css.filterContainer}>
+            <label>
+              <select
+                className={css.selectButton}
+                value={selectedMonth}
+                onChange={handleMonthChange}
+              >
+                <option value="">Month select</option>
+                {uniqueMonths.map(showMonth => (
+                  <option value={showMonth}>{showMonth}</option>
+                ))}
+              </select>
+            </label>
+
+            <label>
+              <select className={css.selectButton} value={selectedYear} onChange={handleYearChange}>
+                <option value="">Year select</option>
+                {uniqueYears.map(showYear => (
+                  <option key={showYear} value={showYear}>
+                    {showYear}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </div>
+          {/* Przekazujemy również selectedMonth i selectedYear do Table */}
+          {/* Dodajemy warunek sprawdzający, czy dane są dostępne */}
+          {(!selectedMonth && !selectedYear) || filteredTransactionsList.length > 0 ? (
+            <Table
+              transactionsList={!selectedMonth && !selectedYear ? list : filteredTransactionsList}
+            />
+          ) : (
+            <p>No data available for the selected period.</p>
+          )}
+        </div>
       </div>
     </div>
   );
