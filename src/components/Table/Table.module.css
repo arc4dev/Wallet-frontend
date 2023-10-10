@@ -1,5 +1,5 @@
 .statisticsTable {
-  margin-top: 20px;
+  margin-top: 10px;
   min-width: 280px;
   max-width: 767px;
   max-height: 604px;
@@ -15,6 +15,7 @@ table {
 .headerTable {
   background-color: var(--color-secondary);
   border-radius: 30px;
+  height: 58px;
   padding: 0;
 }
 
@@ -116,4 +117,9 @@ tr.total-row:nth-child(odd) td:last-child {
 
 tr.total-row:nth-child(even) td:last-child {
   color: var(--color-action-ok);
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
