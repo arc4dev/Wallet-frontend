@@ -46,7 +46,8 @@
   .header {
     display: flex;
     align-items: center;
-    padding: 60px 0 50px 0;
+    padding-top: 50px;
+    padding-bottom: 40px;
   }
 
   .logo {
@@ -57,10 +58,15 @@
   .headerTitle {
     font-family: 'Poppins Regular';
     font-size: 1.67rem;
-    margin-left: 40px;
+    margin-left: 55px;
     font-weight: 400;
     line-height: normal;
   }
+}
+
+.image {
+  width: 250px;
+  height: 274px;
 }
 
 @media screen and (min-width: 1280px) {
@@ -103,7 +109,8 @@
     height: 412px;
   }
 
-  .headerTitle {
-    margin: 32px 0 0 0;
+  .image {
+    width: 413px;
+    height: 452px;
   }
 }

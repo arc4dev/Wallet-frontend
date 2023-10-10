@@ -2,6 +2,7 @@ import css from './LoginPage.module.css';
 import svg from '../../assets/icons/icons.svg';
 import { StyledEngineProvider } from '@mui/material';
 import LoginForm from 'components/LoginForm/LoginForm';
+import frame from '../../assets/icons/frame-login.svg';
 
 const LoginPage = () => {
   return (
@@ -16,9 +17,7 @@ const LoginPage = () => {
         </svg>
         <div className={css.wrapper}>
           <div className={css.header}>
-            <svg className={css.logo}>
-              <use xlinkHref={`${svg}#icon-group-login`}></use>
-            </svg>
+            <img className={css.image} src={frame} alt="frame" />
             <h3 className={css.headerTitle}>Finance App</h3>
           </div>
 
