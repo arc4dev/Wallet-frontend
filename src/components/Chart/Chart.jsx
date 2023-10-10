@@ -76,7 +76,7 @@ const ChartComponent = ({ totalIncome, totalExpensesByCategory }) => {
   // zawierający tytuł 'Chart' i wykres (jeśli dane są dostępne).
   return (
     <div className={css['chart-container']}>
-      <Doughnut ref={chartRef} data={chartData} />
+      {chartData && <Doughnut ref={chartRef} data={chartData} />}
     </div>
   );
 };
