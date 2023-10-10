@@ -11,7 +11,6 @@ const RegistrationPage = () => {
         <svg className={`${css.background} ${css.right}`}>
           <use xlinkHref={`${svg}#icon-Ellipse-2`}></use>
         </svg>
-
         <svg className={`${css.background} ${css.left}`}>
           <use xlinkHref={`${svg}#icon-Ellipse-1`}></use>
         </svg>
@@ -20,7 +19,6 @@ const RegistrationPage = () => {
             <img className={css.image} src={frame} alt="frame" />
             <h3 className={css.headerTitle}>Finance App</h3>
           </div>
-
           <div className={css.formContainer}>
             <div className={css.form}>
               <RegistrationForm />
