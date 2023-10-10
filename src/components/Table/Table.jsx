@@ -113,9 +113,10 @@ const Table = ({ transactionsList, categories = [] }) => {
       <td>{formatNumber(totalIncome)}</td>
     </tr>
   );
-  console.log('totalExpensesByCategory:', totalExpensesByCategory);
-  console.log('totalIncome:', totalIncome);
+  // console.log('totalExpensesByCategory:', totalExpensesByCategory);
+  // console.log('totalIncome:', totalIncome);
   // Zwracanie JSX - renderowanie tabeli i komponentu ChartComponent
+  console.log('total income', totalIncome);
   return (
     <>
       <table className={css.statisticsTable}>
@@ -127,8 +128,8 @@ const Table = ({ transactionsList, categories = [] }) => {
         </thead>
         <tbody>{rows}</tbody>
       </table>
-
       {/* Renderowanie komponentu ChartComponent z przekazanymi danymi */}
+
       <ChartComponent totalIncome={totalIncome} totalExpensesByCategory={totalExpensesByCategory} />
     </>
   );
