@@ -76,7 +76,11 @@ const ChartComponent = ({ totalIncome, totalExpensesByCategory }) => {
   // zawierający tytuł 'Chart' i wykres (jeśli dane są dostępne).
   return (
     <div className={css['chart-container']}>
-      {chartData && <Doughnut ref={chartRef} data={chartData} />}
+      {chartData && chartData.labels.length > 0 ? (
+        <Doughnut ref={chartRef} data={chartData} />
+      ) : (
+        <p>No data available for the selected period.</p>
+      )}
     </div>
   );
 };
