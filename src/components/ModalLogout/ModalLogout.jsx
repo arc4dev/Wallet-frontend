@@ -5,8 +5,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsModalLogoutOpen } from 'redux/global/selectors';
-import { toggleStateOf } from 'redux/global/slice';
-// import { globalReset } from 'redux/global/slice';
+import { resetGlobal, toggleStateOf } from 'redux/global/slice';
+import { resetAuth } from 'redux/Auth/slice';
+import { resetFinance } from 'redux/finance/slice';
 
 const ModalLogout = ({ name }) => {
   const dispatch = useDispatch();
@@ -43,16 +44,14 @@ const ModalLogout = ({ name }) => {
     notifySuccess();
     dispatch(toggleStateOf('isModalLogoutOpen'));
   };
+
   const logoutModal = () => {
     notify();
-    dispatch(toggleStateOf('isModalLogoutOpen'));
-    // log out function resets a
+    dispatch(resetGlobal());
+    dispatch(resetAuth());
+    dispatch(resetFinance());
   };
-  // const logout = () => {
-  //   dispatch(globalReset());
-  //   dispatch(financeReset());
-  //   dispatch(authReset());
-  // }
+
   return (
     <>
       <div>
@@ -74,7 +73,6 @@ const ModalLogout = ({ name }) => {
         {isModalLogoutOpen && (
           <ReactModal
             isOpen={isModalLogoutOpen}
-            // isOpen={isLogin}
             onRequestClose={closeModal}
             className={css.modalLogout}
             contentLabel="Example Modal"

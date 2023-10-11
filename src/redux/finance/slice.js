@@ -36,6 +36,11 @@ const handleRejected = (state, action) => {
 const slice = createSlice({
   name: 'finance',
   initialState,
+  reducers: {
+    resetFinance: () => {
+      return initialState;
+    },
+  },
   extraReducers: {
     [addTransaction.pending]: handlePending,
     [addTransaction.rejected]: handleRejected,
@@ -46,5 +51,7 @@ const slice = createSlice({
     },
   },
 });
+
+export const { resetFinance } = slice.actions;
 
 export const financeReducer = slice.reducer;

@@ -3,7 +3,7 @@ import { registerUser } from './operations';
 
 const initialState = {
   user: {
-    name: 'Agata',
+    name: 'example',
     email: null,
   },
   isLoggedIn: false,
@@ -14,6 +14,11 @@ const initialState = {
 const slice = createSlice({
   name: 'auth',
   initialState,
+  reducers: {
+    resetAuth: () => {
+      return initialState;
+    },
+  },
   extraReducers: {
     [registerUser.fulfilled]: (state, action) => {
       state.isRefreshing = false;
@@ -29,5 +34,7 @@ const slice = createSlice({
     },
   },
 });
+
+export const { resetAuth } = slice.actions;
 
 export const authReducer = slice.reducer;
