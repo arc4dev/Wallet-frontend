@@ -72,12 +72,30 @@ table {
     max-height: 596px;
     background-color: transparent;
   }
+  .statsWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+  }
 }
 
 @media screen and (min-width: 1280px) {
   .chart-container {
     min-width: 395px;
     min-height: 606px;
+  }
+  .statisticsTable {
+    min-width: 340px;
+    padding-left: 10px;
+  }
+  .statsWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
   }
 }
 .category-container {

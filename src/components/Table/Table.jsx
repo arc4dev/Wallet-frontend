@@ -118,7 +118,7 @@ const Table = ({ transactionsList, categories = [] }) => {
   // Zwracanie JSX - renderowanie tabeli i komponentu ChartComponent
   console.log('total income', totalIncome);
   return (
-    <>
+    <div className={css.statsWrapper}>
       <table className={css.statisticsTable}>
         <thead>
           <tr className={`${css.table_rows} ${css.headerTable}`}>
@@ -131,7 +131,7 @@ const Table = ({ transactionsList, categories = [] }) => {
       {/* Renderowanie komponentu ChartComponent z przekazanymi danymi */}
 
       <ChartComponent totalIncome={totalIncome} totalExpensesByCategory={totalExpensesByCategory} />
-    </>
+    </div>
   );
 };
 

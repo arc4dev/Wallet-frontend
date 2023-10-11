@@ -3,18 +3,18 @@
   width: 280px;
   height: 280px;
   position: relative;
-  z-index: 2; /* Ustaw wyższą wartość z-index */
-  order: -1;
+  z-index: 2;
 }
-.chart-container canvas {
+/* .chart-container canvas {
   background-color: transparent;
   border: none;
-}
+} */
 @media screen and (min-width: 768px) {
   .chart-container {
     width: 336px;
     height: 336px;
     align-self: flex-start;
+    order: -1;
   }
 }
 
