@@ -1,7 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import css from './Currency.module.css';
 // import axios from 'axios'; <- to uncomment
 import ReactMedia from 'react-media';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectIsLoading } from 'redux/global/selectors';
+import { toggleStateOf } from 'redux/global/slice';
+import Loader from 'components/Loader/Loader';
 
 const Currency = () => {
   const [exchangeRates] = useState([]); // <-- do dodania setExchangeRates (musialem usunac bo eslint sie pruje)
@@ -25,6 +29,12 @@ const Currency = () => {
   //   };
   //   fetchCurrencyRates();
   // }, []);
+  const dispatch = useDispatch();
+  const loading = useSelector(selectIsLoading);
+
+  useEffect(() => {
+    dispatch(toggleStateOf('isLoading'));
+  }, [dispatch]);
 
   const sellRate = buy => {
     const sell = buy / (1 - spread);
@@ -145,15 +155,21 @@ const Currency = () => {
             </tr>
           </thead>
           <tbody className={css['table-body']}>
-            {useCurrencies.map(currency => {
-              return (
-                <tr key={currency} className={css['table-data']}>
-                  <td>{currency}</td>
-                  <td>{parseFloat(exchangeRates[currency]).toFixed(2)}</td>
-                  <td>{sellRate(exchangeRates[currency])}</td>
-                </tr>
-              );
-            })}
+            {loading ? (
+              <div className={css.loader_wrapper}>
+                <Loader />
+              </div>
+            ) : (
+              useCurrencies.map(currency => {
+                return (
+                  <tr key={currency} className={css['table-data']}>
+                    <td>{currency}</td>
+                    <td>{parseFloat(exchangeRates[currency]).toFixed(2)}</td>
+                    <td>{sellRate(exchangeRates[currency])}</td>
+                  </tr>
+                );
+              })
+            )}
           </tbody>
         </table>
       </div>
