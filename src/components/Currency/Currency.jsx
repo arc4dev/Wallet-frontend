@@ -157,21 +157,24 @@ const Currency = () => {
           </thead>
           <tbody className={css['table-body']}>
             {loading ? (
-              <div className={css.loader_wrapper}>
-                <Loader />
-              </div>
-            ) : useCurrencies.map(currency => {
-              // Check if exchangeRates object exists and has the currency
-              const purchaseRate = exchangeRates && exchangeRates[currency];
+              <tr>
+                <td colSpan="3" className={css.loader_wrapper}>
+                  <Loader />
+                </td>
+              </tr>
+            ) : (
+              useCurrencies.map(currency => {
+                // Check if exchangeRates object exists and has the currency
+                const purchaseRate = exchangeRates && exchangeRates[currency];
 
-              return (
-                <tr key={currency} className={css['table-data']}>
-                  <td>{currency}</td>
-                  <td>{purchaseRate ? parseFloat(purchaseRate).toFixed(2) : 'N/A'}</td>
-                  <td>{purchaseRate ? sellRate(purchaseRate) : 'N/A'}</td>
-                </tr>
-              );
-            })
+                return (
+                  <tr key={currency} className={css['table-data']}>
+                    <td>{currency}</td>
+                    <td>{purchaseRate ? parseFloat(purchaseRate).toFixed(2) : 'N/A'}</td>
+                    <td>{purchaseRate ? sellRate(purchaseRate) : 'N/A'}</td>
+                  </tr>
+                );
+              })
             )}
           </tbody>
         </table>
