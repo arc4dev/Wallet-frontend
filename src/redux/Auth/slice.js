@@ -3,7 +3,7 @@ import { registerUser } from './operations';
 
 const initialState = {
   user: {
-    name: null,
+    name: 'Agata',
     email: null,
   },
   isLoggedIn: false,
