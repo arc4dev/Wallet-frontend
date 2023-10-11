@@ -1,30 +1,30 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import css from './Currency.module.css';
-// import axios from 'axios'; <- to uncomment
 import ReactMedia from 'react-media';
+import axios from 'axios';
 
 const Currency = () => {
-  const [exchangeRates] = useState([]); // <-- do dodania setExchangeRates (musialem usunac bo eslint sie pruje)
+  const [exchangeRates, setExchangeRates] = useState([]);
   const useCurrencies = ['USD', 'PLN'];
   const spread = 0.0299;
 
-  // !!! gotowe tylko trzeba jeszce dodać REACT_APP_EXCHANGE_API_KEY przez zmienne środowiskowe
-  //
+  useEffect(() => {
+    const fetchCurrencyRates = async () => {
+      try {
+        const response = await axios.get(
+          `http://data.fixer.io/api//latest?access_key=${process.env.REACT_APP_EXCHANGE_API_KEY}`
+        );
+        const data = response.data;
+        const rates = data.rates;
 
-  // useEffect(() => {
-  //   const fetchCurrencyRates = async () => {
-  //     try {
-  //       const response = await axios.get(`http://data.fixer.io/api//latest?access_key=${process.env.REACT_APP_EXCHANGE_API_KEY}`);
-  //       const data = response.data;
-  //       const rates = data.rates;
-  //       setExchangeRates(rates);
-  //       console.log(data);
-  //     } catch (error) {
-  //       console.error('Błąd pobierania kursów walut z API:', error);
-  //     }
-  //   };
-  //   fetchCurrencyRates();
-  // }, []);
+        setExchangeRates(rates);
+        console.log(data);
+      } catch (error) {
+        console.error('Błąd pobierania kursów walut z API:', error);
+      }
+    };
+    fetchCurrencyRates();
+  }, []);
 
   const sellRate = buy => {
     const sell = buy / (1 - spread);
@@ -146,11 +146,14 @@ const Currency = () => {
           </thead>
           <tbody className={css['table-body']}>
             {useCurrencies.map(currency => {
+              // Check if exchangeRates object exists and has the currency
+              const purchaseRate = exchangeRates && exchangeRates[currency];
+
               return (
                 <tr key={currency} className={css['table-data']}>
                   <td>{currency}</td>
-                  <td>{parseFloat(exchangeRates[currency]).toFixed(2)}</td>
-                  <td>{sellRate(exchangeRates[currency])}</td>
+                  <td>{purchaseRate ? parseFloat(purchaseRate).toFixed(2) : 'N/A'}</td>
+                  <td>{purchaseRate ? sellRate(purchaseRate) : 'N/A'}</td>
                 </tr>
               );
             })}
