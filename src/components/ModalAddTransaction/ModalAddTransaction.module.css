@@ -1,20 +1,11 @@
-.modalBackground {
+.modalContainer {
+  position: absolute;
+  top: 50px;
+  left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.25);
   position: absolute;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.modalContainer {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  background: #fff;
+  background: var(--color-secondary);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .modalHeader {
@@ -23,24 +14,30 @@
 }
 
 .title {
-  color: #000;
+  color: var(--color-primary);
   text-align: center;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  font-size: 1.33rem;
+  font-size: 1.5rem;
+  font-family: Poppins Regular;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  margin-top: 20px;
-  margin-bottom: 42px;
+  margin-top: 1.25rem;
+  margin-bottom: 2.5rem;
 }
 
 .closeBtn {
-  background: #fff;
+  background: var(--color-secondary);
   border: none;
   cursor: pointer;
   position: absolute;
   top: 1.25rem;
   right: 1.25rem;
+  transition: transform 0.3s ease-in-out;
+}
+
+.closeBtn:hover {
+  transform: rotate(90deg);
 }
 
 .switchContainer {
@@ -48,59 +45,78 @@
   justify-content: center;
   align-items: center;
   gap: 5px;
-  font-size: 0.89rem;
-  margin-bottom: 40px;
-  font-family: 'Circe Bold';
+  margin-bottom: 2.5rem;
 }
 
 .incomeText {
-  color: #24cca7;
+  color: var(--color-action-ok);
 }
 
 .expenseText {
-  color: #ff6596;
+  color: var(--color-action-bad);
 }
 
 .greyText {
-  color: #e0e0e0;
+  color: var(--color-form);
 }
 .formContainer {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: stretch;
-  margin: 0 20px 40px 20px;
-  gap: 40px;
-  font-size: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin: 0 1.25rem 2.5rem 1.25rem;
+  gap: 3rem;
 }
-.amountInput {
-  outline: none;
+.categorySelect {
+  border-bottom: 1.5px solid var(--color-form);
+}
+
+.categorySelectInput {
+  width: 17.5rem;
   border: none;
-  color: #000;
+  color: var(--color-primary);
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 0.5rem 1.25rem 0.5rem 1.25rem;
+}
+.categorySelectedOption {
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.amountInput {
+  width: 17.5rem;
+  border: none;
+  color: var(--color-dimmed);
+  font-size: 1.125rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  padding: 0 1.25rem 0.5rem 1.25rem;
-  border-bottom: 1.5px solid #e0e0e0;
-}
-.amountInput::placeholder {
-  color: var(--color-dimmed);
+  padding: 0.5rem 1.25rem 0.5rem 1.25rem;
+  border-bottom: 1.5px solid var(--color-form);
 }
 
+.amountInput:focus {
+  color: var(--color-primary);
+}
 .dateInput {
+  width: 17.5rem;
+
   display: flex;
-  color: #e0e0e0;
   justify-content: space-between;
-  padding: 0 1.25rem 0.5rem 1.25rem;
-  border-bottom: 1.5px solid #e0e0e0;
+  padding: 0.5rem 1.25rem 0.5rem 1.25rem;
+  border-bottom: 1.5px solid var(--color-form);
 }
 .date {
-  outline: none;
   border: none;
-  color: #000;
-  font-family: 'Circe';
+  color: var(--color-primary);
+  font-family: Circe;
+  font-size: 1.125rem;
   font-style: normal;
-  font-size: 1rem;
   font-weight: 400;
   line-height: normal;
 }
@@ -112,20 +128,20 @@
 }
 
 .commentInput {
-  outline: none;
-  resize: none;
+  width: 17.5rem;
   border: none;
-  color: #000;
-  font-size: 1rem;
-  line-height: normal;
-  padding: 0 1.25rem 0rem 1.25rem;
-  border-bottom: 1.5px solid #e0e0e0;
-}
-
-.commentInput::placeholder {
+  height: 5.25rem;
   color: var(--color-dimmed);
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 0.5rem 1.25rem 0rem 1.25rem;
+  border-bottom: 1.5px solid var(--color-form);
 }
-
+.commentInput:focus {
+  color: var(--color-primary);
+}
 .modalFooter {
   display: flex;
   flex-direction: column;
@@ -138,9 +154,9 @@
   width: 18.75rem;
   height: 3.125rem;
   border-radius: 1.25rem;
-  background: #24cca7;
+  background: var(--color-action-ok);
   border: none;
-  color: #fff;
+  color: var(--color-secondary);
   text-align: center;
   font-size: 1.125rem;
   font-style: normal;
@@ -148,14 +164,18 @@
   line-height: normal;
   letter-spacing: 0.1125rem;
   text-transform: uppercase;
+  transition: all 400ms ease;
+}
+.btnAdd:hover {
+  transform: scale(1.1);
 }
 .btnCancel {
   width: 18.75rem;
   height: 3.125rem;
   border-radius: 1.25rem;
-  border: 1px solid #4a56e2;
-  background: #fff;
-  color: #4a56e2;
+  border: 1px solid var(--color-brand);
+  background: var(--color-secondary);
+  color: var(--color-brand);
   text-align: center;
   font-size: 1.125rem;
   font-style: normal;
@@ -163,46 +183,72 @@
   line-height: normal;
   letter-spacing: 0.1125rem;
   text-transform: uppercase;
+  transition: all 400ms ease;
 }
-@media screen and (min-width: 768px) {
-  .modalContainer {
-    top: 50%;
-    bottom: 50%;
-    transform: translateY(-50%);
-    width: 540px;
-    height: 550px;
-    border-radius: 1.25rem;
-    background: #fff;
-    padding: 40px 80px;
+.btnCancel:hover {
+  transform: scale(1.1);
+}
+@media (min-width: 768px) {
+  .modalBackground {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--background-behind-modal);
+    position: absolute;
+    top: -50px;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
-  .title {
-    font-size: 1.67rem;
-    margin-top: 0;
+
+  .modalContainer {
+    position: relative;
+    top: auto;
+    width: 33.75rem;
+    height: auto;
+    border-radius: 1.25rem;
+    background: var(--color-secondary);
   }
   .formContainer {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin: 0;
-    margin-bottom: 40px;
+    margin-left: 4.56rem;
+    margin-right: 4.56rem;
     gap: 0;
   }
+  .categorySelect {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+  .categorySelectInput {
+    width: 100%;
+  }
   .amountInput {
-    width: 181px;
+    width: 11.5rem;
     height: 2.5rem;
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 2.5rem;
   }
   .dateInput {
-    width: 181px;
+    width: 11.5rem;
     height: 2.5rem;
-    margin-bottom: 40px;
+    margin-bottom: 2.5rem;
   }
   .date {
     width: 6rem;
   }
   .commentInput {
     width: 100%;
-    height: 32px;
+    height: 3rem;
+  }
+  .modalFooter {
+    height: 10rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .closeBtn {
+    display: none;
   }
 }
