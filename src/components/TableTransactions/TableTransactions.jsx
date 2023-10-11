@@ -3,14 +3,14 @@ import svg from '../../assets/icons/icons.svg';
 
 const TableTransactions = () => {
   return (
-    <table class={css.table}>
+    <table className={css.table}>
       <thead>
         <tr>
           <th>Date</th>
           <th>Type</th>
           <th>Category</th>
           <th>Comment</th>
-          <th colspan="2">Sum</th>
+          <th colSpan="2">Sum</th>
         </tr>
       </thead>
 
@@ -21,7 +21,7 @@ const TableTransactions = () => {
           <td data-label="Category">Other</td>
           <td data-label="Comment">Gift for your wife</td>
           <td data-label="Sum">300</td>
-          <td class={css.table__addons}>
+          <td className={css.table__addons}>
             <div className={css.editBtn}>
               <svg className={css.editIcon}>
                 <use xlinkHref={`${svg}#icon-edit`}></use>
@@ -40,7 +40,7 @@ const TableTransactions = () => {
           <td data-label="Category">Other</td>
           <td data-label="Comment">Gift for your wife</td>
           <td data-label="Sum">30000</td>
-          <td class={css.table__addons}>
+          <td className={css.table__addons}>
             <div className={css.editBtn}>
               <svg className={css.editIcon}>
                 <use xlinkHref={`${svg}#icon-edit`}></use>
