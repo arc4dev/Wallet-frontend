@@ -4,11 +4,11 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  z-index: 100;
 }
 
 .diagramTab {
   padding: 0 20px;
+  z-index: 0;
 }
 
 .title {

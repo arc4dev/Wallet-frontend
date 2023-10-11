@@ -3,7 +3,6 @@
   width: 280px;
   height: 280px;
   position: relative;
-  z-index: 2; /* Ustaw wyższą wartość z-index */
   order: -1;
 }
 .chart-container canvas {
