@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import css from './ModalAddTransaction.module.css';
 import IncExpBtn from './IncExpBtn';
 import svg from '../../assets/icons/icons.svg';
@@ -45,6 +45,20 @@ const ModalAddTransaction = ({ handleClick, isEditing }) => {
   const handleTransactionTypeChange = newType => {
     setTransactionType(newType);
   };
+
+  const keydownHandler = ({ key }) => {
+    switch (key) {
+      case 'Escape':
+        handleClick();
+        break;
+      default:
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('keydown', keydownHandler);
+    return () => document.removeEventListener('keydown', keydownHandler);
+  });
 
   return (
     <div className={css.modalBackground}>
