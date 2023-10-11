@@ -5,30 +5,30 @@ import Loader from 'components/Loader/Loader';
 import { toggleStateOf } from 'redux/global/slice';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsLoading } from 'redux/global/selectors';
-import axios from 'axios';
+// import axios from 'axios';
 
 const Currency = () => {
   const [exchangeRates, setExchangeRates] = useState([]);
   const useCurrencies = ['USD', 'PLN'];
   const spread = 0.0299;
 
-  useEffect(() => {
-    const fetchCurrencyRates = async () => {
-      try {
-        const response = await axios.get(
-          `http://data.fixer.io/api//latest?access_key=${process.env.REACT_APP_EXCHANGE_API_KEY}`
-        );
-        const data = response.data;
-        const rates = data.rates;
+  // useEffect(() => {
+  //   const fetchCurrencyRates = async () => {
+  //     try {
+  //       const response = await axios.get(
+  //         `http://data.fixer.io/api//latest?access_key=${process.env.REACT_APP_EXCHANGE_API_KEY}`
+  //       );
+  //       const data = response.data;
+  //       const rates = data.rates;
 
-        setExchangeRates(rates);
-        console.log(data);
-      } catch (error) {
-        console.error('Błąd pobierania kursów walut z API:', error);
-      }
-    };
-    fetchCurrencyRates();
-  }, []);
+  //       setExchangeRates(rates);
+  //       console.log(data);
+  //     } catch (error) {
+  //       console.error('Błąd pobierania kursów walut z API:', error);
+  //     }
+  //   };
+  //   fetchCurrencyRates();
+  // }, []);
 
   const dispatch = useDispatch();
   const loading = useSelector(selectIsLoading);

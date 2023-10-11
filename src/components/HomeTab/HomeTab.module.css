@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   margin-top: 12px;
-  z-index: 100;
+  z-index: 0;
   gap: 32px;
   padding: 0 20px;
 }
@@ -16,8 +16,8 @@
 @media screen and (min-width: 768px) {
   .homeTab {
     width: 100%;
-    margin-top: 20px;
-    padding: 0 32px;
+    margin: 0;
+    padding: 20px 32px 0;
   }
 }
 
