@@ -14,6 +14,9 @@
   align-items: center;
   gap: 1rem;
 }
+.modalOpen {
+  overflow: hidden;
+}
 .header-3 {
   text-align: center;
   color: var(--color-secondary);
