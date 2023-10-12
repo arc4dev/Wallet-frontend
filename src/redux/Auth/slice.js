@@ -21,11 +21,15 @@ const slice = createSlice({
   },
   extraReducers: {
     [registerUser.fulfilled]: (state, action) => {
-      state.isRefreshing = false;
-    },
-    [loginUser.fulfilled]: (state, action) => {
+      // state.isRefreshing = false;
       state.user = action.payload.data;
       state.token = action.payload.token;
+      state.isLoggedIn = true;
+    },
+    [loginUser.fulfilled]: (state, action) => {
+      console.log('login', action);
+      // state.user = action.payload.data;
+      // state.token = action.payload.token;
       state.isLoggedIn = true;
     },
     [logoutUser.fulfilled]: state => {
@@ -39,6 +43,9 @@ const slice = createSlice({
       state.isRefreshing = false;
     },
     [refreshUser.pending]: state => {
+      state.isRefreshing = true;
+    },
+    [registerUser.pending]: state => {
       state.isRefreshing = true;
     },
     [refreshUser.rejected]: state => {
