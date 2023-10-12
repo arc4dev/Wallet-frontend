@@ -17,6 +17,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useAuth } from 'hooks/useAuth';
 import { useEffect } from 'react';
+import { useState } from 'react';
 
 const validationSchema = yup.object({
   email: yup.string('Enter your email').email('Enter a valid email').required('Email is required'),
@@ -35,27 +36,27 @@ const validationSchema = yup.object({
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
-
   const { authErr } = useAuth();
+  const [err, setErr] = useState('');
 
   useEffect(() => {
     console.log(authErr);
-    if (authErr) {
-      const notify = () =>
-        toast.error(authErr, {
-          position: 'top-right',
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: 'light',
-        });
+    setErr(authErr);
+    if (err) notify();
+  }, [authErr, err]);
 
-      notify();
-    }
-  }, [authErr]);
+  const notify = () => {
+    toast.error(err, {
+      position: 'top-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'light',
+    });
+  };
 
   const formik = useFormik({
     initialValues: {
@@ -66,8 +67,6 @@ const RegistrationForm = () => {
     },
     validationSchema: validationSchema,
     onSubmit: values => {
-      // console.log(values); // <- here POST to /signup endpoint
-
       const registerElements = {
         email: values.email,
         name: values.name,
@@ -76,6 +75,7 @@ const RegistrationForm = () => {
       };
 
       dispatch(registerUser(registerElements));
+      setErr('');
     },
   });
 

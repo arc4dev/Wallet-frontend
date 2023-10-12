@@ -16,6 +16,7 @@ import { useAuth } from 'hooks/useAuth';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
+import { authError } from 'redux/Auth/selectors';
 
 const validationSchema = yup.object({
   email: yup.string('Enter your email').email('Enter a valid email').required('Email is required'),
@@ -36,12 +37,12 @@ const LoginForm = () => {
 
   useEffect(() => {
     console.log(authErr);
-
-    if (authErr) notify();
-  }, [authErr]);
+    setErr(authErr);
+    if (err) notify();
+  }, [authErr, err]);
 
   const notify = () => {
-    toast.error(authErr, {
+    toast.error(err, {
       position: 'top-right',
       autoClose: 5000,
       hideProgressBar: false,
@@ -66,6 +67,7 @@ const LoginForm = () => {
       };
 
       dispatch(loginUser(loginElements));
+      setErr('');
     },
   });
 
@@ -121,12 +123,7 @@ const LoginForm = () => {
                 helperText={formik.touched.password && formik.errors.password}
               />
             </div>
-            <Button
-              variant="contained"
-              className={`${css.button} ${css.filled}`}
-              type="submit"
-              // onClick={notify}
-            >
+            <Button variant="contained" className={`${css.button} ${css.filled}`} type="submit">
               Log in
             </Button>
           </form>
