@@ -1,8 +1,12 @@
 import ModalLogout from 'components/ModalLogout/ModalLogout';
 import css from './Header.module.css';
 import svg from '../../assets/icons/icons.svg';
+import { useSelector } from 'react-redux';
+import { selectUser } from 'redux/Auth/selectors';
 
 const Header = () => {
+  const user = useSelector(selectUser);
+
   return (
     <>
       <div className={css.header}>
@@ -11,7 +15,7 @@ const Header = () => {
             <use xlinkHref={`${svg}#icon-logo`}></use>
           </svg>
         </div>
-        <ModalLogout />
+        <ModalLogout name={user.name} />
       </div>
     </>
   );
