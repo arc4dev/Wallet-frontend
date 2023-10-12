@@ -2,8 +2,6 @@
   margin: 20px 0;
   width: 280px;
   height: 280px;
-  /* position: relative; */
-  z-index: 2;
 }
 /* .chart-container canvas {
   background-color: transparent;
