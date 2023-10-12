@@ -20,7 +20,6 @@ const Currency = () => {
         );
         const data = response.data;
         const rates = data.rates;
-
         setExchangeRates(rates);
         console.log(data);
       } catch (error) {
