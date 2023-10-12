@@ -57,6 +57,20 @@ const ModalAddTransaction = ({ handleClick, isEditing }) => {
     setTransactionType(newType);
   };
 
+  const keydownHandler = ({ key }) => {
+    switch (key) {
+      case 'Escape':
+        handleClick();
+        break;
+      default:
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('keydown', keydownHandler);
+    return () => document.removeEventListener('keydown', keydownHandler);
+  });
+
   return (
     <ReactModal
       isOpen={isModalAddTransactionOpen}
