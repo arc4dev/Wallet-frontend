@@ -65,6 +65,7 @@ const slice = createSlice({
       console.log(state);
       console.log(action);
       state.error = action.payload.data.message;
+      state.isLoggedIn = false;
     },
   },
 });

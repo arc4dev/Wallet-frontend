@@ -15,6 +15,7 @@ import { useAuth } from 'hooks/useAuth';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useState } from 'react';
 
 const validationSchema = yup.object({
   email: yup.string('Enter your email').email('Enter a valid email').required('Email is required'),
@@ -28,8 +29,18 @@ const validationSchema = yup.object({
 const LoginForm = () => {
   const dispatch = useDispatch();
   const { authErr } = useAuth();
+  const [err, setErr] = useState('');
 
-  const notify = () =>
+  // console.log('err', err);
+  // console.log(authErr);
+
+  useEffect(() => {
+    console.log(authErr);
+
+    if (authErr) notify();
+  }, [authErr]);
+
+  const notify = () => {
     toast.error(authErr, {
       position: 'top-right',
       autoClose: 5000,
@@ -40,10 +51,7 @@ const LoginForm = () => {
       progress: undefined,
       theme: 'light',
     });
-
-  useEffect(() => {
-    if (authErr) notify();
-  }, [authErr]);
+  };
 
   const formik = useFormik({
     initialValues: {
@@ -113,7 +121,12 @@ const LoginForm = () => {
                 helperText={formik.touched.password && formik.errors.password}
               />
             </div>
-            <Button variant="contained" className={`${css.button} ${css.filled}`} type="submit">
+            <Button
+              variant="contained"
+              className={`${css.button} ${css.filled}`}
+              type="submit"
+              // onClick={notify}
+            >
               Log in
             </Button>
           </form>
