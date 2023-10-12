@@ -5,10 +5,12 @@ const initialState = {
   user: {
     name: null,
     email: null,
+    verify: false,
   },
   isLoggedIn: false,
   token: null,
   isRefreshing: false,
+  error: '',
 };
 
 const slice = createSlice({
@@ -30,6 +32,7 @@ const slice = createSlice({
       console.log('login', action);
       // state.user = action.payload.data;
       // state.token = action.payload.token;
+      state.token = action.payload.token;
       state.isLoggedIn = true;
     },
     [logoutUser.fulfilled]: state => {
@@ -50,6 +53,18 @@ const slice = createSlice({
     },
     [refreshUser.rejected]: state => {
       state.isRefreshing = false;
+    },
+    [registerUser.rejected]: (state, action) => {
+      // state.isRefreshing = false;
+      console.log(state);
+      console.log(action);
+      state.error = action.payload.data.message;
+    },
+    [loginUser.rejected]: (state, action) => {
+      // state.isRefreshing = false;
+      console.log(state);
+      console.log(action);
+      state.error = action.payload.data.message;
     },
   },
 });

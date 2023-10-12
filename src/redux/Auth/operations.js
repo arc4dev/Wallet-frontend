@@ -19,7 +19,7 @@ export const registerUser = createAsyncThunk('/auth/register', async (body, thun
 
     return res.data;
   } catch (err) {
-    return thunkAPI.rejectWithValue(err.message);
+    return thunkAPI.rejectWithValue(err.response);
   }
 });
 
@@ -33,7 +33,7 @@ export const loginUser = createAsyncThunk('/auth/login', async (body, thunkAPI) 
 
     return res.data;
   } catch (err) {
-    return thunkAPI.rejectWithValue(err.message);
+    return thunkAPI.rejectWithValue(err.response);
   }
 });
 

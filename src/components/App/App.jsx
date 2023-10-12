@@ -17,11 +17,8 @@ import { useAuth } from 'hooks/useAuth';
 export const App = () => {
   // On mount
   // const dispatch = useDispatch();
-  // const { isAuth } = useAuth();
 
-  // useEffect(() => {
-  //   console.log(isAuth);
-  // }, [isAuth, dispatch]);
+  // useEffect(() => {}, []);
 
   return (
     <StyledEngineProvider injectFirst>

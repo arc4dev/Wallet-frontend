@@ -13,6 +13,11 @@ import { useDispatch } from 'react-redux';
 import { registerUser } from 'redux/Auth/operations';
 import { NavLink } from 'react-router-dom';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useAuth } from 'hooks/useAuth';
+import { useEffect } from 'react';
+
 const validationSchema = yup.object({
   email: yup.string('Enter your email').email('Enter a valid email').required('Email is required'),
   password: yup
@@ -30,6 +35,27 @@ const validationSchema = yup.object({
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
+
+  const { authErr } = useAuth();
+
+  useEffect(() => {
+    console.log(authErr);
+    if (authErr) {
+      const notify = () =>
+        toast.error(authErr, {
+          position: 'top-right',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'light',
+        });
+
+      notify();
+    }
+  }, [authErr]);
 
   const formik = useFormik({
     initialValues: {
@@ -158,6 +184,20 @@ const RegistrationForm = () => {
         >
           Log in
         </Button>
+      </div>
+      <div>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
       </div>
     </div>
   );

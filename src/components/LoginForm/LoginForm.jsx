@@ -8,8 +8,13 @@ import LockIcon from '@mui/icons-material/Lock';
 import svg from '../../assets/icons/icons.svg';
 import { useFormik } from 'formik';
 import { NavLink } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from 'redux/Auth/operations';
+import { useEffect } from 'react';
+import { useAuth } from 'hooks/useAuth';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const validationSchema = yup.object({
   email: yup.string('Enter your email').email('Enter a valid email').required('Email is required'),
@@ -22,6 +27,23 @@ const validationSchema = yup.object({
 
 const LoginForm = () => {
   const dispatch = useDispatch();
+  const { authErr } = useAuth();
+
+  const notify = () =>
+    toast.error(authErr, {
+      position: 'top-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'light',
+    });
+
+  useEffect(() => {
+    if (authErr) notify();
+  }, [authErr]);
 
   const formik = useFormik({
     initialValues: {
@@ -106,6 +128,20 @@ const LoginForm = () => {
             Register
           </Button>
         </div>
+      </div>
+      <div>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
       </div>
     </StyledEngineProvider>
   );
