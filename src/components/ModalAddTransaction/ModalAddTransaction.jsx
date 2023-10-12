@@ -8,6 +8,7 @@ import 'react-datetime/css/react-datetime.css';
 import ReactModal from 'react-modal';
 import { useSelector } from 'react-redux';
 import { selectIsModalAddTransactionOpen } from 'redux/global/selectors';
+import Buttons from 'components/Buttons/Buttons';
 
 const ModalAddTransaction = ({ handleClick, isEditing }) => {
   const [amount, setAmount] = useState('');
@@ -25,34 +26,31 @@ const ModalAddTransaction = ({ handleClick, isEditing }) => {
     }
   }, [isModalAddTransactionOpen]);
 
-  const handleAmount = () => {
-    console.log(amount);
+  const handleAdd = e => {
+    let newAmount = +amount;
+    if (transactionType === 'expense') newAmount = -amount;
+
+    const newTransaction = {
+      amount: newAmount,
+      date,
+      comment,
+    };
+
+    console.log(newTransaction);
+    // add
   };
-  const handleDate = () => {
-    console.log(date);
-  };
-  const handleComment = () => {
-    console.log(comment);
-  };
-  const handleAdd = () => {
-    if (transactionType === 'income') {
-      console.log('Add income transaction');
-    } else {
-      console.log('Add expense transaction');
-    }
-    handleAmount();
-    handleDate();
-    handleComment();
-  };
-  const handleSave = () => {
-    if (transactionType === 'income') {
-      console.log('Saved income transaction');
-    } else {
-      console.log('Saved expense transaction ');
-    }
-    handleAmount();
-    handleDate();
-    handleComment();
+  const handleSave = e => {
+    let newAmount = amount;
+    if (transactionType === 'expense') newAmount = -amount;
+
+    const updatedTransaction = {
+      amount: newAmount,
+      date,
+      comment,
+    };
+
+    console.log(updatedTransaction);
+    // save
   };
 
   const handleTransactionTypeChange = newType => {
@@ -113,7 +111,7 @@ const ModalAddTransaction = ({ handleClick, isEditing }) => {
             Expense
           </span>
         </div>
-        <div className={css.formContainer}>
+        <form className={css.formContainer}>
           <input
             className={css.amountInput}
             type="number"
@@ -149,21 +147,21 @@ const ModalAddTransaction = ({ handleClick, isEditing }) => {
             value={comment}
             onChange={e => setComment(e.target.value)}
           />
-        </div>
+        </form>
       </div>
       <div className={css.modalFooter}>
         {isEditing ? (
-          <button type="button" className={css.btnAdd} onClick={handleSave}>
+          <Buttons onClick={handleSave} variant="contained">
             Save
-          </button>
+          </Buttons>
         ) : (
-          <button type="button" className={css.btnAdd} onClick={handleAdd}>
+          <Buttons onClick={handleAdd} variant="contained">
             Add
-          </button>
+          </Buttons>
         )}
-        <button type="button" className={css.btnCancel} onClick={handleClick}>
-          CANCEL
-        </button>
+        <Buttons onClick={handleClick} variant="outlined" type="button">
+          Cancel
+        </Buttons>
       </div>
     </ReactModal>
   );
