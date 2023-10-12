@@ -9,16 +9,18 @@ import css from './Buttons.module.css';
 // variant="outlined"
 // className="emptyBtn"
 
-const Buttons = ({ variant, className, text, type = 'submit' }) => {
+const Buttons = ({ children, variant, type = 'submit', onClick }) => {
   const filledBtn = `${css.button} ${css.filled}`;
   const emptyBtn = `${css.button} ${css.outlined}`;
 
-  if (className === 'filledBtn') className = filledBtn;
-  if (className === 'emptyBtn') className = emptyBtn;
-
   return (
-    <Button variant={variant} className={className} type={type}>
-      {text}
+    <Button
+      onClick={onClick}
+      variant={variant}
+      className={variant === 'contained' ? filledBtn : emptyBtn}
+      type={type}
+    >
+      {children}
     </Button>
   );
 };

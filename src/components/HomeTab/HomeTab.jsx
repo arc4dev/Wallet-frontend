@@ -33,10 +33,11 @@ const HomeTab = () => {
                 <div className={css.tableWrapper}>
                   <TableTransactions />
                 </div>
-                {isModalAddTransactionOpen && (
+                {isModalAddTransactionOpen ? (
                   <ModalAddTransaction handleClick={toggleModalAddTransaction} />
+                ) : (
+                  <ButtonAddTransactions handleClick={toggleModalAddTransaction} />
                 )}
-                <ButtonAddTransactions handleClick={toggleModalAddTransaction} />
               </>
             )}
             {matches.higher && (
@@ -44,10 +45,11 @@ const HomeTab = () => {
                 <div className={css.tableWrapper}>
                   <TableTransactions />
                 </div>
-                {isModalAddTransactionOpen && (
+                {isModalAddTransactionOpen ? (
                   <ModalAddTransaction handleClick={toggleModalAddTransaction} />
+                ) : (
+                  <ButtonAddTransactions handleClick={toggleModalAddTransaction} />
                 )}
-                <ButtonAddTransactions handleClick={toggleModalAddTransaction} />
               </>
             )}
           </>

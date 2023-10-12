@@ -8,6 +8,7 @@ import { selectIsModalLogoutOpen } from 'redux/global/selectors';
 import { resetGlobal, toggleStateOf } from 'redux/global/slice';
 import { resetAuth } from 'redux/Auth/slice';
 import { resetFinance } from 'redux/finance/slice';
+import { useEffect } from 'react';
 
 const ModalLogout = ({ name }) => {
   const dispatch = useDispatch();
@@ -35,6 +36,14 @@ const ModalLogout = ({ name }) => {
       progress: undefined,
       theme: 'light',
     });
+
+  useEffect(() => {
+    if (isModalLogoutOpen) {
+      document.body.classList.add(css.modalOpen);
+    } else {
+      document.body.classList.remove(css.modalOpen);
+    }
+  }, [isModalLogoutOpen]);
 
   const openModal = () => {
     dispatch(toggleStateOf('isModalLogoutOpen'));
