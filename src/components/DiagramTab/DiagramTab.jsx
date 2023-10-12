@@ -27,7 +27,7 @@ const DiagramTab = () => {
   // TransactionsList trzeba będzie zamienić na to co otrzymamy z backendu
   const list = TransactionsList;
 
-  list.map(dateFromList => {
+  list.forEach(dateFromList => {
     const date = new Date(dateFromList.date);
     const year = date.getFullYear();
     const month = date.toLocaleString('en-US', { month: 'long' });
@@ -61,7 +61,7 @@ const DiagramTab = () => {
   return (
     <div className={css.diagramTab}>
       <div className={css.container}>
-        <div className={css.title}>Statistics</div>
+        <h3 className={css.title}>Statistics</h3>
         <div className={css.filterContainer}>
           <label>
             <select className={css.selectButton} value={selectedMonth} onChange={handleMonthChange}>
@@ -89,6 +89,7 @@ const DiagramTab = () => {
         <div className={css.statisticsContainer}>
           {/* Przekazujemy również selectedMonth i selectedYear do Table */}
           {/* Dodajemy warunek sprawdzający, czy dane są dostępne */}
+
           {(!selectedMonth && !selectedYear) || filteredTransactionsList.length > 0 ? (
             <Table
               transactionsList={!selectedMonth && !selectedYear ? list : filteredTransactionsList}

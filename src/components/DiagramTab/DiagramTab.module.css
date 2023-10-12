@@ -43,11 +43,22 @@
 }
 
 .diagramTab {
+  position: relative;
   padding: 0 20px;
 }
 
 .title {
+  margin-top: 20px;
+  justify-content: center;
+  min-width: 280px;
+  font-size: 30px;
+  font-weight: 400;
   font-family: 'Poppins Regular';
+}
+.statisticsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 @media screen and (min-width: 768px) {
@@ -73,7 +84,15 @@
     width: 100%;
   }
   .filterContainer {
+    flex-direction: row;
+    justify-content: flex-end;
     margin-top: 30px;
+    gap: 14px;
+  }
+
+  .selectButton {
+    width: 160px;
+    margin: 10px 0;
   }
 }
 
@@ -82,20 +101,17 @@
     margin-top: 0;
   }
   .diagramTab {
-    padding: 0;
+    padding: 0 16px 0 69px;
   }
-}
 
-.title {
-  margin-top: 20px;
-  justify-content: center;
-  min-width: 280px;
-  font-size: 30px;
-  font-weight: 400;
-  font-family: 'Poppins Regular';
-}
-.statisticsContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  .filterContainer {
+    gap: 28px;
+  }
+
+  .selectButton {
+    width: 182px;
+  }
+  .title {
+    margin: 0;
+  }
 }

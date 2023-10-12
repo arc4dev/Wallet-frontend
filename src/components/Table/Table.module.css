@@ -66,6 +66,14 @@ table {
   letter-spacing: 0em;
 }
 
+.statsWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
 @media screen and (min-width: 768px) {
   .statisticsTable {
     min-width: 336px;
@@ -73,11 +81,8 @@ table {
     background-color: transparent;
   }
   .statsWrapper {
-    display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
+    justify-content: flex-end;
   }
 }
 
@@ -87,15 +92,8 @@ table {
     min-height: 606px;
   }
   .statisticsTable {
-    min-width: 340px;
-    padding-left: 10px;
-  }
-  .statsWrapper {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
+    min-width: 395px;
+    /* padding-left: 10px; */
   }
 }
 .category-container {
