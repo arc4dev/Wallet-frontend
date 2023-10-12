@@ -4,11 +4,13 @@
   align-items: center;
   gap: 4px;
   cursor: pointer;
-  transition: var(--transitionDefault);
+  transition: transform 0.3s ease;
 }
 
 .editBtn:hover {
-  transform: translateY(-1px);
+  transform: scale(1.05);
+  font-weight: bold;
+  transition: font-weight 0.3s, transform 0.3s;
 }
 
 .editIcon {
@@ -24,10 +26,19 @@
   padding: 4px 12px;
   color: var(--color-secondary);
   background: var(--color-action-ok);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.deleteBtn:hover {
+  transform: scale(1.05);
+  font-weight: bold;
+  transition: font-weight 0.3s, transform 0.3s;
 }
 
 .table {
   width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
 }
 
 .table tbody tr {
@@ -70,14 +81,37 @@
   justify-content: space-between;
 }
 
+tr.total-row td {
+  font-weight: bold;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: var(--color-action-bad);
+  color: var(--color-action-ok);
+}
+
+tr.total-row:nth-child(odd) td:last-child {
+  color: var(--color-action-bad);
+}
+
+tr.total-row:nth-child(even) td:last-child {
+  color: var(--color-action-ok);
+}
+
 @media screen and (min-width: 768px) {
+  .table {
+    width: 100%;
+    justify-content: space-around;
+    max-width: 704px;
+    margin: 0 auto;
+  }
   .table thead {
     display: table-header-group;
-    background-color: var(--color-secondary);
+    border-radius: 30px;
+    border: 1px solid black;
   }
 
   .table thead tr {
-    padding: 12px 20px;
+    padding: 20px 130px 20px 40px;
   }
 
   .table tbody tr {
@@ -105,5 +139,61 @@
 
   .table__addons {
     gap: 8px;
+  }
+  .headerTable {
+    background-color: var(--color-secondary);
+    border-radius: 30px;
+    height: 58px;
+    min-width: 704px;
+    width: 100%;
+  }
+
+  .table_rows {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Circe';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 3.5;
+    border-bottom: 1px solid #4d4343;
+    border-bottom: 1px solid #dcdcdf;
+    box-shadow: 0px 1px 0px 0px #ffffff99;
+  }
+  .editBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .editBtn:hover {
+    transform: scale(1.05);
+    font-weight: bold;
+    transition: font-weight 0.3s, transform 0.3s;
+  }
+
+  .editIcon {
+    width: 14px;
+    height: 16px;
+  }
+
+  .deleteBtn {
+    line-height: normal;
+    font-size: 0.78rem;
+    border-radius: 18px;
+    border: none;
+    padding: 4px 12px;
+    color: var(--color-secondary);
+    background: var(--color-action-ok);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  .deleteBtn:hover {
+    transform: scale(1.05);
+    font-weight: bold;
+    transition: font-weight 0.3s, transform 0.3s;
   }
 }
