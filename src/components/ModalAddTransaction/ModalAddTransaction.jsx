@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import css from './ModalAddTransaction.module.css';
 import IncExpBtn from './IncExpBtn';
 import svg from '../../assets/icons/icons.svg';
-
+import MySelectComponent from './Select';
 import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
 import ReactModal from 'react-modal';
@@ -17,6 +17,19 @@ const ModalAddTransaction = ({ handleClick, isEditing }) => {
   const [transactionType, setTransactionType] = useState('expense');
 
   const isModalAddTransactionOpen = useSelector(selectIsModalAddTransactionOpen);
+
+  const categoryOptions = [
+    { value: 'Main expenses', label: 'Main expenses' },
+    { value: 'Products', label: 'Products' },
+    { value: 'Car', label: 'Car' },
+    { value: 'Self care', label: 'Self care' },
+    { value: 'Child care', label: 'Child care' },
+    { value: 'Household products', label: 'Household products' },
+    { value: 'Education', label: 'Education' },
+    { value: 'Leisure', label: 'Leisure' },
+    { value: 'Other expenses', label: 'Other expenses' },
+    { value: 'Entertainment', label: 'Entertainment' },
+  ];
 
   useEffect(() => {
     if (isModalAddTransactionOpen) {
@@ -127,6 +140,9 @@ const ModalAddTransaction = ({ handleClick, isEditing }) => {
           </span>
         </div>
         <form className={css.formContainer}>
+          <div className={css.categoryContainer}>
+            <MySelectComponent categoryOptions={categoryOptions} />
+          </div>
           <input
             className={css.amountInput}
             type="number"
@@ -148,12 +164,7 @@ const ModalAddTransaction = ({ handleClick, isEditing }) => {
               <use xlinkHref={`${svg}#calendar`}></use>
             </svg>
           </div>
-          {/* <input
-              className={css.dateInput}
-              type="date"
-              value={date}
-              onChange={e => setDate(e.target.value)}
-            /> */}
+
           <textarea
             className={css.commentInput}
             rows="3"

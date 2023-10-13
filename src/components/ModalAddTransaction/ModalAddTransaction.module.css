@@ -56,15 +56,15 @@
 }
 
 .incomeText {
-  color: #24cca7;
+  color: var(--color-action-ok);
 }
 
 .expenseText {
-  color: #ff6596;
+  color: var(--color-action-bad);
 }
 
 .greyText {
-  color: #e0e0e0;
+  color: var(--color-dimmed);
 }
 .formContainer {
   display: flex;
@@ -75,10 +75,34 @@
   gap: 40px;
   font-size: 1rem;
 }
+.categoryContainer {
+  width: 100%;
+  border-bottom: 1.5px solid var(--color-form);
+  padding: 0 1.25rem 0.5rem 1.25rem;
+}
+
+.categoryBox {
+  color: var(--color-dimmed);
+  font-size: 1.125rem;
+  font-family: 'Circe';
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.categoryIcon {
+  width: 1.125rem;
+  height: 0.5625rem;
+  stroke-width: 1px;
+  stroke: #000;
+  fill: none;
+}
+
 .amountInput {
   outline: none;
   border: none;
   color: #000;
+  font-family: 'Circe';
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -176,7 +200,7 @@
     right: 50%;
     transform: translate(-50%, 50%);
     width: 540px;
-    height: 550px;
+    height: auto;
     border-radius: 1.25rem;
     background: #fff;
     padding: 40px 80px;
@@ -193,6 +217,9 @@
     margin: 0;
     margin-bottom: 40px;
     gap: 0;
+  }
+  .categoryContainer {
+    margin-bottom: 40px;
   }
   .amountInput {
     width: 181px;
