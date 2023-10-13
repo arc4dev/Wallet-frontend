@@ -130,6 +130,11 @@ const ModalAddTransaction = ({ handleClick, isEditing }) => {
   const handleTransactionTypeChange = newType => {
     setTransactionType(newType);
   };
+  useEffect(() => {
+    if (transactionType === 'income') {
+      setCategory('');
+    }
+  }, [transactionType]);
 
   const keydownHandler = ({ key }) => {
     switch (key) {
