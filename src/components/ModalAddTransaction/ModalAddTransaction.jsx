@@ -12,7 +12,7 @@ import Buttons from 'components/Buttons/Buttons';
 
 const ModalAddTransaction = ({ handleClick, isEditing }) => {
   const [amount, setAmount] = useState('');
-  const [date, setDate] = useState(new Date()); // Domyślna data
+  const [date, setDate] = useState(new Date());
   const [comment, setComment] = useState('');
   const [transactionType, setTransactionType] = useState('expense');
 
@@ -71,9 +71,10 @@ const ModalAddTransaction = ({ handleClick, isEditing }) => {
     return () => document.removeEventListener('keydown', keydownHandler);
   });
 
+  const isModalOpen = isEditing || isModalAddTransactionOpen;
   return (
     <ReactModal
-      isOpen={isModalAddTransactionOpen}
+      isOpen={isModalOpen}
       onRequestClose={handleClick}
       className={css.modalContainer}
       contentLabel="Add/Edit transaction modal"

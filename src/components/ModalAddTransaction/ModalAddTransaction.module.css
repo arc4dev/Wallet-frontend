@@ -4,7 +4,6 @@
   position: absolute;
   top: 0;
   background: #fff;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   overflow: hidden;
 }
 
@@ -15,6 +14,7 @@
 .modalOverlay {
   position: fixed;
   inset: 0px;
+  top: 50px;
   background: rgba(0, 0, 0, 0.25);
 }
 
@@ -52,6 +52,7 @@
   font-size: 0.89rem;
   margin-bottom: 40px;
   font-family: 'Circe Bold';
+  cursor: pointer;
 }
 
 .incomeText {
@@ -89,6 +90,7 @@
 }
 
 .dateInput {
+  cursor: pointer;
   display: flex;
   color: #e0e0e0;
   justify-content: space-between;
@@ -166,6 +168,9 @@
   text-transform: uppercase;
 }
 @media screen and (min-width: 768px) {
+  .modalOverlay {
+    top: 0;
+  }
   .modalContainer {
     left: 50%;
     right: 50%;
@@ -175,6 +180,7 @@
     border-radius: 1.25rem;
     background: #fff;
     padding: 40px 80px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   }
   .title {
     font-size: 1.67rem;
