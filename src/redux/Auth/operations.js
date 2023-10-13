@@ -17,7 +17,7 @@ export const registerUser = createAsyncThunk('/auth/register', async (body, thun
 
     console.log(res);
 
-    return res.data;
+    return null;
   } catch (err) {
     return thunkAPI.rejectWithValue(err.response);
   }
@@ -31,7 +31,7 @@ export const loginUser = createAsyncThunk('/auth/login', async (body, thunkAPI) 
 
     setAuthToken(res.token);
 
-    return res.data;
+    return res;
   } catch (err) {
     return thunkAPI.rejectWithValue(err.response);
   }
@@ -57,6 +57,8 @@ export const refreshUser = createAsyncThunk('/auth/refresh', async (_, thunkAPI)
 export const logoutUser = createAsyncThunk('/auth/logOut', async (_, thunkAPI) => {
   try {
     clearAuthToken();
+
+    return null;
   } catch (err) {
     return thunkAPI.rejectWithValue(err.message);
   }

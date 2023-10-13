@@ -11,7 +11,7 @@ import { useFormik } from 'formik';
 import PasswordStrengthMeter from 'components/PasswordStrengthMeter/PasswordStrengthMeter';
 import { useDispatch } from 'react-redux';
 import { registerUser } from 'redux/Auth/operations';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -35,28 +35,51 @@ const validationSchema = yup.object({
 });
 
 const RegistrationForm = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { authErr } = useAuth();
+  const { authErr, created } = useAuth();
   const [err, setErr] = useState('');
 
   useEffect(() => {
-    console.log(authErr);
+    const notify = () => {
+      toast.error(err, {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      });
+    };
+
     setErr(authErr);
     if (err) notify();
   }, [authErr, err]);
 
-  const notify = () => {
-    toast.error(err, {
-      position: 'top-right',
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: 'light',
-    });
-  };
+  useEffect(() => {
+    const notify = () => {
+      toast.success('Account created! Verify you email now!', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      });
+    };
+
+    if (created) {
+      notify();
+
+      setTimeout(() => {
+        navigate('/login', { replace: true });
+      }, 3000);
+    }
+  }, [created, navigate]);
 
   const formik = useFormik({
     initialValues: {

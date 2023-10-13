@@ -5,11 +5,11 @@ const initialState = {
   user: {
     name: null,
     email: null,
-    verify: false,
   },
   isLoggedIn: false,
   token: null,
   isRefreshing: false,
+  created: false,
   error: '',
 };
 
@@ -23,19 +23,15 @@ const slice = createSlice({
   },
   extraReducers: {
     [registerUser.fulfilled]: (state, action) => {
-      // state.isRefreshing = false;
-      state.user = action.payload.data;
-      state.token = action.payload.token;
-      state.isLoggedIn = true;
+      state.created = true;
+      state.error = '';
     },
     [loginUser.fulfilled]: (state, action) => {
-      console.log('login', action);
-      // state.user = action.payload.data;
-      // state.token = action.payload.token;
-      state.token = action.payload.token;
+      state.user = action.payload.data.data;
+      state.token = action.payload.data.token;
       state.isLoggedIn = true;
     },
-    [logoutUser.fulfilled]: state => {
+    [logoutUser.fulfilled]: (state, action) => {
       state.user = { name: null, email: null };
       state.token = null;
       state.isLoggedIn = false;
@@ -48,24 +44,14 @@ const slice = createSlice({
     [refreshUser.pending]: state => {
       state.isRefreshing = true;
     },
-    [registerUser.pending]: state => {
-      state.isRefreshing = true;
-    },
     [refreshUser.rejected]: state => {
       state.isRefreshing = false;
     },
     [registerUser.rejected]: (state, action) => {
-      // state.isRefreshing = false;
-      console.log(state);
-      console.log(action);
       state.error = action.payload.data.message;
     },
     [loginUser.rejected]: (state, action) => {
-      // state.isRefreshing = false;
-      console.log(state);
-      console.log(action);
       state.error = action.payload.data.message;
-      state.isLoggedIn = false;
     },
   },
 });

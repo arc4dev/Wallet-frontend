@@ -8,7 +8,7 @@ import LockIcon from '@mui/icons-material/Lock';
 import svg from '../../assets/icons/icons.svg';
 import { useFormik } from 'formik';
 import { NavLink } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { loginUser } from 'redux/Auth/operations';
 import { useEffect } from 'react';
 import { useAuth } from 'hooks/useAuth';
@@ -16,7 +16,6 @@ import { useAuth } from 'hooks/useAuth';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
-import { authError } from 'redux/Auth/selectors';
 
 const validationSchema = yup.object({
   email: yup.string('Enter your email').email('Enter a valid email').required('Email is required'),
@@ -32,27 +31,23 @@ const LoginForm = () => {
   const { authErr } = useAuth();
   const [err, setErr] = useState('');
 
-  // console.log('err', err);
-  // console.log(authErr);
-
   useEffect(() => {
-    console.log(authErr);
+    const notify = () => {
+      toast.error(err, {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      });
+    };
+
     setErr(authErr);
     if (err) notify();
   }, [authErr, err]);
-
-  const notify = () => {
-    toast.error(err, {
-      position: 'top-right',
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: 'light',
-    });
-  };
 
   const formik = useFormik({
     initialValues: {

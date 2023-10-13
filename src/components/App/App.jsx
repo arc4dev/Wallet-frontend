@@ -1,7 +1,7 @@
 import DashboardPage from 'pages/DashboardPage/DashboardPage';
 import LoginPage from 'pages/LoginPage/LoginPage';
 import RegistrationPage from 'pages/RegistrationPage/RegistrationPage';
-import React, { useEffect } from 'react';
+import React from 'react';
 import css from './App.module.css';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import HomeTab from 'components/HomeTab/HomeTab';
@@ -11,8 +11,6 @@ import { StyledEngineProvider } from '@mui/material';
 import NotFoundPage from 'pages/NotFound/NotFoundPage';
 import ProtectedRoute from 'utils/ProtectedRoute';
 import { RestrictedRoute } from 'utils/RestrictedRoute';
-import { useDispatch } from 'react-redux';
-import { useAuth } from 'hooks/useAuth';
 
 export const App = () => {
   // On mount
