@@ -1,21 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 import css from './TableTransactions.module.css';
 import svg from '../../assets/icons/icons.svg';
 import ModalAddTransaction from '../ModalAddTransaction/ModalAddTransaction';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectIsModalEditTransactionOpen } from 'redux/global/selectors';
+import { toggleStateOf } from 'redux/global/slice';
 
 const TableTransactions = () => {
-  const [isEditModalOpen, setEditModalOpen] = useState(false);
+  const dispatch = useDispatch();
+  const isModalEditTransactionOpen = useSelector(selectIsModalEditTransactionOpen);
 
   const handleEditClick = () => {
-    console.log('Edit button clicked');
-    // Otwarcie modala edycji transakcji
-    setEditModalOpen(true);
+    dispatch(toggleStateOf('isModalEditTransactionOpen'));
   };
-  const handleAddClick = () => {
-    console.log('Add button clicked');
-    // Otwarcie modala dodawania nowej transakcji
-    setEditModalOpen(true);
+  const handleDeleteClick = () => {
+    console.log('Delete transaction');
   };
+
   return (
     <>
       <table class={css.table}>
@@ -65,7 +66,7 @@ const TableTransactions = () => {
                   </svg>
                   <span className={css.editText}>Edit</span>
                 </div>
-                <button className={css.deleteBtn} type="button">
+                <button onClick={handleDeleteClick} className={css.deleteBtn} type="button">
                   Delete
                 </button>
               </td>
@@ -73,11 +74,11 @@ const TableTransactions = () => {
           </tbody>
         </table>
       </table>
-      {isEditModalOpen && (
+      {isModalEditTransactionOpen && (
         <ModalAddTransaction
-          handleClick={() => setEditModalOpen(false)}
+          handleClick={handleEditClick}
           isEditing={true}
-          isModalAddTransactionOpen={isEditModalOpen}
+          isModalAddTransactionOpen={isModalEditTransactionOpen}
         />
       )}
     </>
