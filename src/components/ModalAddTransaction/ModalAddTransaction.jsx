@@ -14,7 +14,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { addTransaction } from 'redux/finance/operations';
 
-const ModalAddTransaction = ({ handleClick, isEditing }) => {
+const ModalAddTransaction = ({ handleClick, isEditing, initialTransactionData }) => {
   const [amount, setAmount] = useState('');
   const [date, setDate] = useState(new Date());
   const [comment, setComment] = useState('');
@@ -37,6 +37,16 @@ const ModalAddTransaction = ({ handleClick, isEditing }) => {
     { value: 'Other expenses', label: 'Other expenses' },
     { value: 'Entertainment', label: 'Entertainment' },
   ];
+
+  useEffect(() => {
+    if (isEditing && initialTransactionData) {
+      setAmount(initialTransactionData.sum);
+      setCategory(initialTransactionData.category);
+      setDate(new Date(initialTransactionData.date));
+      setComment(initialTransactionData.comment);
+      setTransactionType(initialTransactionData.category === 'income' ? 'income' : 'expense');
+    }
+  }, [isEditing, initialTransactionData]);
 
   useEffect(() => {
     if (isModalAddTransactionOpen) {
