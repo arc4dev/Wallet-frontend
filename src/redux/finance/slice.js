@@ -1,43 +1,9 @@
-import { createSlice, nanoid } from '@reduxjs/toolkit';
-import { addTransaction } from './operations';
+import { createSlice } from '@reduxjs/toolkit';
+import { addTransaction, fetchTransactions } from './operations';
 
 const initialState = {
-  data: [
-    {
-      id: nanoid(),
-      sum: 100, // income
-      category: 'income',
-      comment: 'work',
-      type: '+',
-      date: new Date().toLocaleDateString(),
-    },
-    {
-      id: nanoid(),
-      sum: -50, // expense
-      category: 'main expenses',
-      comment: 'life',
-      type: '-',
-      date: new Date().toLocaleDateString(),
-    },
-    {
-      id: nanoid(),
-      sum: -150, // expense
-      category: 'selfcare',
-      comment: 'life',
-      type: '-',
-      date: new Date().toLocaleDateString(),
-    },
-    {
-      id: nanoid(),
-      sum: -100, // expense
-      category: 'products',
-      comment: 'life',
-      type: '-',
-      date: new Date().toLocaleDateString(),
-    },
-  ],
+  data: [],
   totalBalance: 0,
-  statistics: {}, // I assume object of objects TODO
   isLoading: false,
   error: null,
 };
@@ -62,10 +28,19 @@ const slice = createSlice({
   extraReducers: {
     [addTransaction.pending]: handlePending,
     [addTransaction.rejected]: handleRejected,
+    [fetchTransactions.pending]: handlePending,
+    [fetchTransactions.rejected]: handleRejected,
     [addTransaction.fulfilled]: (state, action) => {
       state.isLoading = false;
       state.error = null;
-      state.items.push(action.payload);
+      state.data.push(action.payload);
+    },
+    [fetchTransactions.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.error = null;
+
+      state.data = action.payload.data;
+      state.totalBalance = action.payload.balance;
     },
   },
 });

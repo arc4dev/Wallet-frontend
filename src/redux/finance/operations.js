@@ -28,3 +28,16 @@ export const deleteTransaction = createAsyncThunk(
     }
   }
 );
+
+export const fetchTransactions = createAsyncThunk(
+  '/users/fetchTransactions',
+  async (_, thunkAPI) => {
+    try {
+      const res = await axios.get('/users/transactions');
+
+      return res.data;
+    } catch (err) {
+      thunkAPI.rejectWithValue(err.message);
+    }
+  }
+);

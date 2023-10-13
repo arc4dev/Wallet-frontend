@@ -46,7 +46,6 @@ const slice = createSlice({
     },
     [refreshUser.rejected]: (state, action) => {
       state.isRefreshing = false;
-      console.log(action.payload);
     },
     [registerUser.rejected]: (state, action) => {
       state.error = action.payload.data.message;

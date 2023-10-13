@@ -37,7 +37,7 @@ const TableTransactions = () => {
             <tbody>
               {transactions.map(transaction => (
                 <tr>
-                  <td data-label="Date">{transaction.date}</td>
+                  <td data-label="Date">{new Date(transaction.date).toLocaleDateString()}</td>
                   <td data-label="Type">{transaction.sum >= 0 ? '+' : '-'}</td>
                   <td data-label="Category">{transaction.category}</td>
                   <td data-label="Comment">{transaction.comment}</td>
