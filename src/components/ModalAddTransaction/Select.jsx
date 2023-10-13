@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Select, { components } from 'react-select';
 import svg from '../../assets/icons/icons.svg';
 import css from './ModalAddTransaction.module.css';
 
-const MySelectComponent = ({ categoryOptions }) => {
+const MySelectComponent = ({ categoryOptions, onCategoryChange }) => {
+  const [selectedCategory, setSelectedCategory] = useState(null);
+
   const DropdownIndicator = props => {
     return (
       components.DropdownIndicator && (
@@ -14,6 +16,11 @@ const MySelectComponent = ({ categoryOptions }) => {
         </components.DropdownIndicator>
       )
     );
+  };
+
+  const handleCategoryChange = selectedOption => {
+    setSelectedCategory(selectedOption);
+    onCategoryChange(selectedOption.value);
   };
 
   return (
@@ -62,6 +69,8 @@ const MySelectComponent = ({ categoryOptions }) => {
           backdropFilter: 'blur(25px)',
         }),
       }}
+      value={selectedCategory}
+      onChange={handleCategoryChange}
     />
   );
 };
