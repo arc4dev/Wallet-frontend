@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 
-import TransactionsList from './TransactionsList';
 import Table from 'components/Table/Table';
 import css from './DiagramTab.module.css';
+import { useSelector } from 'react-redux';
+import { selectTransactions } from 'redux/finance/selectors';
 // import ChartComponent from 'components/Chart/Chart';
 
 const DiagramTab = () => {
   // Dodaj stany do przechowywania wyboru miesiąca i roku
   const [selectedMonth, setSelectedMonth] = useState('');
   const [selectedYear, setSelectedYear] = useState('');
+
+  // TransactionsList trzeba będzie zamienić na to co otrzymamy z backendu
+  const list = useSelector(selectTransactions);
+
   // Funkcja obsługująca zmianę miesiąca
   const handleMonthChange = event => {
     const selectedMonth = event.target.value;
@@ -23,9 +28,6 @@ const DiagramTab = () => {
 
   const years = [];
   const months = [];
-
-  // TransactionsList trzeba będzie zamienić na to co otrzymamy z backendu
-  const list = TransactionsList;
 
   list.forEach(dateFromList => {
     const date = new Date(dateFromList.date);
@@ -55,8 +57,6 @@ const DiagramTab = () => {
       return year === +selectedYear && month === selectedMonth;
     }
   });
-
-  console.log('filtered', filteredTransactionsList);
 
   return (
     <div className={css.diagramTab}>
