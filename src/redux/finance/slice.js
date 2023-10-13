@@ -5,16 +5,34 @@ const initialState = {
   data: [
     {
       id: nanoid(),
-      amount: 100, // income
+      sum: 100, // income
       category: 'income',
       comment: 'work',
+      type: '+',
       date: new Date().toLocaleDateString(),
     },
     {
       id: nanoid(),
-      amount: -50, // expense
-      category: 'main',
+      sum: -50, // expense
+      category: 'main expenses',
       comment: 'life',
+      type: '-',
+      date: new Date().toLocaleDateString(),
+    },
+    {
+      id: nanoid(),
+      sum: -150, // expense
+      category: 'selfcare',
+      comment: 'life',
+      type: '-',
+      date: new Date().toLocaleDateString(),
+    },
+    {
+      id: nanoid(),
+      sum: -100, // expense
+      category: 'products',
+      comment: 'life',
+      type: '-',
       date: new Date().toLocaleDateString(),
     },
   ],

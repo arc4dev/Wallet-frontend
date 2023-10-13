@@ -12,7 +12,6 @@ import PasswordStrengthMeter from 'components/PasswordStrengthMeter/PasswordStre
 import { useDispatch } from 'react-redux';
 import { registerUser } from 'redux/Auth/operations';
 import { NavLink, useNavigate } from 'react-router-dom';
-
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useAuth } from 'hooks/useAuth';

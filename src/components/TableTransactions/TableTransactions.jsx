@@ -38,10 +38,19 @@ const TableTransactions = () => {
               {transactions.map(transaction => (
                 <tr>
                   <td data-label="Date">{transaction.date}</td>
-                  <td data-label="Type">{transaction.amount >= 0 ? '+' : '-'}</td>
+                  <td data-label="Type">{transaction.sum >= 0 ? '+' : '-'}</td>
                   <td data-label="Category">{transaction.category}</td>
                   <td data-label="Comment">{transaction.comment}</td>
-                  <td data-label="Sum">{Math.abs(transaction.amount)}</td>
+                  <td
+                    style={
+                      transaction.sum > 0
+                        ? { color: 'var(--color-action-ok) ', fontWeight: '700' }
+                        : { color: 'var(--color-action-bad)', fontWeight: '700' }
+                    }
+                    data-label="Sum"
+                  >
+                    {Math.abs(transaction.sum)}
+                  </td>
                   <td class={css.table__addons}>
                     <div className={css.editBtn} onClick={handleEditTransaction}>
                       <svg className={css.editIcon}>
