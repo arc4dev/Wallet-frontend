@@ -1,7 +1,7 @@
 import DashboardPage from 'pages/DashboardPage/DashboardPage';
 import LoginPage from 'pages/LoginPage/LoginPage';
 import RegistrationPage from 'pages/RegistrationPage/RegistrationPage';
-import React from 'react';
+import React, { useEffect } from 'react';
 import css from './App.module.css';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import HomeTab from 'components/HomeTab/HomeTab';
@@ -11,14 +11,24 @@ import { StyledEngineProvider } from '@mui/material';
 import NotFoundPage from 'pages/NotFound/NotFoundPage';
 import ProtectedRoute from 'utils/ProtectedRoute';
 import { RestrictedRoute } from 'utils/RestrictedRoute';
+import { refreshUser } from 'redux/Auth/operations';
+import { useAuth } from 'hooks/useAuth';
+import { useDispatch } from 'react-redux';
+import Loader from 'components/Loader/Loader';
 
 export const App = () => {
-  // On mount
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const { isRefreshing } = useAuth();
 
-  // useEffect(() => {}, []);
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
 
-  return (
+  return isRefreshing ? (
+    <div className={css.appLoader}>
+      <Loader />
+    </div>
+  ) : (
     <StyledEngineProvider injectFirst>
       <div className={css.container}>
         <Routes>

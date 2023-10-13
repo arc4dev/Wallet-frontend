@@ -8,18 +8,18 @@ const initialState = {
       amount: 100, // income
       category: 'income',
       comment: 'work',
-      date: new Date().toISOString(),
+      date: new Date().toLocaleDateString(),
     },
     {
       id: nanoid(),
       amount: -50, // expense
       category: 'main',
       comment: 'life',
-      date: new Date().toISOString(),
+      date: new Date().toLocaleDateString(),
     },
   ],
   totalBalance: 0,
-  statistics: {}, // I presume object of objects TODO
+  statistics: {}, // I assume object of objects TODO
   isLoading: false,
   error: null,
 };
