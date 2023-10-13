@@ -9,6 +9,7 @@ import { resetGlobal, toggleStateOf } from 'redux/global/slice';
 import { resetAuth } from 'redux/Auth/slice';
 import { resetFinance } from 'redux/finance/slice';
 import { useEffect } from 'react';
+import { logoutUser } from 'redux/Auth/operations';
 
 const ModalLogout = ({ name }) => {
   const dispatch = useDispatch();
@@ -56,6 +57,7 @@ const ModalLogout = ({ name }) => {
 
   const logoutModal = () => {
     notify();
+    dispatch(logoutUser());
     dispatch(resetGlobal());
     dispatch(resetAuth());
     dispatch(resetFinance());

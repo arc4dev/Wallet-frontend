@@ -1,7 +1,7 @@
 import DashboardPage from 'pages/DashboardPage/DashboardPage';
 import LoginPage from 'pages/LoginPage/LoginPage';
 import RegistrationPage from 'pages/RegistrationPage/RegistrationPage';
-import React, { useEffect } from 'react';
+import React from 'react';
 import css from './App.module.css';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import HomeTab from 'components/HomeTab/HomeTab';
@@ -14,7 +14,9 @@ import { RestrictedRoute } from 'utils/RestrictedRoute';
 
 export const App = () => {
   // On mount
-  useEffect(() => {}, []);
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {}, []);
 
   return (
     <StyledEngineProvider injectFirst>
