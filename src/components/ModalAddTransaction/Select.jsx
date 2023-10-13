@@ -52,7 +52,6 @@ const MySelectComponent = ({ categoryOptions, onCategoryChange }) => {
         }),
         option: (provided, state) => ({
           ...provided,
-          color: '#000',
           fontFamily: 'Circe',
           fontSize: '1.125rem',
           fontStyle: 'normal',
@@ -60,6 +59,8 @@ const MySelectComponent = ({ categoryOptions, onCategoryChange }) => {
           lineHeight: 'normal',
           cursor: 'pointer',
           height: '2.75rem',
+          color: state.isFocused ? '#ff6596' : '#000',
+          backgroundColor: state.isFocused ? 'none' : 'none',
         }),
         menu: provided => ({
           ...provided,
