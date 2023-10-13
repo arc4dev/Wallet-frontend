@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectIsModalEditTransactionOpen } from 'redux/global/selectors';
 import { toggleStateOf } from 'redux/global/slice';
 import { selectTransactions } from 'redux/finance/selectors';
+import { deleteTransaction } from 'redux/finance/operations';
 
 const TableTransactions = () => {
   const dispatch = useDispatch();
@@ -15,14 +16,14 @@ const TableTransactions = () => {
   const handleEditTransaction = () => {
     dispatch(toggleStateOf('isModalEditTransactionOpen'));
   };
-  const handleDeleteTransaction = () => {
-    console.log('Delete transaction');
+  const handleDeleteTransaction = id => {
+    dispatch(deleteTransaction(id));
   };
 
   return (
     <>
       {transactions.length !== 0 ? (
-        <table class={css.table}>
+        <div className={css.table}>
           <thead>
             <tr className={`${css.table_rows} ${css.headerTable}`}>
               <th>Date</th>
@@ -33,7 +34,7 @@ const TableTransactions = () => {
               <th></th>
             </tr>
           </thead>
-          <table class={css.table}>
+          <table className={css.table}>
             <tbody>
               {transactions.map(transaction => (
                 <tr>
@@ -51,7 +52,7 @@ const TableTransactions = () => {
                   >
                     {Math.abs(transaction.sum)}
                   </td>
-                  <td class={css.table__addons}>
+                  <td className={css.table__addons}>
                     <div className={css.editBtn} onClick={handleEditTransaction}>
                       <svg className={css.editIcon}>
                         <use xlinkHref={`${svg}#icon-edit`}></use>
@@ -59,7 +60,7 @@ const TableTransactions = () => {
                       <span className={css.editText}>Edit</span>
                     </div>
                     <button
-                      onClick={handleDeleteTransaction}
+                      onClick={() => handleDeleteTransaction(transaction._id)}
                       className={css.deleteBtn}
                       type="button"
                     >
@@ -70,7 +71,7 @@ const TableTransactions = () => {
               ))}
             </tbody>
           </table>
-        </table>
+        </div>
       ) : (
         'No transactions added yet!'
       )}

@@ -9,18 +9,25 @@ import css from './DashboardPage.module.css';
 import svg from '../../assets/icons/icons.svg';
 import Currency from 'components/Currency/Currency';
 import Balance from 'components/Balance/Balance';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchTransactions } from 'redux/finance/operations';
+import Loader from 'components/Loader/Loader';
+import { selectIsLoading } from 'redux/finance/selectors';
 
 const DashboardPage = () => {
   const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsLoading);
 
   // On mount
   useEffect(() => {
     dispatch(fetchTransactions());
   }, [dispatch]);
 
-  return (
+  return isLoading ? (
+    <div className={css.dashboardLoader}>
+      <Loader />
+    </div>
+  ) : (
     <div className={`container ${css.dashboard}`}>
       <ReactMedia
         queries={{

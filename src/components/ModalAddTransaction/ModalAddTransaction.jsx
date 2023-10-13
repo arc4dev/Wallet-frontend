@@ -6,22 +6,23 @@ import MySelectComponent from './Select';
 import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
 import ReactModal from 'react-modal';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectIsModalAddTransactionOpen } from 'redux/global/selectors';
 import Buttons from 'components/Buttons/Buttons';
 import * as yup from 'yup';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { addTransaction } from 'redux/finance/operations';
 
 const ModalAddTransaction = ({ handleClick, isEditing }) => {
   const [amount, setAmount] = useState('');
   const [date, setDate] = useState(new Date());
   const [comment, setComment] = useState('');
-  const [transactionType, setTransactionType] = useState('expense');
+  const [transactionType, setTransactionType] = useState('income');
   const [category, setCategory] = useState('');
   const [validationErrors, setValidationErrors] = useState({});
-  const [isValidationEnabled, setIsValidationEnabled] = useState(false);
 
+  const dispatch = useDispatch();
   const isModalAddTransactionOpen = useSelector(selectIsModalAddTransactionOpen);
 
   const categoryOptions = [
@@ -37,6 +38,18 @@ const ModalAddTransaction = ({ handleClick, isEditing }) => {
     { value: 'Entertainment', label: 'Entertainment' },
   ];
 
+  useEffect(() => {
+    if (isModalAddTransactionOpen) {
+      document.body.classList.add(css.modalOpen);
+    } else {
+      document.body.classList.remove(css.modalOpen);
+    }
+  }, [isModalAddTransactionOpen]);
+
+  useEffect(() => {
+    setCategory('');
+  }, [transactionType]);
+
   const transactionSchema = yup.object().shape({
     amount: yup
       .number()
@@ -50,8 +63,45 @@ const ModalAddTransaction = ({ handleClick, isEditing }) => {
     comment: yup.string(),
   });
 
+  const handleAdd = async () => {
+    const isValid = await handleValidation();
+    if (isValid) {
+      const newAmount = transactionType === 'expense' ? -amount : +amount;
+      const newCategory = transactionType === 'expense' ? category.toLowerCase() : 'income';
+
+      const newTransaction = {
+        sum: newAmount,
+        date,
+        comment,
+        category: newCategory,
+      };
+
+      console.log('Adding new transaction:', newTransaction);
+      handleClick();
+
+      // Add transaction
+      dispatch(addTransaction({ ...newTransaction }));
+    }
+  };
+
+  const handleSave = async () => {
+    const isValid = await handleValidation();
+    if (isValid) {
+      const newAmount = transactionType === 'expense' ? -amount : +amount;
+      const newCategory = transactionType === 'expense' ? category : 'income';
+
+      const updatedTransaction = {
+        sum: newAmount,
+        date,
+        comment,
+        category: newCategory,
+      };
+      console.log('Updating transaction:', updatedTransaction);
+      // Savw
+    }
+  };
+
   const handleValidation = async () => {
-    console.log('Category:', category);
     if (transactionType === 'expense' && category === '') {
       toast.error('Category is required for expenses', { position: 'top-right' });
       return false;
@@ -86,48 +136,8 @@ const ModalAddTransaction = ({ handleClick, isEditing }) => {
     }
   };
 
-  useEffect(() => {
-    if (isModalAddTransactionOpen) {
-      document.body.classList.add(css.modalOpen);
-    } else {
-      document.body.classList.remove(css.modalOpen);
-    }
-  }, [isModalAddTransactionOpen]);
-
-  const handleAdd = async () => {
-    const isValid = await handleValidation();
-    if (isValid) {
-      const newAmount = transactionType === 'expense' ? -amount : +amount;
-      const newTransaction = {
-        amount: newAmount,
-        date,
-        comment,
-        category: category,
-        transactionType,
-      };
-      console.log('Adding new transaction:', newTransaction);
-      handleClick();
-      // Add
-    }
-  };
-
-  const handleSave = async () => {
-    const isValid = await handleValidation();
-    if (isValid) {
-      const newAmount = transactionType === 'expense' ? -amount : +amount;
-      const updatedTransaction = {
-        amount: newAmount,
-        date,
-        comment,
-        category: category,
-        transactionType,
-      };
-      console.log('Updating transaction:', updatedTransaction);
-      // Savw
-    }
-  };
-
   const handleTransactionTypeChange = newType => {
+    setCategory('');
     setTransactionType(newType);
   };
 
