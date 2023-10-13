@@ -8,14 +8,14 @@ const initialState = {
       amount: 100, // income
       category: 'income',
       comment: 'work',
-      date: new Date(),
+      date: new Date().toISOString(),
     },
     {
       id: nanoid(),
       amount: -50, // expense
       category: 'main',
       comment: 'life',
-      date: new Date(),
+      date: new Date().toISOString(),
     },
   ],
   totalBalance: 0,
