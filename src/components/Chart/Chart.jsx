@@ -71,7 +71,6 @@ const ChartComponent = ({ totalIncome, totalExpensesByCategory }) => {
     setChartData(chartData);
   }, [totalIncome, totalExpensesByCategory]);
 
-  console.log('chartData', totalExpensesByCategory);
   // Renderujemy div z klasą 'chart-container',
   // zawierający tytuł 'Chart' i wykres (jeśli dane są dostępne).
   return (

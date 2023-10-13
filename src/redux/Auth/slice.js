@@ -6,9 +6,11 @@ const initialState = {
     name: null,
     email: null,
   },
-  isLoggedIn: true,
+  isLoggedIn: false,
   token: null,
   isRefreshing: false,
+  created: false,
+  error: '',
 };
 
 const slice = createSlice({
@@ -21,14 +23,15 @@ const slice = createSlice({
   },
   extraReducers: {
     [registerUser.fulfilled]: (state, action) => {
-      state.isRefreshing = false;
+      state.created = true;
+      state.error = '';
     },
     [loginUser.fulfilled]: (state, action) => {
       state.user = action.payload.data;
       state.token = action.payload.token;
       state.isLoggedIn = true;
     },
-    [logoutUser.fulfilled]: state => {
+    [logoutUser.fulfilled]: (state, action) => {
       state.user = { name: null, email: null };
       state.token = null;
       state.isLoggedIn = false;
@@ -41,8 +44,14 @@ const slice = createSlice({
     [refreshUser.pending]: state => {
       state.isRefreshing = true;
     },
-    [refreshUser.rejected]: state => {
+    [refreshUser.rejected]: (state, action) => {
       state.isRefreshing = false;
+    },
+    [registerUser.rejected]: (state, action) => {
+      state.error = action.payload.data.message;
+    },
+    [loginUser.rejected]: (state, action) => {
+      state.error = action.payload.data.message;
     },
   },
 });

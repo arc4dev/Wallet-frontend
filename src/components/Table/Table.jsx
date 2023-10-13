@@ -116,7 +116,6 @@ const Table = ({ transactionsList, categories = [] }) => {
   // console.log('totalExpensesByCategory:', totalExpensesByCategory);
   // console.log('totalIncome:', totalIncome);
   // Zwracanie JSX - renderowanie tabeli i komponentu ChartComponent
-  console.log('total income', totalIncome);
   return (
     <div className={css.statsWrapper}>
       <table className={css.statisticsTable}>

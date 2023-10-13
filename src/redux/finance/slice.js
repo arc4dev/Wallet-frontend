@@ -1,25 +1,14 @@
-import { createSlice, nanoid } from '@reduxjs/toolkit';
-import { addTransaction } from './operations';
+import { createSlice } from '@reduxjs/toolkit';
+import {
+  addTransaction,
+  deleteTransaction,
+  editTransaction,
+  fetchTransactions,
+} from './operations';
 
 const initialState = {
-  data: [
-    {
-      id: nanoid(),
-      amount: 100, // income
-      category: 'income',
-      comment: 'work',
-      date: new Date().toISOString(),
-    },
-    {
-      id: nanoid(),
-      amount: -50, // expense
-      category: 'main',
-      comment: 'life',
-      date: new Date().toISOString(),
-    },
-  ],
+  data: [],
   totalBalance: 0,
-  statistics: {}, // I presume object of objects TODO
   isLoading: false,
   error: null,
 };
@@ -40,18 +29,48 @@ const slice = createSlice({
     resetFinance: () => {
       return initialState;
     },
+    setBalance: (state, action) => {
+      state.totalBalance = action.payload;
+    },
   },
   extraReducers: {
     [addTransaction.pending]: handlePending,
     [addTransaction.rejected]: handleRejected,
+    [editTransaction.pending]: handlePending,
+    [editTransaction.rejected]: handleRejected,
+    [deleteTransaction.pending]: handlePending,
+    [deleteTransaction.rejected]: handleRejected,
+    [fetchTransactions.pending]: handlePending,
+    [fetchTransactions.rejected]: handleRejected,
     [addTransaction.fulfilled]: (state, action) => {
       state.isLoading = false;
       state.error = null;
-      state.items.push(action.payload);
+
+      state.data.push(action.payload);
+      state.totalBalance = state.data.reduce((acc, curr) => acc + curr.sum, 0);
+    },
+    [editTransaction.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.error = null;
+
+      const index = state.data.findIndex(transaction => transaction._id === action.payload._id);
+      if (index !== -1) state.data[index] = action.payload;
+    },
+    [fetchTransactions.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.error = null;
+
+      state.data = action.payload.data;
+    },
+    [deleteTransaction.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.error = null;
+
+      state.data = state.data.filter(transaction => transaction._id !== action.payload);
     },
   },
 });
 
-export const { resetFinance } = slice.actions;
+export const { resetFinance, setBalance } = slice.actions;
 
 export const financeReducer = slice.reducer;

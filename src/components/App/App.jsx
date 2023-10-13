@@ -11,12 +11,24 @@ import { StyledEngineProvider } from '@mui/material';
 import NotFoundPage from 'pages/NotFound/NotFoundPage';
 import ProtectedRoute from 'utils/ProtectedRoute';
 import { RestrictedRoute } from 'utils/RestrictedRoute';
+import { refreshUser } from 'redux/Auth/operations';
+import { useAuth } from 'hooks/useAuth';
+import { useDispatch } from 'react-redux';
+import Loader from 'components/Loader/Loader';
 
 export const App = () => {
-  // On mount
-  useEffect(() => {}, []);
+  const dispatch = useDispatch();
+  const { isRefreshing } = useAuth();
 
-  return (
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
+  return isRefreshing ? (
+    <div className={css.appLoader}>
+      <Loader />
+    </div>
+  ) : (
     <StyledEngineProvider injectFirst>
       <div className={css.container}>
         <Routes>

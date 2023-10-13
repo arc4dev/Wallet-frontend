@@ -9,6 +9,14 @@ import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import svg from '../../assets/icons/icons.svg';
 import { useFormik } from 'formik';
 import PasswordStrengthMeter from 'components/PasswordStrengthMeter/PasswordStrengthMeter';
+import { useDispatch } from 'react-redux';
+import { registerUser } from 'redux/Auth/operations';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useAuth } from 'hooks/useAuth';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 const validationSchema = yup.object({
   email: yup.string('Enter your email').email('Enter a valid email').required('Email is required'),
@@ -26,6 +34,52 @@ const validationSchema = yup.object({
 });
 
 const RegistrationForm = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { authErr, created } = useAuth();
+  const [err, setErr] = useState('');
+
+  useEffect(() => {
+    const notify = () => {
+      toast.error(err, {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      });
+    };
+
+    setErr(authErr);
+    if (err) notify();
+  }, [authErr, err]);
+
+  useEffect(() => {
+    const notify = () => {
+      toast.success('Account created! Verify you email now!', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      });
+    };
+
+    if (created) {
+      notify();
+
+      setTimeout(() => {
+        navigate('/login', { replace: true });
+      }, 3000);
+    }
+  }, [created, navigate]);
+
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -35,7 +89,15 @@ const RegistrationForm = () => {
     },
     validationSchema: validationSchema,
     onSubmit: values => {
-      console.log(values); // <- here POST to /signup endpoint
+      const registerElements = {
+        email: values.email,
+        name: values.name,
+        password: values.password,
+        passwordConfirm: values.checkPassword,
+      };
+
+      dispatch(registerUser(registerElements));
+      setErr('');
     },
   });
 
@@ -135,9 +197,29 @@ const RegistrationForm = () => {
             Register
           </Button>
         </form>
-        <Button variant="outlined" className={`${css.button} ${css.outlined}`} type="submit">
+        <Button
+          variant="outlined"
+          className={`${css.button} ${css.outlined}`}
+          type="submit"
+          to="/login"
+          component={NavLink}
+        >
           Log in
         </Button>
+      </div>
+      <div>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
       </div>
     </div>
   );
