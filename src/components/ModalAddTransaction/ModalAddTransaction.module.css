@@ -114,17 +114,16 @@
 }
 
 .dateInput {
-  cursor: pointer;
+  /* cursor: pointer; */
   display: flex;
-  color: #e0e0e0;
   justify-content: space-between;
   padding: 0 1.25rem 0.5rem 1.25rem;
   border-bottom: 1.5px solid #e0e0e0;
 }
 .date {
+  cursor: pointer;
   outline: none;
   border: none;
-  color: #000;
   font-family: 'Circe';
   font-style: normal;
   font-size: 1rem;

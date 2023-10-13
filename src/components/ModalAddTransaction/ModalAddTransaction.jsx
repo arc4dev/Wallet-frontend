@@ -20,7 +20,6 @@ const ModalAddTransaction = ({ handleClick, isEditing }) => {
   const [transactionType, setTransactionType] = useState('expense');
   const [category, setCategory] = useState('');
   const [validationErrors, setValidationErrors] = useState({});
-  const [isValidationEnabled, setIsValidationEnabled] = useState(false);
 
   const isModalAddTransactionOpen = useSelector(selectIsModalAddTransactionOpen);
 
