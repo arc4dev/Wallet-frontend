@@ -13,7 +13,6 @@ import Balance from 'components/Balance/Balance';
 class DashboardPage extends Component {
   componentDidMount() {
     this.fetchBalance();
-    this.fetchHeader();
     this.fetchNavigation();
   }
 
@@ -28,8 +27,8 @@ class DashboardPage extends Component {
         // console.error('Błąd podczas pobierania stanu balansu:', error);
       });
   }
-  fetchHeader() {
-    fetch('/api/header')
+  fetchTransactions() {
+    fetch('/api/users/transactions')
       .then(response => response.json())
       .then(data => {
         //Tu można aktualizować stan aplikacji z pobranymi danymi
@@ -37,17 +36,6 @@ class DashboardPage extends Component {
       })
       .catch(error => {
         // console.error('Błąd podczas pobierania danych nagłówka:', error);
-      });
-  }
-  fetchNavigation() {
-    fetch('/api/navigation')
-      .then(response => response.json())
-      .then(data => {
-        //Tu można aktualizować stan aplikacji z pobranymi danymi
-        // console.log('Dane nawigacji:', data);
-      })
-      .catch(error => {
-        // console.error('Błąd podczas pobierania danych nawigacji:', error);
       });
   }
 
