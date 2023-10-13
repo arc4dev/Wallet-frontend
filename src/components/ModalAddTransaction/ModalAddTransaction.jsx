@@ -2,21 +2,89 @@ import React, { useEffect, useState } from 'react';
 import css from './ModalAddTransaction.module.css';
 import IncExpBtn from './IncExpBtn';
 import svg from '../../assets/icons/icons.svg';
-
+import MySelectComponent from './Select';
 import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
 import ReactModal from 'react-modal';
 import { useSelector } from 'react-redux';
 import { selectIsModalAddTransactionOpen } from 'redux/global/selectors';
 import Buttons from 'components/Buttons/Buttons';
+import * as yup from 'yup';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ModalAddTransaction = ({ handleClick, isEditing }) => {
   const [amount, setAmount] = useState('');
   const [date, setDate] = useState(new Date());
   const [comment, setComment] = useState('');
   const [transactionType, setTransactionType] = useState('expense');
+  const [category, setCategory] = useState('');
+  const [validationErrors, setValidationErrors] = useState({});
+  const [isValidationEnabled, setIsValidationEnabled] = useState(false);
 
   const isModalAddTransactionOpen = useSelector(selectIsModalAddTransactionOpen);
+
+  const categoryOptions = [
+    { value: 'Main expenses', label: 'Main expenses' },
+    { value: 'Products', label: 'Products' },
+    { value: 'Car', label: 'Car' },
+    { value: 'Self care', label: 'Self care' },
+    { value: 'Child care', label: 'Child care' },
+    { value: 'Household products', label: 'Household products' },
+    { value: 'Education', label: 'Education' },
+    { value: 'Leisure', label: 'Leisure' },
+    { value: 'Other expenses', label: 'Other expenses' },
+    { value: 'Entertainment', label: 'Entertainment' },
+  ];
+
+  const transactionSchema = yup.object().shape({
+    amount: yup
+      .number()
+      .required('Amount is required')
+      .min(0, 'Amount must be greater than or equal to 0'),
+    date: yup.date().required('Date is required'),
+    category: yup.string().when('transactionType', {
+      is: 'expense',
+      then: yup.string().required('Category is required for expenses'),
+    }),
+    comment: yup.string(),
+  });
+
+  const handleValidation = async () => {
+    console.log('Category:', category);
+    if (transactionType === 'expense' && category === '') {
+      toast.error('Category is required for expenses', { position: 'top-right' });
+      return false;
+    }
+    if (amount === '') {
+      toast.error('Amount is required', { position: 'top-right' });
+      return false;
+    }
+    try {
+      await transactionSchema.validate(
+        {
+          amount: parseFloat(amount),
+          date,
+          category: transactionType === 'expense' ? category : undefined,
+          comment,
+        },
+        { abortEarly: false }
+      );
+      setValidationErrors({});
+      return true;
+    } catch (errors) {
+      const errorsObject = errors.inner.reduce((acc, error) => {
+        acc[error.path] = error.message;
+        return acc;
+      }, {});
+      setValidationErrors(errorsObject);
+      Object.keys(errorsObject).forEach(key => {
+        toast.error(errorsObject[key], { position: 'top-right' });
+      });
+
+      return false;
+    }
+  };
 
   useEffect(() => {
     if (isModalAddTransactionOpen) {
@@ -26,31 +94,37 @@ const ModalAddTransaction = ({ handleClick, isEditing }) => {
     }
   }, [isModalAddTransactionOpen]);
 
-  const handleAdd = e => {
-    let newAmount = +amount;
-    if (transactionType === 'expense') newAmount = -amount;
-
-    const newTransaction = {
-      amount: newAmount,
-      date,
-      comment,
-    };
-
-    console.log(newTransaction);
-    // add
+  const handleAdd = async () => {
+    const isValid = await handleValidation();
+    if (isValid) {
+      const newAmount = transactionType === 'expense' ? -amount : +amount;
+      const newTransaction = {
+        amount: newAmount,
+        date,
+        comment,
+        category: category,
+        transactionType,
+      };
+      console.log('Adding new transaction:', newTransaction);
+      handleClick();
+      // Add
+    }
   };
-  const handleSave = e => {
-    let newAmount = amount;
-    if (transactionType === 'expense') newAmount = -amount;
 
-    const updatedTransaction = {
-      amount: newAmount,
-      date,
-      comment,
-    };
-
-    console.log(updatedTransaction);
-    // save
+  const handleSave = async () => {
+    const isValid = await handleValidation();
+    if (isValid) {
+      const newAmount = transactionType === 'expense' ? -amount : +amount;
+      const updatedTransaction = {
+        amount: newAmount,
+        date,
+        comment,
+        category: category,
+        transactionType,
+      };
+      console.log('Updating transaction:', updatedTransaction);
+      // Savw
+    }
   };
 
   const handleTransactionTypeChange = newType => {
@@ -127,6 +201,11 @@ const ModalAddTransaction = ({ handleClick, isEditing }) => {
           </span>
         </div>
         <form className={css.formContainer}>
+          {transactionType === 'expense' && (
+            <div className={css.categoryContainer}>
+              <MySelectComponent categoryOptions={categoryOptions} onCategoryChange={setCategory} />
+            </div>
+          )}
           <input
             className={css.amountInput}
             type="number"
@@ -148,12 +227,7 @@ const ModalAddTransaction = ({ handleClick, isEditing }) => {
               <use xlinkHref={`${svg}#calendar`}></use>
             </svg>
           </div>
-          {/* <input
-              className={css.dateInput}
-              type="date"
-              value={date}
-              onChange={e => setDate(e.target.value)}
-            /> */}
+
           <textarea
             className={css.commentInput}
             rows="3"
