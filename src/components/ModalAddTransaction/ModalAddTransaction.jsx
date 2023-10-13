@@ -140,9 +140,11 @@ const ModalAddTransaction = ({ handleClick, isEditing }) => {
           </span>
         </div>
         <form className={css.formContainer}>
-          <div className={css.categoryContainer}>
-            <MySelectComponent categoryOptions={categoryOptions} />
-          </div>
+          {transactionType === 'expense' && (
+            <div className={css.categoryContainer}>
+              <MySelectComponent categoryOptions={categoryOptions} />
+            </div>
+          )}
           <input
             className={css.amountInput}
             type="number"
