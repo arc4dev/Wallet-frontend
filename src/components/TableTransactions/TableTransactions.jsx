@@ -23,21 +23,21 @@ const TableTransactions = () => {
   return (
     <>
       {transactions.length !== 0 ? (
-        <div className={css.table}>
+        <div className={css.table_wrapper}>
+          <table className={css.table}>
           <thead>
             <tr className={`${css.table_rows} ${css.headerTable}`}>
               <th>Date</th>
               <th>Type</th>
               <th>Category</th>
               <th>Comment</th>
-              <th colspan="2">Sum</th>
+              <th colSpan="2">Sum</th>
               <th></th>
-            </tr>
+            </tr>tions
           </thead>
-          <table className={css.table}>
             <tbody>
               {transactions.map(transaction => (
-                <tr>
+                <tr key={transaction._id}>
                   <td data-label="Date">{new Date(transaction.date).toLocaleDateString()}</td>
                   <td data-label="Type">{transaction.sum >= 0 ? '+' : '-'}</td>
                   <td data-label="Category">{transaction.category}</td>
