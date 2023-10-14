@@ -49,16 +49,16 @@ const ModalAddTransaction = ({
   ];
 
   useEffect(() => {
+    setCategory('');
+  }, [transactionType]);
+
+  useEffect(() => {
     if (isModalAddTransactionOpen) {
       document.body.classList.add(css.modalOpen);
     } else {
       document.body.classList.remove(css.modalOpen);
     }
   }, [isModalAddTransactionOpen]);
-
-  useEffect(() => {
-    setCategory('');
-  }, [transactionType]);
 
   const transactionSchema = yup.object().shape({
     amount: yup
@@ -168,6 +168,15 @@ const ModalAddTransaction = ({
   });
 
   const isModalOpen = isEditing || isModalAddTransactionOpen;
+
+  useEffect(() => {
+    if (isModalOpen) {
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+      }, 0);
+    }
+  }, [isModalOpen]);
+
   return (
     <ReactModal
       isOpen={isModalOpen}
