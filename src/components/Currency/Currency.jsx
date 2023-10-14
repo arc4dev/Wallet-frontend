@@ -11,25 +11,25 @@ const Currency = () => {
   const useCurrencies = ['USD', 'PLN'];
   const spread = 0.0299;
 
-  useEffect(() => {
-    const fetchCurrencyRates = async () => {
-      try {
-        const res = await fetch(
-          `http://data.fixer.io/api/latest?access_key=${process.env.REACT_APP_EXCHANGE_API_KEY}`
-        );
+  // useEffect(() => {
+  //   const fetchCurrencyRates = async () => {
+  //     try {
+  //       const res = await fetch(
+  //         `http://data.fixer.io/api/latest?access_key=${process.env.REACT_APP_EXCHANGE_API_KEY}`
+  //       );
 
-        if (res.ok) {
-          const data = await res.json();
-          setExchangeRates(data.rates);
-        } else {
-          console.error('API request failed with status:', res.status);
-        }
-      } catch (error) {
-        console.error('API request failed:', error);
-      }
-    };
-    fetchCurrencyRates();
-  }, []);
+  //       if (res.ok) {
+  //         const data = await res.json();
+  //         setExchangeRates(data.rates);
+  //       } else {
+  //         console.error('API request failed with status:', res.status);
+  //       }
+  //     } catch (error) {
+  //       console.error('API request failed:', error);
+  //     }
+  //   };
+  //   fetchCurrencyRates();
+  // }, []);
 
   const dispatch = useDispatch();
   const loading = useSelector(selectIsLoading);

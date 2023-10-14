@@ -67,7 +67,7 @@ const DiagramTab = () => {
             <select className={css.selectButton} value={selectedMonth} onChange={handleMonthChange}>
               <option value="">Month select</option>
               {uniqueMonths.map(showMonth => (
-                <option value={showMonth}>{showMonth}</option>
+                <option key={showMonth} value={showMonth}>{showMonth}</option>
               ))}
             </select>
           </label>
