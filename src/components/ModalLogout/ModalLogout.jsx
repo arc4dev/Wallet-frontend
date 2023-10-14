@@ -88,6 +88,7 @@ const ModalLogout = ({ name }) => {
             className={css.modalLogout}
             contentLabel="Example Modal"
             appElement={document.getElementById('root')}
+            overlayClassName={css.modalOverlay}
           >
             <h3 className={css['header-3']}>Are you really want to leave?</h3>
             <h4 className={css['header-4']}>Choose wisely</h4>

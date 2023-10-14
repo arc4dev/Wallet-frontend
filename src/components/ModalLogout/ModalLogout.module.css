@@ -14,6 +14,13 @@
   align-items: center;
   gap: 1rem;
 }
+
+.modalOverlay {
+  position: fixed;
+  inset: 0px;
+  z-index: 3;
+  background: rgba(0, 0, 0, 0.25);
+}
 .modalOpen {
   overflow: hidden;
 }

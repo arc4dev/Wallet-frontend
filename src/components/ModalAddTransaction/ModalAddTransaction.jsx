@@ -52,14 +52,6 @@ const ModalAddTransaction = ({
     setCategory('');
   }, [transactionType]);
 
-  useEffect(() => {
-    if (isModalAddTransactionOpen) {
-      document.body.classList.add(css.modalOpen);
-    } else {
-      document.body.classList.remove(css.modalOpen);
-    }
-  }, [isModalAddTransactionOpen]);
-
   const transactionSchema = yup.object().shape({
     amount: yup
       .number()

@@ -8,6 +8,10 @@
   padding: 0 20px;
 }
 
+.modalOpen {
+  overflow: hidden;
+}
+
 .tableWrapper {
   width: 100%;
 }

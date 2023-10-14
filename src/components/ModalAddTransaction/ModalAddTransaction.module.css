@@ -4,17 +4,14 @@
   position: absolute;
   top: 0;
   background: #fff;
-  overflow: hidden;
+  overflow: scroll;
+  padding-bottom: 20px;
 }
-
-.modalOpen {
-  overflow: hidden;
-}
-
 .modalOverlay {
   position: fixed;
   inset: 0px;
   top: 50px;
+  z-index: 3;
   background: rgba(0, 0, 0, 0.25);
 }
 
@@ -42,6 +39,7 @@
   position: absolute;
   top: 1.25rem;
   right: 1.25rem;
+  display: none;
 }
 
 .switchContainer {
@@ -192,10 +190,14 @@
   text-transform: uppercase;
 }
 @media screen and (min-width: 768px) {
+  .closeBtn {
+    display: block;
+  }
   .modalOverlay {
     top: 0;
   }
   .modalContainer {
+    overflow: visible;
     position: absolute;
     left: 50%;
     top: 50%;
