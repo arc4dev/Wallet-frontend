@@ -14,18 +14,16 @@ const Currency = () => {
   useEffect(() => {
     const fetchCurrencyRates = async () => {
       try {
+        console.log(process.env.REACT_APP_EXCHANGE_API_KEY);
         const res = await fetch(
           `http://data.fixer.io/api/latest?access_key=${process.env.REACT_APP_EXCHANGE_API_KEY}`
         );
+        const data = await res.json();
 
-        if (res.ok) {
-          const data = await res.json();
-          setExchangeRates(data.rates);
-        } else {
-          console.error('API request failed with status:', res.status);
-        }
-      } catch (error) {
-        console.error('API request failed:', error);
+        if (data.success !== 'false') setExchangeRates(data.rates);
+        else console.log(data);
+      } catch (err) {
+        console.log('API request failed:', err);
       }
     };
     fetchCurrencyRates();
