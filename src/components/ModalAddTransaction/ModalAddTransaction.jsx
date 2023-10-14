@@ -107,6 +107,7 @@ const ModalAddTransaction = ({
         comment,
         category: newCategory.toLowerCase(),
       };
+      handleClick();
 
       // Edit transaction
       dispatch(editTransaction({ ...updatedTransaction }));
