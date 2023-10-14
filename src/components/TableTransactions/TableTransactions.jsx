@@ -20,6 +20,15 @@ const TableTransactions = () => {
     dispatch(deleteTransaction(id));
   };
 
+  console.log('transactions', transactions);
+
+  // sortuje transakcje od najnowszej na górze
+  const sortedTransactions = [...transactions].sort(
+    (d1, d2) => new Date(d1.date).getTime() - new Date(d2.date).getTime()
+  );
+
+  console.log('sortedTransactions', sortedTransactions);
+
   return (
     <>
       {transactions.length !== 0 ? (
@@ -36,7 +45,7 @@ const TableTransactions = () => {
           </thead>
           <table className={css.table}>
             <tbody>
-              {transactions.map(transaction => (
+              {sortedTransactions.map(transaction => (
                 <tr>
                   <td data-label="Date">{new Date(transaction.date).toLocaleDateString()}</td>
                   <td data-label="Type">{transaction.sum >= 0 ? '+' : '-'}</td>

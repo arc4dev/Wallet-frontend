@@ -9,8 +9,8 @@ const getCategoryColor = categoryKey => {
   const categoryColors = {
     products: '#FFD8D0',
     car: '#FD9498',
-    selfcare: '#C5BAFF',
-    childcare: '#6E78E8',
+    'self care': '#C5BAFF',
+    'child care': '#6E78E8',
     'household products': '#4A56E2',
     education: '#81E1FF',
     leisure: '#24CCA7',

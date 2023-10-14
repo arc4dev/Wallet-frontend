@@ -34,15 +34,15 @@ const DiagramTab = () => {
     const year = date.getFullYear();
     const month = date.toLocaleString('en-US', { month: 'long' });
 
-    years.push(year);
-    months.push(month);
+    // dodaje do listy lat i miesięcy tylko te, w których były wydatki (pomija wpływy)
+    if (dateFromList.type === '-') {
+      years.push(year);
+      months.push(month);
+    }
   });
 
   const uniqueYears = [...new Set(years)];
   const uniqueMonths = [...new Set(months)];
-
-  if (!selectedMonth && !selectedYear) {
-  }
 
   const filteredTransactionsList = list.filter(value => {
     const date = new Date(value.date);
