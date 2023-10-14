@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import moment from 'moment';
 import css from './TableTransactions.module.css';
 import svg from '../../assets/icons/icons.svg';
 import ModalAddTransaction from '../ModalAddTransaction/ModalAddTransaction';
@@ -13,6 +14,8 @@ const TableTransactions = () => {
   const dispatch = useDispatch();
   const isModalEditTransactionOpen = useSelector(selectIsModalEditTransactionOpen);
   const transactions = useSelector(selectTransactions);
+
+  const [sortedTransactions, setSortedTransactions] = useState([]);
   const [editAmount, setEditAmount] = useState();
   const [editComment, setEditComment] = useState();
   const [editId, setEditId] = useState();
@@ -40,26 +43,27 @@ const TableTransactions = () => {
     dispatch(deleteTransaction(id));
   };
 
-  // sortuje transakcje od najnowszej na górze
-  const sortedTransactions = [...transactions].sort(
-    (d1, d2) => new Date(d1.date).getTime() - new Date(d2.date).getTime()
-  );
+  useEffect(() => {
+    const sorted = [...transactions].sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    setSortedTransactions(sorted);
+  }, [transactions]);
 
   return (
     <>
-      {transactions.length !== 0 ? (
-        <div className={css.table}>
-          <thead>
-            <tr className={`${css.table_rows} ${css.headerTable}`}>
-              <th>Date</th>
-              <th>Type</th>
-              <th>Category</th>
-              <th>Comment</th>
-              <th colspan="2">Sum</th>
-              <th></th>
-            </tr>
-          </thead>
+      {sortedTransactions.length !== 0 ? (
+        <div className={css.table_wrapper}>
           <table className={css.table}>
+            <thead>
+              <tr className={`${css.table_rows} ${css.headerTable}`}>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Category</th>
+                <th>Comment</th>
+                <th colSpan="2">Sum</th>
+                <th></th>
+              </tr>
+            </thead>
             <tbody>
               {sortedTransactions.map(transaction => (
                 <tr id={transaction._id}>
