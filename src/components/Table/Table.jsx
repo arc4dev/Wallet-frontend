@@ -129,7 +129,11 @@ const Table = ({ transactionsList, categories = [] }) => {
       </table>
       {/* Renderowanie komponentu ChartComponent z przekazanymi danymi */}
 
-      <ChartComponent totalIncome={totalIncome} totalExpensesByCategory={totalExpensesByCategory} />
+      <ChartComponent
+        totalIncome={totalIncome}
+        totalExpensesByCategory={totalExpensesByCategory}
+        getCategoryColor={getCategoryColor}
+      />
     </div>
   );
 };
