@@ -25,7 +25,7 @@ const ModalAddTransaction = ({
   operationType,
   editCategory,
 }) => {
-  const [amount, setAmount] = useState(transactionAmount);
+  const [amount, setAmount] = useState(transactionAmount || 0);
   const [date, setDate] = useState(editDate ? new Date(editDate) : new Date());
   const [comment, setComment] = useState(editComment);
   const [transactionType, setTransactionType] = useState(operationType || 'expense');
