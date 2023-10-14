@@ -4,14 +4,14 @@ import css from './TableTransactions.module.css';
 import svg from '../../assets/icons/icons.svg';
 import ModalAddTransaction from '../ModalAddTransaction/ModalAddTransaction';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectIsModalEditTransactionOpen } from 'redux/global/selectors';
+import { selectIsModalAddTransactionOpen } from 'redux/global/selectors';
 import { toggleStateOf } from 'redux/global/slice';
 import { selectTransactions } from 'redux/finance/selectors';
 import { deleteTransaction } from 'redux/finance/operations';
 
 const TableTransactions = () => {
   const dispatch = useDispatch();
-  const isModalEditTransactionOpen = useSelector(selectIsModalEditTransactionOpen);
+  const isModalAddTransactionOpen = useSelector(selectIsModalAddTransactionOpen);
   const transactions = useSelector(selectTransactions);
 
   const [sortedTransactions, setSortedTransactions] = useState([]);
@@ -23,7 +23,7 @@ const TableTransactions = () => {
   const [opType, setOpType] = useState();
 
   const handleEditTransaction = id => {
-    dispatch(toggleStateOf('isModalEditTransactionOpen'));
+    dispatch(toggleStateOf('isModalAddTransactionOpen'));
 
     // znajduje transakcje po id i zwraca jej wartość - do modala edycji
     const findTransactionByID = transactions.find(transaction => transaction._id === id);
@@ -107,11 +107,11 @@ const TableTransactions = () => {
         'No transactions added yet!'
       )}
 
-      {isModalEditTransactionOpen && (
+      {isModalAddTransactionOpen && (
         <ModalAddTransaction
           handleClick={handleEditTransaction}
           isEditing={true}
-          isModalAddTransactionOpen={isModalEditTransactionOpen}
+          isModalAddTransactionOpen={isModalAddTransactionOpen}
           transactions={sortedTransactions}
           transactionAmount={editAmount}
           editComment={editComment}
