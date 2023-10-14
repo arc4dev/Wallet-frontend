@@ -20,7 +20,7 @@ const ModalAddTransaction = ({ handleClick, isEditing }) => {
   const [comment, setComment] = useState('');
   const [transactionType, setTransactionType] = useState('income');
   const [category, setCategory] = useState('');
-  const [validationErrors, setValidationErrors] = useState({});
+  const [, setValidationErrors] = useState({});
 
   const dispatch = useDispatch();
   const isModalAddTransactionOpen = useSelector(selectIsModalAddTransactionOpen);

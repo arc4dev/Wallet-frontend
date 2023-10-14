@@ -23,11 +23,7 @@ const TableTransactions = () => {
   };
 
   useEffect(() => {
-    const sorted = [...transactions].sort((a, b) => {
-      const dateA = moment(a.date, 'YYYY-MM-DD'); // Zakładam format daty jako "l"
-      const dateB = moment(b.date, 'YYYY-MM-DD');
-      return dateB.diff(dateA);
-    });
+    const sorted = [...transactions].sort((a, b) => new Date(b.date) - new Date(a.date));
 
     setSortedTransactions(sorted);
   }, [transactions]);
