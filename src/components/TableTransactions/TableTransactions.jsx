@@ -7,7 +7,6 @@ import { selectIsModalEditTransactionOpen } from 'redux/global/selectors';
 import { toggleStateOf } from 'redux/global/slice';
 import { selectTransactions } from 'redux/finance/selectors';
 import { deleteTransaction } from 'redux/finance/operations';
-import { nanoid } from '@reduxjs/toolkit';
 import eachMinuteOfInterval from 'date-fns/eachMinuteOfInterval';
 import { useState } from 'react';
 
@@ -18,6 +17,7 @@ const TableTransactions = () => {
   const [editAmount, setEditAmount] = useState();
   const [editComment, setEditComment] = useState();
   const [editId, setEditId] = useState();
+  const [editDate, setEditDate] = useState();
 
   const handleEditTransaction = id => {
     dispatch(toggleStateOf('isModalEditTransactionOpen'));
@@ -29,6 +29,7 @@ const TableTransactions = () => {
       setEditAmount(Math.abs(findTransactionByID.sum));
       setEditComment(findTransactionByID.comment);
       setEditId(id);
+      setEditDate(findTransactionByID.date);
     }
   };
 
@@ -109,6 +110,7 @@ const TableTransactions = () => {
           transactionAmount={editAmount}
           editComment={editComment}
           editId={editId}
+          editDate={editDate}
         />
       )}
     </>

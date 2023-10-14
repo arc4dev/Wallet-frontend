@@ -21,9 +21,10 @@ const ModalAddTransaction = ({
   transactionAmount,
   editComment,
   editId,
+  editDate,
 }) => {
   const [amount, setAmount] = useState(transactionAmount);
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(editDate ? new Date(editDate) : new Date());
   const [comment, setComment] = useState(editComment);
   const [transactionType, setTransactionType] = useState('income');
   const [category, setCategory] = useState('');
@@ -97,14 +98,15 @@ const ModalAddTransaction = ({
       const newAmount = transactionType === 'expense' ? -amount : +amount;
       const newCategory = transactionType === 'expense' ? category : 'income';
 
+      console.log();
+
       const updatedTransaction = {
         id: editId,
         sum: newAmount,
         date,
         comment,
-        category: newCategory,
+        category: newCategory.toLowerCase(),
       };
-      console.log('Updating transaction:', updatedTransaction);
 
       // Edit transaction
       dispatch(editTransaction({ ...updatedTransaction }));
