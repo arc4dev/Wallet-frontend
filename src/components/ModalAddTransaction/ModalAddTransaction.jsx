@@ -209,7 +209,7 @@ const ModalAddTransaction = ({
             ' / '
           ) : (
             <IncExpBtn
-              checked={transactionType}
+              checked={transactionType === 'expense'}
               onChange={() =>
                 setTransactionType(transactionType === 'income' ? 'expense' : 'income')
               }
@@ -217,7 +217,7 @@ const ModalAddTransaction = ({
           )}
           <span
             className={transactionType === 'expense' ? css.expenseText : css.greyText}
-            onClick={() => handleTransactionTypeChange(transactionAmount)}
+            onClick={() => handleTransactionTypeChange('expense')}
           >
             Expense
           </span>
