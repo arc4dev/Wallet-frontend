@@ -22,11 +22,13 @@ const ModalAddTransaction = ({
   editComment,
   editId,
   editDate,
+  operationType,
+  editCategory,
 }) => {
   const [amount, setAmount] = useState(transactionAmount);
   const [date, setDate] = useState(editDate ? new Date(editDate) : new Date());
   const [comment, setComment] = useState(editComment);
-  const [transactionType, setTransactionType] = useState('income');
+  const [transactionType, setTransactionType] = useState(operationType || 'expense');
   const [category, setCategory] = useState('');
   const [validationErrors, setValidationErrors] = useState({});
 
@@ -36,7 +38,7 @@ const ModalAddTransaction = ({
   const categoryOptions = [
     { value: 'Main expenses', label: 'Main expenses' },
     { value: 'Products', label: 'Products' },
-    { value: 'Car', label: 'Car' },
+    { value: 'Car', label: 'car' },
     { value: 'Self care', label: 'Self care' },
     { value: 'Child care', label: 'Child care' },
     { value: 'Household products', label: 'Household products' },
@@ -210,7 +212,7 @@ const ModalAddTransaction = ({
             ' / '
           ) : (
             <IncExpBtn
-              checked={transactionType === 'expense'}
+              checked={transactionType}
               onChange={() =>
                 setTransactionType(transactionType === 'income' ? 'expense' : 'income')
               }
@@ -218,7 +220,7 @@ const ModalAddTransaction = ({
           )}
           <span
             className={transactionType === 'expense' ? css.expenseText : css.greyText}
-            onClick={() => handleTransactionTypeChange('expense')}
+            onClick={() => handleTransactionTypeChange(transactionAmount)}
           >
             Expense
           </span>
@@ -226,9 +228,14 @@ const ModalAddTransaction = ({
         <form className={css.formContainer}>
           {transactionType === 'expense' && (
             <div className={css.categoryContainer}>
-              <MySelectComponent categoryOptions={categoryOptions} onCategoryChange={setCategory} />
+              <MySelectComponent
+                categoryOptions={categoryOptions}
+                onCategoryChange={setCategory}
+                editCategory={editCategory}
+              />
             </div>
           )}
+
           {isEditing ? (
             <input
               className={css.amountInput}

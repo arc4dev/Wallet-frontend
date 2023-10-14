@@ -18,6 +18,8 @@ const TableTransactions = () => {
   const [editComment, setEditComment] = useState();
   const [editId, setEditId] = useState();
   const [editDate, setEditDate] = useState();
+  const [editCategory, setEditCategory] = useState();
+  const [opType, setOpType] = useState();
 
   const handleEditTransaction = id => {
     dispatch(toggleStateOf('isModalEditTransactionOpen'));
@@ -30,6 +32,8 @@ const TableTransactions = () => {
       setEditComment(findTransactionByID.comment);
       setEditId(id);
       setEditDate(findTransactionByID.date);
+      setEditCategory(findTransactionByID.category);
+      setOpType(findTransactionByID.type === '-' ? 'expense' : 'income');
     }
   };
 
@@ -111,6 +115,8 @@ const TableTransactions = () => {
           editComment={editComment}
           editId={editId}
           editDate={editDate}
+          operationType={opType}
+          editCategory={editCategory}
         />
       )}
     </>
