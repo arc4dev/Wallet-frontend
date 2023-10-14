@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/Wallet-frontend/static/css/main.81f1bddc.css",
-    "main.js": "/Wallet-frontend/static/js/main.8198755b.js",
+    "main.css": "/Wallet-frontend/static/css/main.ec815922.css",
+    "main.js": "/Wallet-frontend/static/js/main.b18d5dbe.js",
     "static/media/CRC65.woff": "/Wallet-frontend/static/media/CRC65.adb656a369472daa3b0d.woff",
     "static/media/CRC55.woff": "/Wallet-frontend/static/media/CRC55.8da5582a5f6c40d4b70d.woff",
-    "static/media/icons.svg": "/Wallet-frontend/static/media/icons.5ced93da4002419fb699a71f27e248cd.svg",
+    "static/media/icons.svg": "/Wallet-frontend/static/media/icons.3889c6cc822583be808d8f2b70ed7240.svg",
     "static/media/frame-register.svg": "/Wallet-frontend/static/media/frame-register.5717978088f0bcb942943cdd8713b9c8.svg",
     "static/media/frame-login.svg": "/Wallet-frontend/static/media/frame-login.1c4f499d66096b55121bbdcce8bb2cf2.svg",
     "static/media/Poppins-Regular.woff": "/Wallet-frontend/static/media/Poppins-Regular.aa27b6bdbf91d267ef8a.woff",
     "static/media/Poppins-Bold.woff": "/Wallet-frontend/static/media/Poppins-Bold.9a27401efe3a40b4605f.woff",
     "index.html": "/Wallet-frontend/index.html",
     "static/media/Vector 19.svg": "/Wallet-frontend/static/media/Vector 19.77b989b3724c69122981.svg",
-    "main.81f1bddc.css.map": "/Wallet-frontend/static/css/main.81f1bddc.css.map",
-    "main.8198755b.js.map": "/Wallet-frontend/static/js/main.8198755b.js.map"
+    "main.ec815922.css.map": "/Wallet-frontend/static/css/main.ec815922.css.map",
+    "main.b18d5dbe.js.map": "/Wallet-frontend/static/js/main.b18d5dbe.js.map"
   },
   "entrypoints": [
-    "static/css/main.81f1bddc.css",
-    "static/js/main.8198755b.js"
+    "static/css/main.ec815922.css",
+    "static/js/main.b18d5dbe.js"
   ]
 }
