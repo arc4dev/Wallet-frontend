@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import moment from 'moment';
 import css from './TableTransactions.module.css';
 import svg from '../../assets/icons/icons.svg';
 import ModalAddTransaction from '../ModalAddTransaction/ModalAddTransaction';
@@ -12,6 +13,7 @@ const TableTransactions = () => {
   const dispatch = useDispatch();
   const isModalEditTransactionOpen = useSelector(selectIsModalEditTransactionOpen);
   const transactions = useSelector(selectTransactions);
+  const [sortedTransactions, setSortedTransactions] = useState([]);
 
   const handleEditTransaction = () => {
     dispatch(toggleStateOf('isModalEditTransactionOpen'));
@@ -20,9 +22,19 @@ const TableTransactions = () => {
     dispatch(deleteTransaction(id));
   };
 
+  useEffect(() => {
+    const sorted = [...transactions].sort((a, b) => {
+      const dateA = moment(a.date, 'YYYY-MM-DD'); // Zakładam format daty jako "l"
+      const dateB = moment(b.date, 'YYYY-MM-DD');
+      return dateB.diff(dateA);
+    });
+
+    setSortedTransactions(sorted);
+  }, [transactions]);
+
   return (
     <>
-      {transactions.length !== 0 ? (
+      {sortedTransactions.length !== 0 ? (
         <div className={css.table_wrapper}>
           <table className={css.table}>
             <thead>
@@ -36,9 +48,9 @@ const TableTransactions = () => {
               </tr>
             </thead>
             <tbody>
-              {transactions.map(transaction => (
+              {sortedTransactions.map(transaction => (
                 <tr key={transaction._id}>
-                  <td data-label="Date">{new Date(transaction.date).toLocaleDateString()}</td>
+                  <td data-label="Date">{moment(transaction.date).format('YYYY-MM-DD')}</td>
                   <td data-label="Type">{transaction.sum >= 0 ? '+' : '-'}</td>
                   <td data-label="Category">{transaction.category}</td>
                   <td data-label="Comment">{transaction.comment}</td>
