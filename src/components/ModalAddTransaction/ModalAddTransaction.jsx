@@ -12,17 +12,22 @@ import Buttons from 'components/Buttons/Buttons';
 import * as yup from 'yup';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { addTransaction } from 'redux/finance/operations';
+import { addTransaction, editTransaction } from 'redux/finance/operations';
 
-const ModalAddTransaction = ({ handleClick, isEditing, transactions, transactionAmount }) => {
-  const [amount, setAmount] = useState('');
+const ModalAddTransaction = ({
+  handleClick,
+  isEditing,
+  transactions,
+  transactionAmount,
+  editComment,
+  editId,
+}) => {
+  const [amount, setAmount] = useState(transactionAmount);
   const [date, setDate] = useState(new Date());
-  const [comment, setComment] = useState('');
+  const [comment, setComment] = useState(editComment);
   const [transactionType, setTransactionType] = useState('income');
   const [category, setCategory] = useState('');
   const [validationErrors, setValidationErrors] = useState({});
-
-  console.log(transactionAmount);
 
   const dispatch = useDispatch();
   const isModalAddTransactionOpen = useSelector(selectIsModalAddTransactionOpen);
@@ -93,13 +98,16 @@ const ModalAddTransaction = ({ handleClick, isEditing, transactions, transaction
       const newCategory = transactionType === 'expense' ? category : 'income';
 
       const updatedTransaction = {
+        id: editId,
         sum: newAmount,
         date,
         comment,
         category: newCategory,
       };
       console.log('Updating transaction:', updatedTransaction);
-      // Savw
+
+      // Edit transaction
+      dispatch(editTransaction({ ...updatedTransaction }));
     }
   };
 
@@ -224,7 +232,7 @@ const ModalAddTransaction = ({ handleClick, isEditing, transactions, transaction
               type="number"
               placeholder="0,00"
               inputMode="none"
-              value={transactionAmount}
+              value={amount}
               onChange={e => setAmount(e.target.value)}
             />
           ) : (

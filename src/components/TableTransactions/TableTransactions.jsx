@@ -16,6 +16,8 @@ const TableTransactions = () => {
   const isModalEditTransactionOpen = useSelector(selectIsModalEditTransactionOpen);
   const transactions = useSelector(selectTransactions);
   const [editAmount, setEditAmount] = useState();
+  const [editComment, setEditComment] = useState();
+  const [editId, setEditId] = useState();
 
   const handleEditTransaction = id => {
     dispatch(toggleStateOf('isModalEditTransactionOpen'));
@@ -23,7 +25,11 @@ const TableTransactions = () => {
     // znajduje transakcje po id i zwraca jej wartość - do modala edycji
     const findTransactionByID = transactions.find(transaction => transaction._id === id);
 
-    if (findTransactionByID) setEditAmount(Math.abs(findTransactionByID.sum));
+    if (findTransactionByID) {
+      setEditAmount(Math.abs(findTransactionByID.sum));
+      setEditComment(findTransactionByID.comment);
+      setEditId(id);
+    }
   };
 
   const handleDeleteTransaction = id => {
@@ -67,11 +73,11 @@ const TableTransactions = () => {
                   >
                     {Math.abs(transaction.sum)}
                   </td>
-                  <td
-                    className={css.table__addons}
-                    onClick={() => handleEditTransaction(transaction._id)}
-                  >
-                    <div className={css.editBtn}>
+                  <td className={css.table__addons}>
+                    <div
+                      className={css.editBtn}
+                      onClick={() => handleEditTransaction(transaction._id)}
+                    >
                       <svg className={css.editIcon}>
                         <use xlinkHref={`${svg}#icon-edit`}></use>
                       </svg>
@@ -101,6 +107,8 @@ const TableTransactions = () => {
           isModalAddTransactionOpen={isModalEditTransactionOpen}
           transactions={sortedTransactions}
           transactionAmount={editAmount}
+          editComment={editComment}
+          editId={editId}
         />
       )}
     </>

@@ -44,7 +44,23 @@ const DiagramTab = () => {
   const uniqueYears = [...new Set(years)];
   const uniqueMonths = [...new Set(months)];
 
-  console.log(uniqueMonths);
+  const monthOrder = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
+
+  uniqueMonths.sort((a, b) => monthOrder.indexOf(a) - monthOrder.indexOf(b));
+  uniqueYears.sort((a, b) => a - b);
 
   const filteredTransactionsList = list.filter(value => {
     const date = new Date(value.date);
