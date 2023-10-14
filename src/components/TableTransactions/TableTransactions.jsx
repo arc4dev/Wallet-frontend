@@ -25,16 +25,16 @@ const TableTransactions = () => {
       {transactions.length !== 0 ? (
         <div className={css.table_wrapper}>
           <table className={css.table}>
-          <thead>
-            <tr className={`${css.table_rows} ${css.headerTable}`}>
-              <th>Date</th>
-              <th>Type</th>
-              <th>Category</th>
-              <th>Comment</th>
-              <th colSpan="2">Sum</th>
-              <th></th>
-            </tr>tions
-          </thead>
+            <thead>
+              <tr className={`${css.table_rows} ${css.headerTable}`}>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Category</th>
+                <th>Comment</th>
+                <th colSpan="2">Sum</th>
+                <th></th>
+              </tr>
+            </thead>
             <tbody>
               {transactions.map(transaction => (
                 <tr key={transaction._id}>
