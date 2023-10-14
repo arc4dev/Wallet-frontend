@@ -158,9 +158,9 @@ const Currency = () => {
           </thead>
           <tbody className={css['table-body']}>
             {loading ? (
-              <td colSpan="3" className={css.loader_wrapper}>
+              <tr colSpan="3" className={css.loader_wrapper}>
                 <Loader />
-              </td>
+              </tr>
             ) : (
               useCurrencies.map(currency => {
                 // Check if exchangeRates object exists and has the currency
