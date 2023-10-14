@@ -12,13 +12,23 @@ import Buttons from 'components/Buttons/Buttons';
 import * as yup from 'yup';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { addTransaction } from 'redux/finance/operations';
+import { addTransaction, editTransaction } from 'redux/finance/operations';
 
-const ModalAddTransaction = ({ handleClick, isEditing }) => {
-  const [amount, setAmount] = useState('');
-  const [date, setDate] = useState(new Date());
-  const [comment, setComment] = useState('');
-  const [transactionType, setTransactionType] = useState('income');
+const ModalAddTransaction = ({
+  handleClick,
+  isEditing,
+  transactions,
+  transactionAmount,
+  editComment,
+  editId,
+  editDate,
+  operationType,
+  editCategory,
+}) => {
+  const [amount, setAmount] = useState(transactionAmount);
+  const [date, setDate] = useState(editDate ? new Date(editDate) : new Date());
+  const [comment, setComment] = useState(editComment);
+  const [transactionType, setTransactionType] = useState(operationType || 'expense');
   const [category, setCategory] = useState('');
   const [validationErrors, setValidationErrors] = useState({});
 
@@ -90,14 +100,19 @@ const ModalAddTransaction = ({ handleClick, isEditing }) => {
       const newAmount = transactionType === 'expense' ? -amount : +amount;
       const newCategory = transactionType === 'expense' ? category : 'income';
 
+      console.log();
+
       const updatedTransaction = {
+        id: editId,
         sum: newAmount,
         date,
         comment,
-        category: newCategory,
+        category: newCategory.toLowerCase(),
       };
-      console.log('Updating transaction:', updatedTransaction);
-      // Savw
+      handleClick();
+
+      // Edit transaction
+      dispatch(editTransaction({ ...updatedTransaction }));
     }
   };
 
@@ -197,7 +212,7 @@ const ModalAddTransaction = ({ handleClick, isEditing }) => {
             ' / '
           ) : (
             <IncExpBtn
-              checked={transactionType === 'expense'}
+              checked={transactionType}
               onChange={() =>
                 setTransactionType(transactionType === 'income' ? 'expense' : 'income')
               }
@@ -205,7 +220,7 @@ const ModalAddTransaction = ({ handleClick, isEditing }) => {
           )}
           <span
             className={transactionType === 'expense' ? css.expenseText : css.greyText}
-            onClick={() => handleTransactionTypeChange('expense')}
+            onClick={() => handleTransactionTypeChange(transactionAmount)}
           >
             Expense
           </span>
@@ -213,17 +228,34 @@ const ModalAddTransaction = ({ handleClick, isEditing }) => {
         <form className={css.formContainer}>
           {transactionType === 'expense' && (
             <div className={css.categoryContainer}>
-              <MySelectComponent categoryOptions={categoryOptions} onCategoryChange={setCategory} />
+              <MySelectComponent
+                categoryOptions={categoryOptions}
+                onCategoryChange={setCategory}
+                editCategory={editCategory}
+              />
             </div>
           )}
-          <input
-            className={css.amountInput}
-            type="number"
-            placeholder="0,00"
-            inputMode="none"
-            value={amount}
-            onChange={e => setAmount(e.target.value)}
-          />
+
+          {isEditing ? (
+            <input
+              className={css.amountInput}
+              type="number"
+              placeholder="0,00"
+              inputMode="none"
+              value={amount}
+              onChange={e => setAmount(e.target.value)}
+            />
+          ) : (
+            <input
+              className={css.amountInput}
+              type="number"
+              placeholder="0,00"
+              inputMode="none"
+              value={amount}
+              onChange={e => setAmount(e.target.value)}
+            />
+          )}
+
           <div className={css.dateInput}>
             <Datetime
               inputProps={{ className: css.date }}

@@ -1,10 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Select, { components } from 'react-select';
 import svg from '../../assets/icons/icons.svg';
 import css from './ModalAddTransaction.module.css';
+import { Category } from '@mui/icons-material';
 
-const MySelectComponent = ({ categoryOptions, onCategoryChange }) => {
+const MySelectComponent = ({ categoryOptions, onCategoryChange, editCategory }) => {
   const [selectedCategory, setSelectedCategory] = useState(null);
+
+  const findCategory = categoryOptions.find(
+    category => category.label.toLowerCase() === editCategory
+  );
+
+  useEffect(() => setSelectedCategory(findCategory), [findCategory]);
 
   const DropdownIndicator = props => {
     return (

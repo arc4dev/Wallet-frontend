@@ -53,6 +53,8 @@ const slice = createSlice({
       state.isLoading = false;
       state.error = null;
 
+      console.log(action);
+
       const index = state.data.findIndex(transaction => transaction._id === action.payload._id);
       if (index !== -1) state.data[index] = action.payload;
     },

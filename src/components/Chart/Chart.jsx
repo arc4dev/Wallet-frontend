@@ -4,27 +4,8 @@ import { Doughnut } from 'react-chartjs-2';
 import { Chart, ArcElement } from 'chart.js';
 Chart.register(ArcElement);
 
-const getCategoryColor = categoryKey => {
-  // Mapa kolorów dla kategorii
-  const categoryColors = {
-    products: '#FFD8D0',
-    car: '#FD9498',
-    selfcare: '#C5BAFF',
-    childcare: '#6E78E8',
-    'household products': '#4A56E2',
-    education: '#81E1FF',
-    leisure: '#24CCA7',
-    'other expenses': '#00AD84',
-    'main expenses': '#FED057',
-    entertainment: '#9966FF',
-    // Dodaj pozostałe kategorie
-  };
-  return categoryColors[categoryKey.toLowerCase()];
-  // return categoryColors[categoryKey] || '#000000'; // Domyślny kolor, gdy kategoria nie istnieje w mapie
-};
-
 // Komponent ChartComponent odpowiada za renderowanie wykresu pierścieniowego.
-const ChartComponent = ({ totalIncome, totalExpensesByCategory }) => {
+const ChartComponent = ({ totalIncome, totalExpensesByCategory, getCategoryColor }) => {
   const chartRef = useRef(null);
   const [chartData, setChartData] = useState(null);
   // console.log('totalExpensesByCategory:', totalExpensesByCategory);

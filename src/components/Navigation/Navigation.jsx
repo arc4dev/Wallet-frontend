@@ -5,6 +5,8 @@ import { BiStats, BiSolidHome } from 'react-icons/bi';
 import { FaDollarSign } from 'react-icons/fa';
 import Media from 'react-media';
 import styled from 'styled-components';
+import Currency from 'components/Currency/Currency';
+import { useState } from 'react';
 
 const StyledLink = styled(NavLink)`
   &.active {
@@ -21,6 +23,11 @@ const StyledText = styled(NavLink)`
 `;
 
 const Navigation = () => {
+  const [isCurrencyDisplay, setCurrencyDisplay] = useState(false);
+
+  const showCurrency = () => setCurrencyDisplay(true);
+  const hideCurrency = () => setCurrencyDisplay(false);
+
   return (
     <>
       <IconContext.Provider
@@ -41,17 +48,20 @@ const Navigation = () => {
           render={() => (
             <nav className={css.navigation}>
               <div className={css.nav_link}>
-                <StyledLink to="/dashboard/home">
+                <StyledLink to="/dashboard/home" onClick={hideCurrency}>
                   <BiSolidHome />
                 </StyledLink>
               </div>
               <div className={css.nav_link}>
-                <StyledLink to="/dashboard/statistics">
+                <StyledLink to="/dashboard/statistics" onClick={hideCurrency}>
                   <BiStats />
                 </StyledLink>
               </div>
-              <StyledLink to="/dashboard/currency">
-                <FaDollarSign />
+              <StyledLink to="/dashboard">
+                <FaDollarSign onClick={showCurrency} />
+                <div className={isCurrencyDisplay ? css.currencyDisplay : css.currency}>
+                  <Currency />
+                </div>
               </StyledLink>
             </nav>
           )}

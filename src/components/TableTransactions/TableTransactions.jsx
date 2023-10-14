@@ -7,18 +7,44 @@ import { selectIsModalEditTransactionOpen } from 'redux/global/selectors';
 import { toggleStateOf } from 'redux/global/slice';
 import { selectTransactions } from 'redux/finance/selectors';
 import { deleteTransaction } from 'redux/finance/operations';
+import eachMinuteOfInterval from 'date-fns/eachMinuteOfInterval';
+import { useState } from 'react';
 
 const TableTransactions = () => {
   const dispatch = useDispatch();
   const isModalEditTransactionOpen = useSelector(selectIsModalEditTransactionOpen);
   const transactions = useSelector(selectTransactions);
+  const [editAmount, setEditAmount] = useState();
+  const [editComment, setEditComment] = useState();
+  const [editId, setEditId] = useState();
+  const [editDate, setEditDate] = useState();
+  const [editCategory, setEditCategory] = useState();
+  const [opType, setOpType] = useState();
 
-  const handleEditTransaction = () => {
+  const handleEditTransaction = id => {
     dispatch(toggleStateOf('isModalEditTransactionOpen'));
+
+    // znajduje transakcje po id i zwraca jej wartość - do modala edycji
+    const findTransactionByID = transactions.find(transaction => transaction._id === id);
+
+    if (findTransactionByID) {
+      setEditAmount(Math.abs(findTransactionByID.sum));
+      setEditComment(findTransactionByID.comment);
+      setEditId(id);
+      setEditDate(findTransactionByID.date);
+      setEditCategory(findTransactionByID.category);
+      setOpType(findTransactionByID.type === '-' ? 'expense' : 'income');
+    }
   };
+
   const handleDeleteTransaction = id => {
     dispatch(deleteTransaction(id));
   };
+
+  // sortuje transakcje od najnowszej na górze
+  const sortedTransactions = [...transactions].sort(
+    (d1, d2) => new Date(d1.date).getTime() - new Date(d2.date).getTime()
+  );
 
   return (
     <>
@@ -36,8 +62,8 @@ const TableTransactions = () => {
           </thead>
           <table className={css.table}>
             <tbody>
-              {transactions.map(transaction => (
-                <tr>
+              {sortedTransactions.map(transaction => (
+                <tr id={transaction._id}>
                   <td data-label="Date">{new Date(transaction.date).toLocaleDateString()}</td>
                   <td data-label="Type">{transaction.sum >= 0 ? '+' : '-'}</td>
                   <td data-label="Category">{transaction.category}</td>
@@ -53,7 +79,10 @@ const TableTransactions = () => {
                     {Math.abs(transaction.sum)}
                   </td>
                   <td className={css.table__addons}>
-                    <div className={css.editBtn} onClick={handleEditTransaction}>
+                    <div
+                      className={css.editBtn}
+                      onClick={() => handleEditTransaction(transaction._id)}
+                    >
                       <svg className={css.editIcon}>
                         <use xlinkHref={`${svg}#icon-edit`}></use>
                       </svg>
@@ -81,6 +110,13 @@ const TableTransactions = () => {
           handleClick={handleEditTransaction}
           isEditing={true}
           isModalAddTransactionOpen={isModalEditTransactionOpen}
+          transactions={sortedTransactions}
+          transactionAmount={editAmount}
+          editComment={editComment}
+          editId={editId}
+          editDate={editDate}
+          operationType={opType}
+          editCategory={editCategory}
         />
       )}
     </>
