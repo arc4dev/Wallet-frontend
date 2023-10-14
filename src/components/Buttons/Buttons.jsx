@@ -3,11 +3,8 @@ import css from './Buttons.module.css';
 
 // props for green button
 // variant="contained"
-// className="filledBtn"
 
 // props for empty button
-// variant="outlined"
-// className="emptyBtn"
 
 const Buttons = ({ children, variant, type = 'submit', onClick }) => {
   const filledBtn = `${css.button} ${css.filled}`;

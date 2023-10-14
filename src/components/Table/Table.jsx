@@ -113,8 +113,6 @@ const Table = ({ transactionsList, categories = [] }) => {
       <td>{formatNumber(totalIncome)}</td>
     </tr>
   );
-  // console.log('totalExpensesByCategory:', totalExpensesByCategory);
-  // console.log('totalIncome:', totalIncome);
   // Zwracanie JSX - renderowanie tabeli i komponentu ChartComponent
   return (
     <div className={css.statsWrapper}>

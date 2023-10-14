@@ -4,7 +4,6 @@ import Table from 'components/Table/Table';
 import css from './DiagramTab.module.css';
 import { useSelector } from 'react-redux';
 import { selectTransactions } from 'redux/finance/selectors';
-// import ChartComponent from 'components/Chart/Chart';
 
 const DiagramTab = () => {
   // Dodaj stany do przechowywania wyboru miesiąca i roku

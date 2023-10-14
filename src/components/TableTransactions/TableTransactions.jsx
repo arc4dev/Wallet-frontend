@@ -7,7 +7,6 @@ import { selectIsModalEditTransactionOpen } from 'redux/global/selectors';
 import { toggleStateOf } from 'redux/global/slice';
 import { selectTransactions } from 'redux/finance/selectors';
 import { deleteTransaction } from 'redux/finance/operations';
-import eachMinuteOfInterval from 'date-fns/eachMinuteOfInterval';
 import { useState } from 'react';
 
 const TableTransactions = () => {

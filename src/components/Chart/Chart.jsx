@@ -8,19 +8,15 @@ Chart.register(ArcElement);
 const ChartComponent = ({ totalIncome, totalExpensesByCategory, getCategoryColor }) => {
   const chartRef = useRef(null);
   const [chartData, setChartData] = useState(null);
-  // console.log('totalExpensesByCategory:', totalExpensesByCategory);
-  // console.log('totalIncome:', totalIncome);
 
   // useEffect reaguje na zmiany w totalIncome i totalExpensesByCategory.
   useEffect(() => {
     // Sprawdzamy, czy dane są dostępne i nie są puste.
     if (!totalExpensesByCategory || totalExpensesByCategory.length === 0) {
-      // console.log('Missing or empty data for chart.');
       return;
     }
     // Sprawdzamy, czy totalIncome jest dostępne.
     if (totalIncome === undefined) {
-      // console.log('Missing totalIncome data for chart.');
       return;
     }
 
@@ -50,7 +46,7 @@ const ChartComponent = ({ totalIncome, totalExpensesByCategory, getCategoryColor
 
     // Ustawiamy dane do wykresu w stanie komponentu.
     setChartData(chartData);
-  }, [totalIncome, totalExpensesByCategory]);
+  }, [totalIncome, totalExpensesByCategory, getCategoryColor]);
 
   // Renderujemy div z klasą 'chart-container',
   // zawierający tytuł 'Chart' i wykres (jeśli dane są dostępne).

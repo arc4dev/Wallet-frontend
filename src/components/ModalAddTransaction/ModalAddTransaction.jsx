@@ -30,7 +30,7 @@ const ModalAddTransaction = ({
   const [comment, setComment] = useState(editComment);
   const [transactionType, setTransactionType] = useState(operationType || 'expense');
   const [category, setCategory] = useState('');
-  const [validationErrors, setValidationErrors] = useState({});
+  const [, setValidationErrors] = useState({});
 
   const dispatch = useDispatch();
   const isModalAddTransactionOpen = useSelector(selectIsModalAddTransactionOpen);
@@ -86,7 +86,6 @@ const ModalAddTransaction = ({
         category: newCategory,
       };
 
-      console.log('Adding new transaction:', newTransaction);
       handleClick();
 
       // Add transaction
@@ -99,8 +98,6 @@ const ModalAddTransaction = ({
     if (isValid) {
       const newAmount = transactionType === 'expense' ? -amount : +amount;
       const newCategory = transactionType === 'expense' ? category : 'income';
-
-      console.log();
 
       const updatedTransaction = {
         id: editId,

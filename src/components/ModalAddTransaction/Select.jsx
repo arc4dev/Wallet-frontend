@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Select, { components } from 'react-select';
 import svg from '../../assets/icons/icons.svg';
 import css from './ModalAddTransaction.module.css';
-import { Category } from '@mui/icons-material';
 
 const MySelectComponent = ({ categoryOptions, onCategoryChange, editCategory }) => {
   const [selectedCategory, setSelectedCategory] = useState(null);
