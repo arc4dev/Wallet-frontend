@@ -44,6 +44,8 @@ const DiagramTab = () => {
   const uniqueYears = [...new Set(years)];
   const uniqueMonths = [...new Set(months)];
 
+  console.log(uniqueMonths);
+
   const filteredTransactionsList = list.filter(value => {
     const date = new Date(value.date);
     const year = date.getFullYear();
