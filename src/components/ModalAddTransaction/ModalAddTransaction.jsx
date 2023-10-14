@@ -14,13 +14,15 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { addTransaction } from 'redux/finance/operations';
 
-const ModalAddTransaction = ({ handleClick, isEditing }) => {
+const ModalAddTransaction = ({ handleClick, isEditing, transactions, transactionAmount }) => {
   const [amount, setAmount] = useState('');
   const [date, setDate] = useState(new Date());
   const [comment, setComment] = useState('');
   const [transactionType, setTransactionType] = useState('income');
   const [category, setCategory] = useState('');
   const [validationErrors, setValidationErrors] = useState({});
+
+  console.log(transactionAmount);
 
   const dispatch = useDispatch();
   const isModalAddTransactionOpen = useSelector(selectIsModalAddTransactionOpen);
@@ -216,14 +218,26 @@ const ModalAddTransaction = ({ handleClick, isEditing }) => {
               <MySelectComponent categoryOptions={categoryOptions} onCategoryChange={setCategory} />
             </div>
           )}
-          <input
-            className={css.amountInput}
-            type="number"
-            placeholder="0,00"
-            inputMode="none"
-            value={amount}
-            onChange={e => setAmount(e.target.value)}
-          />
+          {isEditing ? (
+            <input
+              className={css.amountInput}
+              type="number"
+              placeholder="0,00"
+              inputMode="none"
+              value={transactionAmount}
+              onChange={e => setAmount(e.target.value)}
+            />
+          ) : (
+            <input
+              className={css.amountInput}
+              type="number"
+              placeholder="0,00"
+              inputMode="none"
+              value={amount}
+              onChange={e => setAmount(e.target.value)}
+            />
+          )}
+
           <div className={css.dateInput}>
             <Datetime
               inputProps={{ className: css.date }}
