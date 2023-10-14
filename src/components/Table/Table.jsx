@@ -47,8 +47,8 @@ const getCategoryColor = categoryKey => {
     // income: '#36A2EB',
     products: '#FFD8D0',
     car: '#FD9498',
-    selfcare: '#C5BAFF',
-    childcare: '#6E78E8',
+    'self care': '#C5BAFF',
+    'child care': '#6E78E8',
     'household products': '#4A56E2',
     education: '#81E1FF',
     leisure: '#24CCA7',
@@ -113,8 +113,6 @@ const Table = ({ transactionsList, categories = [] }) => {
       <td>{formatNumber(totalIncome)}</td>
     </tr>
   );
-  // console.log('totalExpensesByCategory:', totalExpensesByCategory);
-  // console.log('totalIncome:', totalIncome);
   // Zwracanie JSX - renderowanie tabeli i komponentu ChartComponent
   return (
     <div className={css.statsWrapper}>
@@ -129,7 +127,11 @@ const Table = ({ transactionsList, categories = [] }) => {
       </table>
       {/* Renderowanie komponentu ChartComponent z przekazanymi danymi */}
 
-      <ChartComponent totalIncome={totalIncome} totalExpensesByCategory={totalExpensesByCategory} />
+      <ChartComponent
+        totalIncome={totalIncome}
+        totalExpensesByCategory={totalExpensesByCategory}
+        getCategoryColor={getCategoryColor}
+      />
     </div>
   );
 };

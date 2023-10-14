@@ -26,6 +26,16 @@
   cursor: pointer;
 }
 
+.currency {
+  display: none;
+}
+
+.currencyDisplay {
+  display: block;
+  position: absolute;
+  left: -460%;
+}
+
 @media screen and (min-width: 768px) {
   .navigation {
     flex-direction: column;

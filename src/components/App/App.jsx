@@ -6,7 +6,6 @@ import css from './App.module.css';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import HomeTab from 'components/HomeTab/HomeTab';
 import DiagramTab from 'components/DiagramTab/DiagramTab';
-import Currency from 'components/Currency/Currency';
 import { StyledEngineProvider } from '@mui/material';
 import NotFoundPage from 'pages/NotFound/NotFoundPage';
 import ProtectedRoute from 'utils/ProtectedRoute';
@@ -38,7 +37,7 @@ export const App = () => {
             <Route path="dashboard" element={<DashboardPage />}>
               <Route path="home" element={<HomeTab />} />
               <Route path="statistics" element={<DiagramTab />} />
-              <Route path="currency" element={<Currency />} />
+              {/* <Route path="currency" element={<Currency />} /> */}
             </Route>
           </Route>
 

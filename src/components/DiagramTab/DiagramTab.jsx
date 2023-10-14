@@ -4,7 +4,6 @@ import Table from 'components/Table/Table';
 import css from './DiagramTab.module.css';
 import { useSelector } from 'react-redux';
 import { selectTransactions } from 'redux/finance/selectors';
-// import ChartComponent from 'components/Chart/Chart';
 
 const DiagramTab = () => {
   // Dodaj stany do przechowywania wyboru miesiąca i roku
@@ -34,15 +33,33 @@ const DiagramTab = () => {
     const year = date.getFullYear();
     const month = date.toLocaleString('en-US', { month: 'long' });
 
-    years.push(year);
-    months.push(month);
+    // dodaje do listy lat i miesięcy tylko te, w których były wydatki (pomija wpływy)
+    if (dateFromList.type === '-') {
+      years.push(year);
+      months.push(month);
+    }
   });
 
   const uniqueYears = [...new Set(years)];
   const uniqueMonths = [...new Set(months)];
 
-  if (!selectedMonth && !selectedYear) {
-  }
+  const monthOrder = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
+
+  uniqueMonths.sort((a, b) => monthOrder.indexOf(a) - monthOrder.indexOf(b));
+  uniqueYears.sort((a, b) => a - b);
 
   const filteredTransactionsList = list.filter(value => {
     const date = new Date(value.date);
