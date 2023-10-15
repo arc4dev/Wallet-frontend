@@ -53,10 +53,7 @@ const ModalAddTransaction = ({
   }, [transactionType]);
 
   const transactionSchema = yup.object().shape({
-    amount: yup
-      .number()
-      .required('Amount is required')
-      .min(0, 'Amount must be greater than or equal to 0'),
+    amount: yup.number().required('Amount is required').min(1, 'Amount must be greater than 0'),
     date: yup.date().required('Date is required'),
     category: yup.string().when('transactionType', {
       is: 'expense',
@@ -141,7 +138,6 @@ const ModalAddTransaction = ({
   };
 
   const handleTransactionTypeChange = newType => {
-    setCategory('');
     setTransactionType(newType);
   };
 
@@ -239,6 +235,7 @@ const ModalAddTransaction = ({
               className={css.amountInput}
               type="number"
               placeholder="0,00"
+              min={1}
               inputMode="none"
               value={amount}
               onChange={e => setAmount(e.target.value)}
@@ -247,6 +244,7 @@ const ModalAddTransaction = ({
             <input
               className={css.amountInput}
               type="number"
+              min={1}
               placeholder="0,00"
               inputMode="none"
               value={amount}
@@ -271,7 +269,7 @@ const ModalAddTransaction = ({
           <textarea
             className={css.commentInput}
             rows="3"
-            maxLength="70"
+            maxLength="30"
             placeholder="Comment"
             value={comment}
             onChange={e => setComment(e.target.value)}
