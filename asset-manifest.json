@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/Wallet-frontend/static/css/main.67dd741c.css",
-    "main.js": "/Wallet-frontend/static/js/main.f4eb87e5.js",
-    "static/media/CRC65.woff": "/Wallet-frontend/static/media/CRC65.adb656a369472daa3b0d.woff",
-    "static/media/CRC55.woff": "/Wallet-frontend/static/media/CRC55.8da5582a5f6c40d4b70d.woff",
-    "static/media/icons.svg": "/Wallet-frontend/static/media/icons.3889c6cc822583be808d8f2b70ed7240.svg",
-    "static/media/frame-register.svg": "/Wallet-frontend/static/media/frame-register.5717978088f0bcb942943cdd8713b9c8.svg",
-    "static/media/frame-login.svg": "/Wallet-frontend/static/media/frame-login.1c4f499d66096b55121bbdcce8bb2cf2.svg",
-    "static/media/Poppins-Regular.woff": "/Wallet-frontend/static/media/Poppins-Regular.aa27b6bdbf91d267ef8a.woff",
-    "static/media/Poppins-Bold.woff": "/Wallet-frontend/static/media/Poppins-Bold.9a27401efe3a40b4605f.woff",
-    "index.html": "/Wallet-frontend/index.html",
-    "static/media/Vector 19.svg": "/Wallet-frontend/static/media/Vector 19.77b989b3724c69122981.svg",
-    "main.67dd741c.css.map": "/Wallet-frontend/static/css/main.67dd741c.css.map",
-    "main.f4eb87e5.js.map": "/Wallet-frontend/static/js/main.f4eb87e5.js.map"
+    "main.css": "/static/css/main.2a1e45b6.css",
+    "main.js": "/static/js/main.c20f65c4.js",
+    "static/media/CRC65.woff": "/static/media/CRC65.adb656a369472daa3b0d.woff",
+    "static/media/CRC55.woff": "/static/media/CRC55.8da5582a5f6c40d4b70d.woff",
+    "static/media/icons.svg": "/static/media/icons.3889c6cc822583be808d8f2b70ed7240.svg",
+    "static/media/frame-register.svg": "/static/media/frame-register.5717978088f0bcb942943cdd8713b9c8.svg",
+    "static/media/frame-login.svg": "/static/media/frame-login.1c4f499d66096b55121bbdcce8bb2cf2.svg",
+    "static/media/Poppins-Regular.woff": "/static/media/Poppins-Regular.aa27b6bdbf91d267ef8a.woff",
+    "static/media/Poppins-Bold.woff": "/static/media/Poppins-Bold.9a27401efe3a40b4605f.woff",
+    "index.html": "/index.html",
+    "static/media/Vector 19.svg": "/static/media/Vector 19.77b989b3724c69122981.svg",
+    "main.2a1e45b6.css.map": "/static/css/main.2a1e45b6.css.map",
+    "main.c20f65c4.js.map": "/static/js/main.c20f65c4.js.map"
   },
   "entrypoints": [
-    "static/css/main.67dd741c.css",
-    "static/js/main.f4eb87e5.js"
+    "static/css/main.2a1e45b6.css",
+    "static/js/main.c20f65c4.js"
   ]
 }
