@@ -2,7 +2,7 @@
   "name": "wallet-project",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://arc4dev.github.io/Wallet-frontend/",
+  "homepage": "https://arc4dev.github.ioc",
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",

@@ -31,7 +31,7 @@ export const App = () => {
     <StyledEngineProvider injectFirst>
       <div className={css.container}>
         <Routes>
-          <Route index path="" element={<Navigate to="/dashboard/home" />} />
+          <Route index path="/" element={<Navigate to="/dashboard/home" />} />
 
           <Route element={<ProtectedRoute />}>
             <Route path="dashboard" element={<DashboardPage />}>
