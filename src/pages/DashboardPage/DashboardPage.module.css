@@ -117,8 +117,8 @@
     position: absolute;
     width: 0;
     height: 100vh;
-    top: -82px;
-    left: 464px;
+    top: -50px;
+    left: 36vw;
     border: 1px solid #e7e5f2;
     filter: drop-shadow(1px 0px 0px rgba(255, 255, 255, 0.6))
       drop-shadow(-1px 0px 0px rgba(0, 0, 0, 0.05));

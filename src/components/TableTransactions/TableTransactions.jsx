@@ -53,7 +53,7 @@ const TableTransactions = () => {
       {sortedTransactions.length !== 0 ? (
         <div className={css.table_wrapper}>
           <table className={css.table}>
-            <thead>
+            <thead className={css.tableHead}>
               <tr className={`${css.table_rows} ${css.headerTable}`}>
                 <th>Date</th>
                 <th>Type</th>
@@ -63,7 +63,7 @@ const TableTransactions = () => {
                 <th></th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className={css.tableBody}>
               {sortedTransactions.map(transaction => (
                 <tr key={transaction._id} id={transaction._id}>
                   <td data-label="Date">{new Date(transaction.date).toLocaleDateString()}</td>
