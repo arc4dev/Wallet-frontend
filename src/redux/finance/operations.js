@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:3001/api';
+axios.defaults.baseURL = 'https://wallet-backend-387d4894b661.herokuapp.com/api';
 
 export const addTransaction = createAsyncThunk(
   '/transactions/addTransaction',
