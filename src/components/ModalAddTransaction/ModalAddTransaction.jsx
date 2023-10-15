@@ -20,7 +20,7 @@ const ModalAddTransaction = ({ handleClick, isEditing, initialTransactionData })
   const [comment, setComment] = useState('');
   const [transactionType, setTransactionType] = useState('income');
   const [category, setCategory] = useState('');
-  const [validationErrors, setValidationErrors] = useState({});
+  const [setValidationErrors] = useState({});
 
   const dispatch = useDispatch();
   const isModalAddTransactionOpen = useSelector(selectIsModalAddTransactionOpen);
@@ -61,10 +61,7 @@ const ModalAddTransaction = ({ handleClick, isEditing, initialTransactionData })
   }, [transactionType]);
 
   const transactionSchema = yup.object().shape({
-    amount: yup
-      .number()
-      .required('Amount is required')
-      .min(0, 'Amount must be greater than or equal to 0'),
+    amount: yup.number().required('Amount is required').min(1, 'Amount must be greater than 0'),
     date: yup.date().required('Date is required'),
     category: yup.string().when('transactionType', {
       is: 'expense',
@@ -160,6 +157,13 @@ const ModalAddTransaction = ({ handleClick, isEditing, initialTransactionData })
     switch (key) {
       case 'Escape':
         handleClick();
+        break;
+      case 'Enter':
+        if (isEditing) {
+          handleSave();
+        } else {
+          handleAdd();
+        }
         break;
       default:
     }
