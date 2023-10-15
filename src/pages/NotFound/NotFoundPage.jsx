@@ -4,7 +4,7 @@ import css from './NotFoundPage.module.css';
 
 const NotFoundPage = () => {
   const redirectToHome = () => {
-    window.location.href = '/';
+    window.location.href = '/Wallet-frontend/';
   };
 
   return (
