@@ -18,6 +18,16 @@
   height: 16px;
 }
 
+.tableHead {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.tableBody {
+  position: relative;
+}
+
 .deleteBtn {
   line-height: normal;
   font-size: 0.78rem;
@@ -105,6 +115,8 @@ tr.total-row:nth-child(even) td:last-child {
     justify-content: space-around;
     max-width: 704px;
     margin: 0 auto;
+    display: block;
+    position: relative;
   }
   .table thead {
     display: table-caption;
