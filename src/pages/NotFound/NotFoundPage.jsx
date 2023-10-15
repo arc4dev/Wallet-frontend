@@ -1,12 +1,9 @@
 import { Button, StyledEngineProvider } from '@mui/material';
 import svg from '../../assets/icons/icons.svg';
 import css from './NotFoundPage.module.css';
+import { NavLink } from 'react-router-dom';
 
 const NotFoundPage = () => {
-  const redirectToHome = () => {
-    window.location.href = '/Wallet-frontend/';
-  };
-
   return (
     <StyledEngineProvider injectFirst>
       <div className="container">
@@ -22,7 +19,8 @@ const NotFoundPage = () => {
             </p>
 
             <Button
-              onClick={redirectToHome}
+              to="/"
+              component={NavLink}
               variant="contained"
               className={`${css.button} ${css.filled}`}
             >
