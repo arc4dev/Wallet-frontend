@@ -1,15 +1,9 @@
 import { useEffect, useState } from 'react';
 import css from './Currency.module.css';
 import ReactMedia from 'react-media';
-import Loader from 'components/Loader/Loader';
-import { toggleStateOf } from 'redux/global/slice';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectIsLoading } from 'redux/global/selectors';
 
 const Currency = () => {
-  const dispatch = useDispatch();
   const [exchangeRates, setExchangeRates] = useState([]);
-  const loading = useSelector(selectIsLoading);
 
   const useCurrencies = ['USD', 'PLN'];
   const spread = 0.0299;
@@ -29,10 +23,6 @@ const Currency = () => {
     };
     fetchCurrencyRates();
   }, []);
-
-  useEffect(() => {
-    dispatch(toggleStateOf('isLoading'));
-  }, [dispatch]);
 
   const sellRate = buy => {
     const sell = buy / (1 - spread);
@@ -153,24 +143,18 @@ const Currency = () => {
             </tr>
           </thead>
           <tbody className={css['table-body']}>
-            {loading ? (
-              <tr colSpan="3" className={css.loader_wrapper}>
-                <Loader />
-              </tr>
-            ) : (
-              useCurrencies.map(currency => {
-                // Check if exchangeRates object exists and has the currency
-                const purchaseRate = exchangeRates && exchangeRates[currency]?.value;
+            {useCurrencies.map(currency => {
+              // Check if exchangeRates object exists and has the currency
+              const purchaseRate = exchangeRates && exchangeRates[currency]?.value;
 
-                return (
-                  <tr key={currency} className={css['table-data']}>
-                    <td>{currency}</td>
-                    <td>{purchaseRate ? parseFloat(purchaseRate).toFixed(2) : 'N/A'}</td>
-                    <td>{purchaseRate ? sellRate(purchaseRate) : 'N/A'}</td>
-                  </tr>
-                );
-              })
-            )}
+              return (
+                <tr key={currency} className={css['table-data']}>
+                  <td>{currency}</td>
+                  <td>{purchaseRate ? parseFloat(purchaseRate).toFixed(2) : 'N/A'}</td>
+                  <td>{purchaseRate ? sellRate(purchaseRate) : 'N/A'}</td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
