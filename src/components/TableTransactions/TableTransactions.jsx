@@ -8,7 +8,7 @@ import { selectIsModalEditTransactionOpen } from 'redux/global/selectors';
 import { toggleStateOf } from 'redux/global/slice';
 import { selectTransactions } from 'redux/finance/selectors';
 import { deleteTransaction } from 'redux/finance/operations';
-
+//komenatrz
 const TableTransactions = () => {
   const dispatch = useDispatch();
   const isModalEditTransactionOpen = useSelector(selectIsModalEditTransactionOpen);
