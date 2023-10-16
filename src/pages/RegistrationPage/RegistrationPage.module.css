@@ -19,15 +19,10 @@
 
 @media screen and (min-width: 768px) {
   .registerPage {
-    position: relative;
     background: var(--background-register);
     align-items: start;
-    height: 100%;
   }
 
-  .form {
-    margin-bottom: 30px;
-  }
   .background {
     display: block;
     position: absolute;
@@ -107,7 +102,6 @@
     display: flex;
     z-index: 1;
     padding-left: 107px;
-    margin-bottom: 0;
   }
 
   .logo {
