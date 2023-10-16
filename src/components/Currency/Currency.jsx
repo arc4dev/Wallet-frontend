@@ -18,9 +18,11 @@ const Currency = () => {
     const fetchCurrencyRates = async () => {
       try {
         const res = await fetch(
-          `http://data.fixer.io/api/latest?access_key=${process.env.REACT_APP_EXCHANGE_API_KEY}`
+          `http://data.fixer.io/api/latest?access_key=${process.env.REACT_APP_EXCHANGE_API_KEY}`,
+          { referrerPolicy: 'unsafe-url' }
         );
         const data = await res.json();
+        console.log(data);
 
         if (data.success !== 'false') setExchangeRates(data.rates);
         else console.log(data);
