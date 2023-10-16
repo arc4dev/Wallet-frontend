@@ -7,7 +7,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectIsLoading } from 'redux/global/selectors';
 
 const Currency = () => {
+  const dispatch = useDispatch();
   const [exchangeRates, setExchangeRates] = useState([]);
+  const loading = useSelector(selectIsLoading);
+
   const useCurrencies = ['USD', 'PLN'];
   const spread = 0.0299;
 
@@ -15,7 +18,7 @@ const Currency = () => {
     const fetchCurrencyRates = async () => {
       try {
         const res = await fetch(
-          `//data.fixer.io/api/latest?access_key=${process.env.REACT_APP_EXCHANGE_API_KEY}`
+          `https://data.fixer.io/api/latest?access_key=${process.env.REACT_APP_EXCHANGE_API_KEY}`
         );
         const data = await res.json();
 
@@ -27,9 +30,6 @@ const Currency = () => {
     };
     fetchCurrencyRates();
   }, []);
-
-  const dispatch = useDispatch();
-  const loading = useSelector(selectIsLoading);
 
   useEffect(() => {
     dispatch(toggleStateOf('isLoading'));
