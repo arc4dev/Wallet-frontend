@@ -146,6 +146,13 @@ const ModalAddTransaction = ({
       case 'Escape':
         handleClick();
         break;
+      case 'Enter':
+        if (isEditing) {
+          handleSave();
+        } else {
+          handleAdd();
+        }
+        break;
       default:
     }
   };
