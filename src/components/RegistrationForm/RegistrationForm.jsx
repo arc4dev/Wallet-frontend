@@ -115,6 +115,7 @@ const RegistrationForm = () => {
             <TextField
               id="email"
               name="email"
+              type="email"
               variant="standard"
               placeholder="E-mail"
               InputProps={{

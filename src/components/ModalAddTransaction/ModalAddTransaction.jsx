@@ -243,7 +243,6 @@ const ModalAddTransaction = ({
               type="number"
               placeholder="0,00"
               min={1}
-              inputMode="none"
               value={amount}
               onChange={e => setAmount(e.target.value)}
             />
@@ -253,7 +252,6 @@ const ModalAddTransaction = ({
               type="number"
               min={1}
               placeholder="0,00"
-              inputMode="none"
               value={amount}
               onChange={e => setAmount(e.target.value)}
             />
