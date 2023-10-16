@@ -16,7 +16,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useAuth } from 'hooks/useAuth';
 import { useEffect } from 'react';
-import { useState } from 'react';
+import { resetAuthError } from 'redux/Auth/slice';
 
 const validationSchema = yup.object({
   email: yup.string('Enter your email').email('Enter a valid email').required('Email is required'),
@@ -37,11 +37,10 @@ const RegistrationForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { authErr, created } = useAuth();
-  const [err, setErr] = useState('');
 
   useEffect(() => {
     const notify = () => {
-      toast.error(err, {
+      toast.error(authErr, {
         position: 'top-right',
         autoClose: 5000,
         hideProgressBar: false,
@@ -53,9 +52,12 @@ const RegistrationForm = () => {
       });
     };
 
-    setErr(authErr);
-    if (err) notify();
-  }, [authErr, err]);
+    if (authErr) notify();
+
+    return () => {
+      dispatch(resetAuthError());
+    };
+  }, [authErr, dispatch]);
 
   useEffect(() => {
     const notify = () => {
@@ -97,7 +99,6 @@ const RegistrationForm = () => {
       };
 
       dispatch(registerUser(registerElements));
-      setErr('');
     },
   });
 

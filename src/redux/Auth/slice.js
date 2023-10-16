@@ -20,6 +20,9 @@ const slice = createSlice({
     resetAuth: () => {
       return initialState;
     },
+    resetAuthError: state => {
+      state.error = '';
+    },
   },
   extraReducers: {
     [registerUser.fulfilled]: (state, action) => {
@@ -56,6 +59,6 @@ const slice = createSlice({
   },
 });
 
-export const { resetAuth } = slice.actions;
+export const { resetAuth, resetAuthError } = slice.actions;
 
 export const authReducer = slice.reducer;

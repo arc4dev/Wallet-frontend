@@ -15,7 +15,7 @@ import { useAuth } from 'hooks/useAuth';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useState } from 'react';
+import { resetAuthError } from 'redux/Auth/slice';
 
 const validationSchema = yup.object({
   email: yup.string('Enter your email').email('Enter a valid email').required('Email is required'),
@@ -29,11 +29,10 @@ const validationSchema = yup.object({
 const LoginForm = () => {
   const dispatch = useDispatch();
   const { authErr } = useAuth();
-  const [err, setErr] = useState('');
 
   useEffect(() => {
     const notify = () => {
-      toast.error(err, {
+      toast.error(authErr, {
         position: 'top-right',
         autoClose: 5000,
         hideProgressBar: false,
@@ -45,9 +44,12 @@ const LoginForm = () => {
       });
     };
 
-    setErr(authErr);
-    if (err) notify();
-  }, [authErr, err]);
+    if (authErr) notify();
+
+    return () => {
+      dispatch(resetAuthError());
+    };
+  }, [authErr, dispatch]);
 
   const formik = useFormik({
     initialValues: {
@@ -62,7 +64,6 @@ const LoginForm = () => {
       };
 
       dispatch(loginUser(loginElements));
-      setErr('');
     },
   });
 
