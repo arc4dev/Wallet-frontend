@@ -109,7 +109,7 @@
 
   .dashboardOverviewWrapper {
     flex-direction: column;
-    width: 40vw;
+    width: 35vw;
   }
 
   .dashboardOverviewWrapper:after {
