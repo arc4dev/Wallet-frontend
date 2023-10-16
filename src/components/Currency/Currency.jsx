@@ -18,7 +18,7 @@ const Currency = () => {
     const fetchCurrencyRates = async () => {
       try {
         const res = await fetch(
-          `http://data.fixer.io/aepi/latest?access_key=${process.env.REACT_APP_EXCHANGE_API_KEY}`
+          `https://main--vermillion-yeot-5096df.netlify.app/api/currencies/latest?access_key=${process.env.REACT_APP_EXCHANGE_API_KEY}`
         );
         const data = await res.json();
         console.log(data);

@@ -1,0 +1,6 @@
+[[redirects]]
+  from = "/api/currencies"
+  to = "http://data.fixer.io/api"
+  status = 200
+  force = true
+  headers = {X-From = "Netlify"}
