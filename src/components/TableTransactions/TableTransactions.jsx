@@ -69,7 +69,9 @@ const TableTransactions = () => {
                   <td data-label="Date">{new Date(transaction.date).toLocaleDateString()}</td>
                   <td data-label="Type">{transaction.sum >= 0 ? '+' : '-'}</td>
                   <td data-label="Category">{transaction.category}</td>
-                  <td data-label="Comment">{transaction.comment}</td>
+                  <td data-label="Comment" style={{ height: '40px' }}>
+                    {transaction.comment}
+                  </td>
                   <td
                     style={
                       transaction.sum > 0
@@ -104,7 +106,7 @@ const TableTransactions = () => {
           </table>
         </div>
       ) : (
-        'No transactions added yet!'
+        <p className={css.paragraph}>No transactions added yet!</p>
       )}
 
       {isModalEditTransactionOpen && (
