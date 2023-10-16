@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.148dd6f8.css",
+    "main.css": "/static/css/main.34798dc3.css",
     "main.js": "/static/js/main.5deb9850.js",
     "static/media/CRC65.woff": "/static/media/CRC65.adb656a369472daa3b0d.woff",
     "static/media/CRC55.woff": "/static/media/CRC55.8da5582a5f6c40d4b70d.woff",
@@ -11,11 +11,11 @@
     "static/media/Poppins-Bold.woff": "/static/media/Poppins-Bold.9a27401efe3a40b4605f.woff",
     "index.html": "/index.html",
     "static/media/Vector 19.svg": "/static/media/Vector 19.77b989b3724c69122981.svg",
-    "main.148dd6f8.css.map": "/static/css/main.148dd6f8.css.map",
+    "main.34798dc3.css.map": "/static/css/main.34798dc3.css.map",
     "main.5deb9850.js.map": "/static/js/main.5deb9850.js.map"
   },
   "entrypoints": [
-    "static/css/main.148dd6f8.css",
+    "static/css/main.34798dc3.css",
     "static/js/main.5deb9850.js"
   ]
 }
