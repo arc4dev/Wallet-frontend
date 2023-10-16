@@ -21,6 +21,12 @@
   .loginPage {
     background-color: var(--background-register);
     align-items: start;
+    position: relative;
+    height: 100%;
+  }
+
+  .form {
+    margin-bottom: 30px;
   }
 
   .background {
@@ -102,6 +108,7 @@
     display: flex;
     z-index: 1;
     padding-left: 107px;
+    margin-bottom: 0;
   }
 
   .logo {
