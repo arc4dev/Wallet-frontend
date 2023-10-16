@@ -17,9 +17,7 @@ const Currency = () => {
   useEffect(() => {
     const fetchCurrencyRates = async () => {
       try {
-        const res = await fetch(
-          `/api/currencies/latest?access_key=${process.env.REACT_APP_EXCHANGE_API_KEY}`
-        );
+        const res = await fetch(`/api/latest?access_key=${process.env.REACT_APP_EXCHANGE_API_KEY}`);
         const data = await res.json();
         console.log(data);
 
