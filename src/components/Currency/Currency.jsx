@@ -17,12 +17,12 @@ const Currency = () => {
   useEffect(() => {
     const fetchCurrencyRates = async () => {
       try {
-        const res = await fetch(`/api/latest?access_key=${process.env.REACT_APP_EXCHANGE_API_KEY}`);
+        const res = await fetch(
+          `https://api.currencyapi.com/v3/latest?apikey=${process.env.REACT_APP_EXCHANGE_API_KEY}&currencies=&base_currency=EUR`
+        );
         const data = await res.json();
-        console.log(data);
 
-        if (data.success !== 'false') setExchangeRates(data.rates);
-        else console.log(data);
+        setExchangeRates(data.data);
       } catch (err) {
         console.log('API request failed:', err);
       }
@@ -160,7 +160,7 @@ const Currency = () => {
             ) : (
               useCurrencies.map(currency => {
                 // Check if exchangeRates object exists and has the currency
-                const purchaseRate = exchangeRates && exchangeRates[currency];
+                const purchaseRate = exchangeRates && exchangeRates[currency]?.value;
 
                 return (
                   <tr key={currency} className={css['table-data']}>

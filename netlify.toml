@@ -1,6 +1,5 @@
 [[redirects]]
-  from = "/api/*"
-  to = "http://data.fixer.io/api/:splat"
+  # Handle client-side routing for your React app
+  from = "/*"
+  to = "/index.html"
   status = 200
-  force = true
-  headers = {X-From = "Netlify"}
