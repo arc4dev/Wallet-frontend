@@ -107,7 +107,7 @@ const TableTransactions = () => {
           </table>
         </div>
       ) : (
-        'No transactions added yet!'
+        <p className={css.paragraph}>'No transactions added yet!'</p>
       )}
 
       {isModalEditTransactionOpen && (

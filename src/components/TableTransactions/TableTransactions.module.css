@@ -211,3 +211,11 @@ tr.total-row:nth-child(even) td:last-child {
     transition: font-weight 0.3s, transform 0.3s;
   }
 }
+
+@media screen and (min-width: 1280px) {
+  .paragraph {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+  }
+}
