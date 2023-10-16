@@ -8,6 +8,7 @@ import { selectIsModalEditTransactionOpen } from 'redux/global/selectors';
 import { toggleStateOf } from 'redux/global/slice';
 import { selectTransactions } from 'redux/finance/selectors';
 import { deleteTransaction } from 'redux/finance/operations';
+import { Height } from '@mui/icons-material';
 
 const TableTransactions = () => {
   const dispatch = useDispatch();
@@ -69,7 +70,9 @@ const TableTransactions = () => {
                   <td data-label="Date">{new Date(transaction.date).toLocaleDateString()}</td>
                   <td data-label="Type">{transaction.sum >= 0 ? '+' : '-'}</td>
                   <td data-label="Category">{transaction.category}</td>
-                  <td data-label="Comment">{transaction.comment}</td>
+                  <td data-label="Comment" style={{ height: '40px' }}>
+                    {transaction.comment}
+                  </td>
                   <td
                     style={
                       transaction.sum > 0
