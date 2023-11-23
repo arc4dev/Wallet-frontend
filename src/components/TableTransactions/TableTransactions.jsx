@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-// import moment from 'moment';
 import css from './TableTransactions.module.css';
 import svg from '../../assets/icons/icons.svg';
 import ModalAddTransaction from '../ModalAddTransaction/ModalAddTransaction';
@@ -8,7 +7,7 @@ import { selectIsModalEditTransactionOpen } from 'redux/global/selectors';
 import { toggleStateOf } from 'redux/global/slice';
 import { selectTransactions } from 'redux/finance/selectors';
 import { deleteTransaction } from 'redux/finance/operations';
-//komenatrz
+
 const TableTransactions = () => {
   const dispatch = useDispatch();
   const isModalEditTransactionOpen = useSelector(selectIsModalEditTransactionOpen);
@@ -25,7 +24,6 @@ const TableTransactions = () => {
   const handleEditTransaction = id => {
     dispatch(toggleStateOf('isModalEditTransactionOpen'));
 
-    // znajduje transakcje po id i zwraca jej wartość - do modala edycji
     const findTransactionByID = transactions.find(transaction => transaction._id === id);
 
     if (findTransactionByID) {
