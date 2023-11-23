@@ -1,4 +1,3 @@
-![Project Image](public/img/project-image.png)
 ## Frontend part of the Wallet application
 
 ## Project Overview
