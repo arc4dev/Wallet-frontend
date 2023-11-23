@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import css from './Chart.module.css';
 import { Doughnut } from 'react-chartjs-2';
 import { Chart, ArcElement } from 'chart.js';
+
 Chart.register(ArcElement);
 
 // Komponent ChartComponent odpowiada za renderowanie wykresu pierścieniowego.

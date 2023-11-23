@@ -21,16 +21,11 @@ export const addTransaction = createAsyncThunk(
 export const editTransaction = createAsyncThunk(
   '/transactions/editTransaction',
   async (data, thunkAPI) => {
-    console.log('data', data);
     const { sum, date, comment, category } = data;
     const body = { sum, date, comment, category };
 
-    console.log(body);
-
     try {
       const res = await axios.patch(`/transactions/${data.id}`, body);
-
-      console.log(res);
 
       const { sum, category, comment, date, type, _id } = res.data.data;
 
