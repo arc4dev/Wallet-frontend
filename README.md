@@ -26,7 +26,7 @@ Wallet - Simple finance tracker to manage finances effectively.
 
 ## Optimization
 
-![Project Optimization](/project-optimization.png)
+![Project Optimization]([/project-optimization.png](https://main--vermillion-yeot-5096df.netlify.app/project-optimization.png)https://main--vermillion-yeot-5096df.netlify.app/project-optimization.png)
 
 ## Live
 
