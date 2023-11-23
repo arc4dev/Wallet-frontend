@@ -87,7 +87,7 @@ const Navigation = () => {
               <div>
                 <NavLink className={css.nav_link} to="/dashboard/home">
                   <StyledLink to="/dashboard/home">
-                    <BiSolidHome />
+                    <BiSolidHome aria-label="Go to home tab" />
                   </StyledLink>
                   <StyledText to="/dashboard/home">
                     <span className={css.nav_text}>Home</span>
@@ -97,7 +97,7 @@ const Navigation = () => {
               <div>
                 <NavLink className={css.nav_link} to="/dashboard/statistics">
                   <StyledLink to="/dashboard/statistics">
-                    <BiStats />
+                    <BiStats aria-label="Go to statistics tab" />
                   </StyledLink>
                   <StyledText to="/dashboard/statistics">
                     <span className={css.nav_text}>Statistics</span>
