@@ -1,5 +1,7 @@
 ## Frontend part of the Wallet application
 
+![Project Image](https://main--vermillion-yeot-5096df.netlify.app/img/project-image.png)
+
 ## Project Overview
 
 Wallet - Simple finance tracker to manage finances effectively.
@@ -26,7 +28,7 @@ Wallet - Simple finance tracker to manage finances effectively.
 
 ## Optimization
 
-![Project Optimization](https://main--vermillion-yeot-5096df.netlify.app/project-optimization.png)
+![Project Optimization](https://main--vermillion-yeot-5096df.netlify.app/img/project-optimization.png)
 
 ## Back-end documentation
 
