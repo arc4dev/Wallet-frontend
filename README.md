@@ -1,6 +1,6 @@
 ## Frontend part of the Wallet application
 
-![Project Image](https://main--vermillion-yeot-5096df.netlify.app/img/project-image.png)
+![Project Image](public/img/project-image.png)
 
 ## Project Overview
 
